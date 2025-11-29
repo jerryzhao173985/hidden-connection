@@ -576,9 +576,9 @@ function drawStars() {
 
     for (const point of sortedPoints) {
         const brightness = currentBrightness.get(point.index);
-        // Check if this point is the active one (selected OR hovered)
-        const isActive = (selectedPoint && selectedPoint.index === point.index) ||
-                         (hoveredPoint && hoveredPoint.index === point.index);
+        // Check if this point is the active one - prioritize selected over hovered
+        const activePoint = selectedPoint || hoveredPoint;
+        const isActive = activePoint && activePoint.index === point.index;
         const isNeighbor = hoveredNeighbors.has(point.index);
 
         // Breathing effect - slow, organic pulsation
