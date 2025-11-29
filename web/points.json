@@ -1,0 +1,694 @@
+{
+  "points": [
+    {
+      "id": "p_001",
+      "text": "Q1 (safe place): My grandmother's kitchen, with the afternoon light streaming through lace curtains. The smell of bread rising, her humming something old. I'd sit on the worn wooden stool and feel like nothing bad could reach me there.\nQ2 (stress): Last month's project deadline hit hard. I couldn't sleep for three nights, kept reviewing the same documents. Eventually I went for long walks at 2am just to clear my head. The cold air helped somehow.\nQ3 (understood): When my friend noticed I'd been quiet for weeks and just showed up with takeout and said nothing. We watched terrible movies and she never asked what was wrong. She just knew.\nQ4 (free day): I'd wake without an alarm, make coffee slowly, read by the window for hours. Maybe a long walk somewhere green. No phone, no obligations. Just existing without purpose for once.\nQ5 (one word): Searching - because I always feel like I'm looking for something I can't name, some understanding or place or version of myself that's always just out of reach.",
+      "x": 0.3164949417114258,
+      "y": 0.5885777473449707,
+      "cluster": 2,
+      "decision_style": "Mostly rational",
+      "social_energy": "Drained",
+      "region": "North America",
+      "nickname": "quietwindow"
+    },
+    {
+      "id": "p_002",
+      "text": "Q1 (safe place): The library at my old university, those hidden study rooms on the top floor. Surrounded by old books, complete silence, the world felt far away. I'd spend entire days there feeling invisible in the best way.\nQ2 (stress): My car broke down on the highway last week, middle of nowhere. I panicked at first, heart racing. Then I just sat there, accepted it, called roadside assistance and watched the clouds while waiting.\nQ3 (understood): My partner remembered a tiny detail I mentioned once months ago - my favorite childhood candy. They found some and left it on my pillow. Such a small thing that meant everything.\nQ4 (free day): Sleep in late, then drive to the coast. Sit on a rocky beach and watch waves until I lose track of time. Maybe write in my journal. Definitely no schedule, no rushing.\nQ5 (one word): Curious - I can't help but want to understand how everything works, why people do what they do, what lies beneath the surface of ordinary things.",
+      "x": 0.21902763843536377,
+      "y": 0.4149963855743408,
+      "cluster": 2,
+      "decision_style": "Depends",
+      "social_energy": "Depends",
+      "region": "Europe",
+      "nickname": "anonymous"
+    },
+    {
+      "id": "p_003",
+      "text": "Q1 (safe place): In my car, parked somewhere quiet with rain on the windows. Music playing softly. That enclosed space where I'm alone but not lonely, where I can think without interruption.\nQ2 (stress): Work conflict last week - a colleague blamed me publicly for something that wasn't my fault. I went silent, retreated inward, spent the weekend overanalyzing every interaction we'd ever had.\nQ3 (understood): A teacher in high school once wrote on my essay that I had 'a unique way of seeing the world.' I still think about that twenty years later. Someone saw me.\nQ4 (free day): Build something with my hands - a shelf, a garden bed, anything physical. Then cook an elaborate meal I'd never usually have time for. End with a fire pit and stars.\nQ5 (one word): Resilient - because no matter how many times I've been knocked down or broken apart, I somehow keep reassembling myself into something that can stand again.",
+      "x": 0.05754232406616211,
+      "y": 0.0016338825225830078,
+      "cluster": 3,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Energised",
+      "region": "North America",
+      "nickname": "craftsman_soul"
+    },
+    {
+      "id": "p_004",
+      "text": "Q1 (safe place): The forest behind my childhood home. There's a fallen log by a creek where I'd sit for hours watching water bugs. Even now when I close my eyes I can hear that specific quiet.\nQ2 (stress): Money stress is constant. Last month I couldn't make rent and had to ask my sister for help. The shame made me physically ill. I cleaned obsessively for days to feel in control of something.\nQ3 (understood): My daughter drew a picture of our family and gave me the biggest smile in the drawing. She said 'because you smile the most.' I didn't realize she saw that in me.\nQ4 (free day): Take my kids to the beach, build sandcastles, get ice cream, have no plans. Watch them discover shells and chase waves. Remember what it felt like to find wonder in small things.\nQ5 (one word): Devoted - everything I do is for someone else, and I've made peace with that being my purpose. My love is how I exist in the world.",
+      "x": 0.47226059436798096,
+      "y": 0.18736863136291504,
+      "cluster": 2,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Drained",
+      "region": "Europe",
+      "nickname": "mama_bear"
+    },
+    {
+      "id": "p_005",
+      "text": "Q1 (safe place): Floating in water, any water. A pool, a lake, the ocean. That weightless feeling where gravity releases you and your thoughts spread out across the surface.\nQ2 (stress): Betrayed by a close friend who shared my secrets. I went completely numb, then threw myself into work for weeks. Never confronted them. Still haven't.\nQ3 (understood): When I finally told someone about my depression and they said 'that sounds really hard' instead of trying to fix me or minimize it. Simple acknowledgment was everything.\nQ4 (free day): Swim in the morning, nap in the afternoon, read philosophy at night. Maybe call one person I actually want to talk to. Mostly just exist without performing for anyone.\nQ5 (one word): Depth - I can't do shallow conversation or surface relationships. I need to dive into the meaning of things or I feel like I'm suffocating.",
+      "x": -0.05748647451400757,
+      "y": 0.30330193042755127,
+      "cluster": 2,
+      "decision_style": "Depends",
+      "social_energy": "Drained",
+      "region": "East Asia",
+      "nickname": "deep_end"
+    },
+    {
+      "id": "p_006",
+      "text": "Q1 (safe place): Coffee shops where nobody knows me. Anonymous in a crowd, surrounded by the hum of other lives, free to be nobody in particular. Just another person with a laptop and a drink.\nQ2 (stress): Flight got cancelled, stuck in an airport for 14 hours. Started anxious, then somehow settled into it. Talked to strangers. Read. Ate terrible food. Found unexpected peace in the disruption.\nQ3 (understood): A stranger at a bus stop once told me I had kind eyes. I was going through the worst time of my life and somehow this random person saw something good still there.\nQ4 (free day): Explore a new city alone. Get lost on purpose. Sit in a park and people-watch. Find a local restaurant and ask what they recommend. Be a wanderer with nowhere to return to.\nQ5 (one word): Adaptive - I've learned to make any situation work, any place feel like somewhere I could belong. Change doesn't scare me anymore.",
+      "x": 0.0423206090927124,
+      "y": -0.3595150113105774,
+      "cluster": 2,
+      "decision_style": "Mostly rational",
+      "social_energy": "Energised",
+      "region": "Europe",
+      "nickname": "urban_nomad"
+    },
+    {
+      "id": "p_007",
+      "text": "Q1 (safe place): My therapist's office, actually. That beige room with the uncomfortable chair where I've said things I've never told anyone. Safety through vulnerability, strange as that sounds.\nQ2 (stress): Panic attack in the grocery store. The fluorescent lights got too bright, too many choices, too many people. Left my cart and sat in the parking lot breathing until my hands stopped shaking.\nQ3 (understood): Group therapy when someone else described exactly what I feel but never had words for. That shock of recognition - I'm not the only one. I'm not broken in a unique way.\nQ4 (free day): Stay in bed all day without guilt. Order food. Watch comfort shows. Text my friends but ignore calls. Give myself permission to be absolutely unproductive without shame.\nQ5 (one word): Healing - I'm in the middle of becoming someone different than who I was, and that process is my whole identity right now. Just healing, every day.",
+      "x": -0.29720956087112427,
+      "y": 0.6947827339172363,
+      "cluster": 1,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Drained",
+      "region": "North America",
+      "nickname": "becoming"
+    },
+    {
+      "id": "p_008",
+      "text": "Q1 (safe place): The rooftop of my apartment building at night. City lights below, stars above, wind in my hair. Between two worlds, belonging fully to neither, perfectly suspended.\nQ2 (stress): Graduation approaching with no job lined up. Everyone asking about plans. I started lying to avoid the conversations. Spent nights doom-scrolling instead of applying. Self-sabotage I couldn't stop.\nQ3 (understood): When my mentor told me I reminded them of their younger self, but with more courage. They believed in a version of me I wasn't sure existed yet.\nQ4 (free day): Learn something completely new - pottery, a language, a dance. Spend hours being terrible at it with zero stakes. Remember what it's like to be a beginner at anything.\nQ5 (one word): Potential - I feel like everything I could be is still waiting inside me, untapped. I'm more future than present, more possibility than reality.",
+      "x": -0.7018088102340698,
+      "y": -0.29806143045425415,
+      "cluster": 2,
+      "decision_style": "Depends",
+      "social_energy": "Energised",
+      "region": "South America",
+      "nickname": "anonymous"
+    },
+    {
+      "id": "p_009",
+      "text": "Q1 (safe place): My childhood bedroom, unchanged in my parents' house. Posters from high school still on the walls. A time capsule where I can visit who I was before everything got complicated.\nQ2 (stress): Health scare - doctor found something they wanted to monitor. Weeks of waiting for tests, imagining worst cases. I became hyper-healthy, exercising twice a day, controlling what I could.\nQ3 (understood): My sibling once said 'you're the strong one but you shouldn't have to be.' First time anyone acknowledged the weight I carry. First time I let myself feel tired.\nQ4 (free day): Go back to my hometown, drive past old houses, visit the cemetery where my grandparents are. Reconnect with where I came from. Ground myself in continuity.\nQ5 (one word): Anchored - no matter how far I drift, there are fixed points I return to. People, places, memories that keep me from floating away entirely.",
+      "x": 0.24080801010131836,
+      "y": 0.003180980682373047,
+      "cluster": 2,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Depends",
+      "region": "North America",
+      "nickname": "hometown_heart"
+    },
+    {
+      "id": "p_010",
+      "text": "Q1 (safe place): Museums late on a weekday when they're nearly empty. Standing alone with art that's survived centuries. Perspective on how small my problems are, how long beauty lasts.\nQ2 (stress): Lost my job unexpectedly. The first week I felt relief, then the panic set in. Applied to hundreds of positions. Felt myself shrinking with each rejection. Eventually landed somewhere worse.\nQ3 (understood): A professor once told me my ideas were 'genuinely original.' In academia where everything feels derivative, being told I thought something new felt like proof I had value.\nQ4 (free day): Spend it in a museum I've never visited, then find a used bookstore, then sit in a park and read. Cultural consumption without output. Just absorbing.\nQ5 (one word): Contemplative - I live more in my head than my body, more in ideas than actions. Thinking is my home, even when it's uncomfortable there.",
+      "x": -0.4198536276817322,
+      "y": -0.7030669450759888,
+      "cluster": 2,
+      "decision_style": "Mostly rational",
+      "social_energy": "Drained",
+      "region": "Europe",
+      "nickname": "museum_ghost"
+    },
+    {
+      "id": "p_011",
+      "text": "Q1 (safe place): The passenger seat of a car on a long night drive. Someone else handling the road, soft music, watching lights pass. Moving without having to navigate, held in motion.\nQ2 (stress): Conflict with family over politics. Thanksgiving became a battlefield. I said things I regret, they said worse. Drove home at midnight, cried on the highway. Still haven't fully repaired it.\nQ3 (understood): When my best friend introduced me to someone as 'the most interesting person I know.' I never thought of myself that way. Seeing myself through her eyes was a gift.\nQ4 (free day): Road trip with no destination. Pack a bag, pick a direction, stop wherever looks interesting. Motels with vacancy signs, diners with good pie, conversations with strangers.\nQ5 (one word): Wandering - not lost, just traveling. I don't think I'll ever settle into one life, one place, one version of myself. Motion is my constant.",
+      "x": -0.0717090368270874,
+      "y": -0.2024105191230774,
+      "cluster": 2,
+      "decision_style": "Depends",
+      "social_energy": "Energised",
+      "region": "North America",
+      "nickname": "road_sage"
+    },
+    {
+      "id": "p_012",
+      "text": "Q1 (safe place): A specific coffee shop in Tokyo I visited once, seven years ago. I don't remember the name but I remember the light through the window, the quiet, the feeling of being unknown.\nQ2 (stress): Language barrier abroad made simple tasks impossible. Felt like a child, incompetent, dependent. Eventually learned to laugh at my mistakes instead of hiding from them.\nQ3 (understood): A local in that Tokyo cafe noticed I was struggling to order and helped without making me feel small. Gestured, smiled, made it a game instead of a failure.\nQ4 (free day): Return to places I've loved - revisit them without agenda. See how they've changed, how I've changed. Collect evidence of the passage of time.\nQ5 (one word): Nostalgic - I carry my past with me always, maybe too much. Every present moment is colored by where it fits in the story I'm building.",
+      "x": 0.019774317741394043,
+      "y": -0.9212483763694763,
+      "cluster": 2,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Depends",
+      "region": "East Asia",
+      "nickname": "anonymous"
+    },
+    {
+      "id": "p_013",
+      "text": "Q1 (safe place): My own bathroom, door locked, hot shower running. Steam, white noise, small space. The only room in my life that's truly private, where no one can need anything from me.\nQ2 (stress): Caregiver burnout - taking care of aging parent while working full time. Snapped at them one morning, felt guilt that still sits in my stomach months later.\nQ3 (understood): When my parent, even in their confusion, looked at me and said 'you're a good one.' Through the fog of their illness, they still knew me. Still saw me trying.\nQ4 (free day): Do absolutely nothing for anyone else for once. Sleep, eat what I want, watch what I want. Luxuriate in having no responsibilities for one single day.\nQ5 (one word): Tired - not the kind that sleep fixes. The bone-deep kind that comes from years of putting others first. I dream about rest the way some people dream about success.",
+      "x": 0.5962791442871094,
+      "y": 0.35346031188964844,
+      "cluster": 3,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Drained",
+      "region": "North America",
+      "nickname": "quiet_keeper"
+    },
+    {
+      "id": "p_014",
+      "text": "Q1 (safe place): On a mountaintop after a hard climb. Wind, silence, vast views. The smallness of everything below. Effort rewarded with perspective, with proof that I can do hard things.\nQ2 (stress): Training for a marathon, overtrained, got injured. Had to withdraw. Felt like my body betrayed me, my identity as an athlete shattered. Didn't know who I was without the miles.\nQ3 (understood): When my running group still included me after my injury. They adjusted their pace, stayed with me, proved it was never about performance. They wanted me, not my speed.\nQ4 (free day): An epic hike - twenty miles, summit a peak, push my limits. Feel my body work hard and succeed. Earn my exhaustion through something magnificent.\nQ5 (one word): Driven - I need goals, progress, measurable improvement. Without something to work toward I feel untethered. The striving is the point.",
+      "x": -0.714561939239502,
+      "y": 0.41911256313323975,
+      "cluster": 3,
+      "decision_style": "Mostly rational",
+      "social_energy": "Energised",
+      "region": "Europe",
+      "nickname": "summit_seeker"
+    },
+    {
+      "id": "p_015",
+      "text": "Q1 (safe place): The apartment I can't afford to keep, with my books and my cat and my plants. Every corner arranged exactly as I want. A space that is uncompromisingly mine, reflecting only my choices.\nQ2 (stress): Realizing I might have to move, give up this place. Spent days paralyzed, couldn't start packing. The loss of my sanctuary felt like losing part of myself.\nQ3 (understood): When my cat curls into me specifically when I'm sad. Animals aren't supposed to understand but she always knows. She chose me, keeps choosing me.\nQ4 (free day): Stay home entirely. Not leave even to get mail. Exist in my space with my routines. Read, garden on my balcony, cook something complicated. Pure domestic solitude.\nQ5 (one word): Particular - I need things a certain way to feel okay. Not controlling, just specific. My environment is an extension of my nervous system.",
+      "x": 0.907828688621521,
+      "y": 0.5544731616973877,
+      "cluster": 1,
+      "decision_style": "Depends",
+      "social_energy": "Drained",
+      "region": "North America",
+      "nickname": "plant_lady"
+    },
+    {
+      "id": "p_016",
+      "text": "Q1 (safe place): Public transit, anonymously moving through the city. Faces I'll never see again, stories I'll never know. The comfort of being one of many, flowing together like water.\nQ2 (stress): New job, imposter syndrome crushing. Every meeting felt like an audition, every email a potential exposure. Started arriving early just to have time to compose myself.\nQ3 (understood): A senior colleague said 'you belong here' during a moment of visible panic. Not elaborate, not a speech. Just three words that let me breathe again.\nQ4 (free day): Ride the subway to the end of every line, get off, explore each neighborhood. Map my city by its edges, discover what exists at the margins.\nQ5 (one word): Observer - I notice everything, remember details no one else tracks. I understand the world by watching it, not by participating in it.",
+      "x": -0.2765854597091675,
+      "y": -0.4645414352416992,
+      "cluster": 2,
+      "decision_style": "Mostly rational",
+      "social_energy": "Depends",
+      "region": "East Asia",
+      "nickname": "transit_ghost"
+    },
+    {
+      "id": "p_017",
+      "text": "Q1 (safe place): In a hammock in my backyard, trees above, book in my hands. The sway, the shade, the suspended feeling. Gravity gentled, reading something that asks nothing of me.\nQ2 (stress): Relationship ended badly, very publicly. Mutual friends taking sides, social media becoming a battlefield. I deleted everything, went dark, emerged months later as someone quieter.\nQ3 (understood): When an ex reached out years later to apologize properly. They'd done the work, understood what they'd done. Closure I didn't know I needed until it arrived.\nQ4 (free day): Read an entire novel in one sitting. Start in the morning, finish at night. Live inside someone else's story completely. Emerge changed by imaginary lives.\nQ5 (one word): Romantic - not about love, about seeing the world through a lens of meaning and beauty. Finding poetry in ordinary moments. Believing in magic that isn't.",
+      "x": 0.4140748977661133,
+      "y": -0.5461424589157104,
+      "cluster": 2,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Energised",
+      "region": "Europe",
+      "nickname": "book_hammock"
+    },
+    {
+      "id": "p_018",
+      "text": "Q1 (safe place): The hour before everyone else wakes up. House silent, coffee warm, day still potential. Nothing has gone wrong yet. All possibilities intact.\nQ2 (stress): Sleep deprivation with a newborn. Losing my sense of self in the repetition, the demands, the identity collapse. Survived on autopilot for months. Still rebuilding.\nQ3 (understood): When my partner took the baby and told me to sleep. Not asked, told. Recognized that I needed permission to put my needs first. Gave it to me.\nQ4 (free day): Sleep. Just sleep. A full uninterrupted eight hours would feel like a vacation to another planet. The luxury of being unconscious without vigilance.\nQ5 (one word): Surviving - not thriving, not failing, just making it through. The daily victory of still being here, still trying, still present for the people who need me.",
+      "x": -0.19634497165679932,
+      "y": 0.21647882461547852,
+      "cluster": 3,
+      "decision_style": "Depends",
+      "social_energy": "Drained",
+      "region": "North America",
+      "nickname": "anonymous"
+    },
+    {
+      "id": "p_019",
+      "text": "Q1 (safe place): Online, in gaming worlds where I'm a different name with different capabilities. Where my physical limitations don't exist and I can be powerful, agile, heroic.\nQ2 (stress): Accessibility issue at work made my disability visible in a way I'd avoided. Had to advocate for accommodations, felt like I was asking for special treatment.\nQ3 (understood): When a game designer reached out because they'd seen my streaming and wanted to consult on accessibility features. My perspective had professional value.\nQ4 (free day): Gaming marathon, ten hours straight. Raid with my online friends, voice chat, inside jokes. Connect without being seen. Achieve without being judged for how I achieve.\nQ5 (one word): Determined - I was told what I couldn't do my whole life. Proving people wrong became my fuel. I'm stubborn about joy, insistent on capability.",
+      "x": -0.6396036148071289,
+      "y": 0.10032594203948975,
+      "cluster": 3,
+      "decision_style": "Mostly rational",
+      "social_energy": "Energised",
+      "region": "North America",
+      "nickname": "raid_leader"
+    },
+    {
+      "id": "p_020",
+      "text": "Q1 (safe place): The garden at dawn, hands in soil, quiet growth everywhere. Creating something living, tending what depends on me. The opposite of screens and abstraction.\nQ2 (stress): Climate grief hit hard last summer. Wildfires, heat waves, seeing my plants struggle. Felt helpless against something so much bigger than me. Still working through it.\nQ3 (understood): When a neighbor asked me to teach them to garden. My knowledge mattered, could spread, might help something survive. Small impact, but mine.\nQ4 (free day): Garden all day. Planting, pruning, harvesting. Get comprehensively dirty. Make a meal entirely from what I grew. Close the loop between effort and nourishment.\nQ5 (one word): Growing - like my plants. Slow, seasonal, sometimes dormant but never dead. Trusting the process even when nothing visible is happening.",
+      "x": 0.7343872785568237,
+      "y": 0.09437274932861328,
+      "cluster": 3,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Depends",
+      "region": "Europe",
+      "nickname": "dirt_under_nails"
+    },
+    {
+      "id": "p_021",
+      "text": "Q1 (safe place): Art supply stores, wandering aisles of potential. Everything is possible there, nothing created yet. Pure option. The raw materials of expression, uncommitted.\nQ2 (stress): Creative block lasted months. Every canvas felt like a lie. Couldn't make anything that felt true. Started doubting if I'd ever had talent or just got lucky.\nQ3 (understood): When someone recognized my art in public without knowing me. 'I love that artist,' they said. I existed outside my own head as an entity someone could love.\nQ4 (free day): Go to the art store, buy supplies for a medium I've never tried. Spend all day failing at something new. Remember that making matters more than mastering.\nQ5 (one word): Creating - it's the closest I get to prayer. Making something from nothing, giving form to feeling. Without it I don't know how I'd process being alive.",
+      "x": -1.0,
+      "y": -0.5011457800865173,
+      "cluster": 3,
+      "decision_style": "Depends",
+      "social_energy": "Energised",
+      "region": "South America",
+      "nickname": "studio_hermit"
+    },
+    {
+      "id": "p_022",
+      "text": "Q1 (safe place): A boat far from shore, just ocean in every direction. Nothing to do but be there, no way to leave, completely committed to the moment and the horizon.\nQ2 (stress): Sea sickness was harder than expected on a long trip. Planned for adventure, got misery. Had to reframe the entire experience as a different kind of challenge.\nQ3 (understood): When the crew trusted me to take the night watch alone. Believed I was capable of responsibility for the whole vessel. Their confidence built mine.\nQ4 (free day): Sail somewhere. Doesn't matter where. Feel the wind do the work, plot by stars if I could, live by tides and weather instead of calendars and clocks.\nQ5 (one word): Free - not from responsibility but from the artificial constraints. From caring what others think. From the scripts I was supposed to follow. Just free.",
+      "x": 0.28924882411956787,
+      "y": -0.10145312547683716,
+      "cluster": 2,
+      "decision_style": "Mostly rational",
+      "social_energy": "Depends",
+      "region": "Oceania",
+      "nickname": "sailor_sage"
+    },
+    {
+      "id": "p_023",
+      "text": "Q1 (safe place): Temples in Kyoto, even full of tourists. Something about the age, the intention, the centuries of people seeking peace in that same spot. Collective calm.\nQ2 (stress): Culture shock working abroad was harder than expected. Loneliness I couldn't explain to people at home. They saw adventure, I felt erasure.\nQ3 (understood): A local colleague in Kyoto took time to explain why things were done certain ways. Not correcting me, teaching me. Respecting my desire to understand.\nQ4 (free day): Visit a place of worship from a tradition not my own. Sit quietly. Try to feel what draws people there. Expand my understanding of how humans seek meaning.\nQ5 (one word): Seeking - spiritually homeless but not hopeless. Looking for something I'm not sure exists. The looking might be the point, might be enough.",
+      "x": -0.05328261852264404,
+      "y": -0.7517282366752625,
+      "cluster": 2,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Drained",
+      "region": "East Asia",
+      "nickname": "temple_walker"
+    },
+    {
+      "id": "p_024",
+      "text": "Q1 (safe place): Bookstores, especially used ones with that specific smell. Other people's abandoned stories waiting for new readers. The archaeology of previous lives in marginalia.\nQ2 (stress): Found out a dear friend had been talking about me negatively to others. Couldn't confront directly, just withdrew. The slow dissolution of trust, the rewriting of memories.\nQ3 (understood): A used book with notes in the margins that felt like they were written for me. Some stranger years ago thinking the same thoughts. Connection across time.\nQ4 (free day): Estate sale hopping, looking for interesting objects with histories. Old photographs of strangers, weird kitchen tools, books with inscriptions. Collecting evidence of lived lives.\nQ5 (one word): Collecting - not things, really. Stories. Meanings. Evidence. I gather fragments and try to assemble them into something that makes sense.",
+      "x": 0.35884904861450195,
+      "y": -1.0,
+      "cluster": 2,
+      "decision_style": "Depends",
+      "social_energy": "Depends",
+      "region": "North America",
+      "nickname": "margin_noter"
+    },
+    {
+      "id": "p_025",
+      "text": "Q1 (safe place): The stage, surprisingly. All those eyes on me but somehow that makes a container. The role is armor. Being watched as someone else feels safer than being seen as myself.\nQ2 (stress): Audition rejection after rejection. Wondering if I'd been deluding myself, if I should 'be practical.' The identity crisis of giving up versus the terror of continuing.\nQ3 (understood): A director once said I 'disappeared into the role' - that my ego got out of the way. Being praised for self-erasure felt complicated but also accurate.\nQ4 (free day): Rehearse something alone, record it, watch it back. Study my own craft. Learn something new about a character I've lived in. Deepen without an audience.\nQ5 (one word): Transforming - I become to understand. Playing other people teaches me about myself. The mask reveals more than the face.",
+      "x": -0.7320916652679443,
+      "y": -0.47287678718566895,
+      "cluster": 2,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Energised",
+      "region": "Europe",
+      "nickname": "mask_collector"
+    },
+    {
+      "id": "p_026",
+      "text": "Q1 (safe place): Hospital chapel, even though I'm not religious. That specific quiet maintained for crisis. Permission to feel whatever you feel. Neutrality when everything else is too much.\nQ2 (stress): Medical diagnosis changed my life trajectory. Months of tests, waiting, fear. My body became something that could betray me instead of something I lived in.\nQ3 (understood): When a nurse sat with me longer than she needed to, not saying anything medical, just present. Didn't minimize or reassure. Just stayed.\nQ4 (free day): Get every medical thing I've been avoiding checked. Clear the anxiety backlog. Face the information whatever it is. Stop living in uncertainty.\nQ5 (one word): Fragile - in a way that feels honest finally. I've stopped pretending to be tougher than I am. My vulnerability is just fact now, not weakness.",
+      "x": -0.2539980411529541,
+      "y": 0.5396456718444824,
+      "cluster": 1,
+      "decision_style": "Depends",
+      "social_energy": "Drained",
+      "region": "North America",
+      "nickname": "anonymous"
+    },
+    {
+      "id": "p_027",
+      "text": "Q1 (safe place): The lab late at night when everyone's gone home. Just me and the experiment, the hum of equipment, the pursuit of understanding. Pure inquiry, no performance.\nQ2 (stress): Grant rejection threatened my whole project. Years of work potentially wasted. Questioned if academia was worth the instability, the ego hits, the constant justification.\nQ3 (understood): When my research was cited by someone I deeply admire. Not a big moment to anyone else. But someone whose work matters read mine, found it useful.\nQ4 (free day): Read papers I've been saving. Go down rabbit holes. Think about problems without the pressure of productivity. Just intellectual play for its own sake.\nQ5 (one word): Precise - my mind works through detail. The small leads to the large. Understanding anything specific helps me understand everything else.",
+      "x": -0.49921715259552,
+      "y": -0.2207375168800354,
+      "cluster": 2,
+      "decision_style": "Mostly rational",
+      "social_energy": "Drained",
+      "region": "Europe",
+      "nickname": "late_lab"
+    },
+    {
+      "id": "p_028",
+      "text": "Q1 (safe place): My childhood tree fort, rotted now but still standing. I visit sometimes, just to look at it. The place where I first felt like I had somewhere that was mine.\nQ2 (stress): Parents' divorce when I was a teenager. Being put in the middle, having to choose, losing the family that existed before. The grief for something that wasn't even dead, just changed.\nQ3 (understood): When my dad finally apologized, years later. Not for the divorce but for putting me in the middle. Acknowledgment that I'd been failed, not just affected.\nQ4 (free day): Go back to places from my childhood. Document what remains. Accept what's changed. Try to integrate past and present selves instead of keeping them separate.\nQ5 (one word): Integrating - I'm trying to be one person instead of a collection of fragments. Find the thread that connects who I was to who I'm becoming.",
+      "x": 0.5664887428283691,
+      "y": -0.7832833528518677,
+      "cluster": 2,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Depends",
+      "region": "North America",
+      "nickname": "fort_keeper"
+    },
+    {
+      "id": "p_029",
+      "text": "Q1 (safe place): Any kitchen, cooking for people I love. The alchemy of heat and ingredient. Making something that nourishes, that brings people to the same table.\nQ2 (stress): Food insecurity in college. The shame of not having enough, of budgeting to the penny, of pretending I wasn't hungry. Still have a complicated relationship with abundance.\nQ3 (understood): When a friend said my cooking 'tasted like being loved.' They got it. Food is my language. They heard what I was saying.\nQ4 (free day): Cook an elaborate meal for friends. All day affair. Complex dishes, nice wine, long table. Feed people until they're happy and full and unwilling to leave.\nQ5 (one word): Nourishing - I take care through feeding. It's how I show up. Food is love made edible, effort made tangible, care made consumable.",
+      "x": 0.92824387550354,
+      "y": 0.22339582443237305,
+      "cluster": 3,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Energised",
+      "region": "South America",
+      "nickname": "kitchen_poet"
+    },
+    {
+      "id": "p_030",
+      "text": "Q1 (safe place): Concert halls, in the moments before music starts. All that anticipation, collective breath held. The agreement to experience something together. Secular sacred.\nQ2 (stress): Lost my hearing gradually, had to give up performing. Grief for an identity, for a future I'd planned. Learning to experience music differently now.\nQ3 (understood): When a composer wrote me a piece that worked with my remaining hearing. Created something from my limitation. Made art out of adaptation.\nQ4 (free day): Listen to full albums, no shuffle. Let artists take me on the journey they intended. Remember why music mattered before it became background.\nQ5 (one word): Listening - even now, even differently. The world is sound and I'm learning new ways to hear it. Attention is a form of love.",
+      "x": -0.7590782046318054,
+      "y": -0.6727918386459351,
+      "cluster": 2,
+      "decision_style": "Depends",
+      "social_energy": "Drained",
+      "region": "Europe",
+      "nickname": "frequency_shift"
+    },
+    {
+      "id": "p_031",
+      "text": "Q1 (safe place): Archives, handling documents from a hundred years ago. The texture of old paper, the specific handwriting. Time travel through objects. The dead speaking through artifacts.\nQ2 (stress): Academic politics got vicious, threatened my position. Had to choose between integrity and safety. Still not sure I chose correctly. Still living with consequences.\nQ3 (understood): When a student said my class changed how they see history. That I made dead people feel alive. The work matters beyond me.\nQ4 (free day): Spend a day in archives I've never visited. Find something no one's looked at in decades. Be the first reader in a century. Continue the chain.\nQ5 (one word): Connecting - past to present, dead to living, then to now. I'm a bridge, a translator, a medium. Without connectors, everything is isolated.",
+      "x": 0.2296135425567627,
+      "y": -0.8729735016822815,
+      "cluster": 2,
+      "decision_style": "Mostly rational",
+      "social_energy": "Depends",
+      "region": "Europe",
+      "nickname": "archive_diver"
+    },
+    {
+      "id": "p_032",
+      "text": "Q1 (safe place): My childhood bedroom at night, galaxy projector on the ceiling, pretending I was in space. That specific imagination, before I knew what was impossible.\nQ2 (stress): First real failure in my career, very public. Had to face people who'd seen me mess up, rebuild credibility from scratch. The exposure was worst.\nQ3 (understood): When my mentor shared her own failures. Made mine feel survivable. Normalized the path I was on instead of making me feel uniquely incompetent.\nQ4 (free day): Go to a planetarium, lie back, watch the star show. Remember the curiosity I had as a kid. Reconnect with wonder I've become too adult for.\nQ5 (one word): Wondering - not wandering. Actively wondering. Asking questions that don't have answers. Living in curiosity rather than certainty.",
+      "x": -0.8599235415458679,
+      "y": -0.12047702074050903,
+      "cluster": 2,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Energised",
+      "region": "East Asia",
+      "nickname": "stargazer"
+    },
+    {
+      "id": "p_033",
+      "text": "Q1 (safe place): The DMV, strangely. The complete democracy of waiting. Everyone equally inconvenienced. No one special. The great equalizer of bureaucracy.\nQ2 (stress): Immigration paperwork nightmares, never knowing if I'd get to stay. Living in uncertainty for years. Building a life that could be revoked.\nQ3 (understood): When I finally got approved and a stranger in the waiting room hugged me when I started crying. We'd both been waiting. She knew what it meant.\nQ4 (free day): Complete every administrative task I've been avoiding. Clear the queue. Start fresh with no obligations hanging over me. The freedom of a clean inbox.\nQ5 (one word): Persisting - I've waited in so many lines. Literal and metaphorical. I know how to endure, how to outlast uncertainty. I'm still here.",
+      "x": -0.3366326093673706,
+      "y": 0.06937921047210693,
+      "cluster": 3,
+      "decision_style": "Mostly rational",
+      "social_energy": "Depends",
+      "region": "North America",
+      "nickname": "still_waiting"
+    },
+    {
+      "id": "p_034",
+      "text": "Q1 (safe place): The gym at 5am before the crowds. The clank of weights, my own breath, the focus required to not hurt myself. Moving meditation in iron.\nQ2 (stress): Injury set me back months, lost strength I'd worked years for. Had to start over, modify everything, accept a different relationship with my body.\nQ3 (understood): My gym buddy modified their entire routine to work with my limitations. We still trained together. They met me where I was.\nQ4 (free day): Perfect training day - hit PRs, everything clicking. Then good food, proper recovery, early sleep. The satisfaction of the body working as intended.\nQ5 (one word): Strong - in ways visible and not. Strength isn't just physical but it starts there. My body is how I know I'm capable of hard things.",
+      "x": -0.8013992309570312,
+      "y": 0.4366629123687744,
+      "cluster": 3,
+      "decision_style": "Depends",
+      "social_energy": "Energised",
+      "region": "Oceania",
+      "nickname": "iron_morning"
+    },
+    {
+      "id": "p_035",
+      "text": "Q1 (safe place): My childhood home during holidays, before everything got complicated with family. The smell of specific foods, the sounds of specific people. A place that exists only in memory now.\nQ2 (stress): Family estrangement is its own special grief. Choosing distance from people you're supposed to love. The guilt that comes with relief.\nQ3 (understood): When a chosen family member called me on a holiday, knowing I'd be alone. 'You're not forgotten,' they said. I wasn't parentless, just differently familied.\nQ4 (free day): Create new traditions. Cook the foods that comfort me. Invite the people who actually feel like family. Make the holiday I wish I'd had.\nQ5 (one word): Rebuilding - from what was broken. Not the same house on the same foundation. Something new in a new place. Still under construction.",
+      "x": 1.0,
+      "y": -0.002980530261993408,
+      "cluster": 3,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Drained",
+      "region": "North America",
+      "nickname": "chosen_kin"
+    },
+    {
+      "id": "p_036",
+      "text": "Q1 (safe place): I like water. I imagine I am floating in water and it holds my weight. When I am inside the water, the sounds are muffled together. It is just a big body of water that I am in.\nQ2 (stress): I actually feel burnt out pretty much every day, I just need to take time off doing things. I love going to sauna, it helps me feel less stressed. And I am just thinking about taking time off and going on some nice holiday. Also limiting social media, for example instagram, helps a lot as well.\nQ3 (understood): I generally think that people care about me a lot. And this makes me happy every day and that is why I have energy to do things.\nQ4 (free day): I would go on a hike to mountains and see the snow. I would bring some friends around and just hike up and down.\nQ5 (one word): Focused - I like to follow ideas I have in my head and implement them in real world.",
+      "x": 0.7416359186172485,
+      "y": 0.4863162040710449,
+      "cluster": 1,
+      "decision_style": "Mostly rational",
+      "social_energy": "Energised",
+      "region": "Europe",
+      "nickname": "water_float"
+    },
+    {
+      "id": "p_037",
+      "text": "Q1 (safe place): \u6211\u611f\u89c9\u611f\u5230\u5b89\u5168\u7684\u5730\u65b9\u662f\u4e00\u4e2a\u6696\u8272\u8c03\u7684\u5730\u65b9\uff0c\u8ba9\u4eba\u611f\u89c9\u5f88\u8212\u670d\uff0c\u6709\u9633\u5149\uff0c\u6709\u7537\u670b\u53cb\uff0c\u5149\u7ebf\u5f88\u67d4\u548c\uff0c\u5f88\u5b89\u9759\uff0c\u8303\u56f4\u4e0d\u662f\u5f88\u5927\u4e0d\u662f\u5f88\u5c0f\uff0c100\u591a\u5e73\u5de6\u53f3\u3002\nQ2 (stress): \u6700\u8fd1\u538b\u529b\u5927\u5c31\u662f\u4e00\u5f00\u59cb\u542c\u4e0d\u61c2\u8001\u5e08\u8bb2\u8bdd\uff0c\u6709\u70b9\u4e0d\u4e60\u60ef\u3002\u6211\u540e\u9762\u6162\u6162\u4e60\u60ef\u4e86\u8fd9\u4e2a\u8282\u594f\uff0c\u6211\u5b89\u6170\u81ea\u5df1\u8bf4\u505a\u5230\u5f88\u597d\u4e86\u3002\nQ3 (understood): \u6211\u6700\u8fd1\u611f\u89c9\u88ab\u5173\u5fc3\u662f\u6709\u4e00\u6b21\u8eab\u4f53\u4e0d\u8212\u670d\uff0c\u820d\u53cb\u7ed9\u6211\u716e\u4e86\u70ed\u91aa\u7cdf\u8fd8\u7a9d\u4e86\u4e2a\u86cb\uff0c\u70e7\u4e86\u70ed\u6c34\uff0c\u5f88\u611f\u52a8\uff0c\u611f\u89c9\u81ea\u5df1\u547d\u771f\u597d\u554a\u3002\nQ4 (free day): \u6211\u60f3\u548c\u7537\u670b\u53cb\u4e00\u8d77\u5728\u5bb6\u770b\u7535\u89c6\uff0c\u5403\u597d\u5403\u7684\uff0c\u6709\u4e00\u90e8\u5f88\u597d\u770b\u7684\u7535\u5f71\uff0c\u4e70\u4e86\u4e00\u4ef6\u5f88\u559c\u6b22\u7684\u8863\u670d\u3002\nQ5 (one word): \u597d\u5947 - \u60c5\u7eea\u5316\uff0c\u6297\u6253\u51fb\u80fd\u529b\u5f31\uff0c\u4f46\u662f\u5f88\u5e78\u8fd0\uff0c\u547d\u5f88\u597d\uff0c\u9047\u5230\u5f88\u591a\u597d\u4eba\u3002",
+      "x": 0.9100872278213501,
+      "y": -0.2803610563278198,
+      "cluster": 4,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Energised",
+      "region": "East Asia",
+      "nickname": "cosy_warmth"
+    },
+    {
+      "id": "p_038",
+      "text": "Q1 (safe place): \u5b83\u5728\u4e2d\u4e1c\u5730\u533a\uff0c\u50cf\u662f\u4e00\u5343\u96f6\u4e00\u591c\u91cc\u90a3\u79cd\u963f\u62c9\u4f2f\u5efa\u7b51\u3002\u508d\u665a\uff0c\u5929\u7a7a\u662f\u514b\u83b1\u56e0\u84dd\uff0c\u6ca1\u6709\u4e91\u6735\uff0c\u5efa\u7b51\u88ab\u6253\u4e0a\u6696\u9ec4\u7684\u5149\u3002\u4f1a\u6709\u5c11\u6570\u8f7b\u5fae\u7684\u4ea4\u8c08\u58f0\u548c\u98ce\u58f0\u3002\u53ef\u4ee5\u770b\u5230\u6709\u9ed1\u767d\u6591\u9a6c\u7eb9\u7684\u9a86\u9a7c\u88ab\u4eba\u7275\u7740\u8d70\u5411\u84dd\u8272\u7684\u6c99\u6f20\u91cc\u3002\nQ2 (stress): \u5199\u4e0d\u51fa\u6765\u6587\u732e\u7efc\u8ff0\uff0c\u4e0d\u60f3\u770b\u6587\u732e\uff0c\u53d1\u73b0AI\u7ed9\u6211\u5047\u6587\u732e\uff0c\u4f46\u662f\u7b97\u4e86\u4e00\u4e0b\u65e5\u5b50\u8981\u505a\u4e0d\u5b8c\u4f5c\u4e1a\u4e86\uff0c\u53c8\u4e0d\u60f3\u505a\uff0c\u89c9\u5f97\u81ea\u5df1\u6ca1\u6709\u79d1\u7814\u80fd\u529b\u3002\u5e94\u5bf9\uff1a\u5403\u597d\u5403\u7684\uff0c\u5403\u6ca1\u4e86\u5c31\u7761\u89c9\uff0c\u7761\u4e0d\u7740\u53c8\u8d77\u6765\u8c03\u6559\u4e86\u4e00\u6b21ai\uff0c\u7136\u540e\u544a\u8bc9\u81ea\u5df1\u5df2\u7ecf\u52aa\u529b\u4e86\uff0c\u7136\u540e\u73a9\u6e38\u620f\u6216\u8005\u73a9\u624b\u673a\uff0c\u56f0\u4e86\u7761\u89c9\u3002\nQ3 (understood): \u53d1\u670b\u53cb\u5708\u663e\u793a\u5728\u4f26\u6566\uff0c\u591a\u5e74\u4e0d\u8054\u7cfb\u7684\u9ad8\u4e2d\u73ed\u4e3b\u4efb\u79c1\u804a\u95ee\u6211\u662f\u53bb\u7559\u5b66\u4e86\u5417\uff0c\u8bf4\u5f88\u7fa1\u6155\u6211\uff0c\u5979\u8fd9\u8f88\u5b50\u4f30\u8ba1\u4e5f\u6ca1\u673a\u4f1a\u51fa\u56fd\uff0c\u8ba9\u6211\u6709\u7a7a\u62cd\u70b9\u7167\u7247\u7ed9\u5979\u770b\u3002\u8fd9\u8ba9\u6211\u611f\u89c9\u88ab\u5173\u6ce8\uff0c\u6211\u6709\u7a7a\u4f1a\u62cd\u7167\u7684\u3002\nQ4 (free day): \u770b\u7cbe\u529b\u5982\u4f55\u3002\u5982\u679c\u4e0d\u60f3\u52a8\u5c31\u5b85\u4e00\u5929\uff0c\u505a\u996d\u6216\u8005\u70b9\u5916\u5356\uff0c\u7136\u540e\u6253\u6e38\u620f\u6216\u8005\u73a9\u624b\u673a\u3002\u5982\u679c\u5929\u6c14\u4e0d\u9519\u7cbe\u529b\u4e5f\u4e0d\u9519\uff0c\u5c31\u81ea\u5df1\u51fa\u53bb\u5403\u7f8e\u98df\uff0c\u5403\u5b8c\u518d\u4e70\u4e00\u4e9b\u7f8e\u98df\u5e26\u56de\u5bb6\uff0c\u518d\u4e70\u4e00\u676f\u5976\u8336\uff0c\u7136\u540e\u56de\u6765\u6253\u6e38\u620f\u3002\nQ5 (one word): \u534a\u6b7b\u4e0d\u6d3b - \u4f4e\u7cbe\u529b\u4eba\u4e0d\u60f3\u52a8\u5c31\u4e0d\u52a8\uff0c\u4f46\u5076\u5c14\u4e5f\u60f3\u52a8\u4e00\u4e0b\u3002\u611f\u89c9\u751f\u6d3b\u672c\u8d28\u5f88\u65e0\u8da3\uff0c\u5927\u591a\u6570\u65f6\u5019\u6ca1\u6709\u60f3\u505a\u7684\u4e8b\uff0c\u4f46\u5076\u5c14\u4e5f\u4f1a\u6709\u70b9\u3002",
+      "x": 0.8590072393417358,
+      "y": -0.3884279727935791,
+      "cluster": 4,
+      "decision_style": "Depends",
+      "social_energy": "Drained",
+      "region": "East Asia",
+      "nickname": "arabian_dreams"
+    },
+    {
+      "id": "p_039",
+      "text": "Q1 (safe place): In my cosy bedroom with a candle and many wool blankets, it is small there are two warm lights on either side of the bed, I have my laptop with me and I am with someone they have a book and we have a large pot of coffee to share.\nQ2 (stress): I made a mistake in my workplace that effected other people. I had to write an apology email and contact my line manager who helped through it. I felt tired sweaty and very stressed. All I was thinking was shame and how much extra work I was causing other people, not only at work but also at home, I was on holiday visiting my family and I had to deal with the mistake. I took deep breaths and tried to think more reasonably about the situation, calculating the appropriate next steps to resolve it ...\nQ3 (understood): This year a close family member has become quite sick, the response from my friends has been very comforting most noticeably one friend who said they want to be there to support me. That reassured me that I wouldn't have to deal with it alone.\nQ4 (free day): I would like to go to a coast on Mediterranean sea maybe Greece and have a fisherman show me how to eat sea urchins. My friends would be with me, we would collect our urchins and have ouzo somewhere.\nQ5 (one word): Dancing",
+      "x": 0.5801224708557129,
+      "y": 1.0,
+      "cluster": 1,
+      "decision_style": "Mostly emotional",
+      "social_energy": "Depends",
+      "region": "Europe",
+      "nickname": "wool_blanket"
+    },
+    {
+      "id": "p_040",
+      "text": "Q1 (safe place): Home office, 11pm. Dual monitors with dark mode everything, mechanical keyboard, good headphones playing lo-fi. Hot tea. Terminal split between vim and a running test suite. The satisfying rhythm of write-test-refactor when everything's flowing.\nQ2 (stress): Production incident at 2am \u2013 service degradation traced to a memory leak in a feature I'd shipped. Slack blowing up, metrics dashboards red. Coped by: methodically walking through recent commits, adding targeted logging, resisting the urge to just revert blindly. Fixed it, wrote the postmortem, then couldn't sleep anyway.\nQ3 (understood): Pair programming session where my teammate didn't just wait for their turn to type \u2013 they actually tracked my reasoning, caught a subtle race condition I was about to introduce, and explained why without making me feel stupid. That kind of engaged collaboration is rare.\nQ4 (free day): Sleep in. Morning coffee while tinkering with a side project \u2013 maybe that iOS app idea I've been sketching, or some generative art in Swift/Metal. Afternoon vibe coding: no PRs, no tickets, just following curiosity. Evening: good food, maybe a tech talk on YouTube, early to bed.\nQ5 (one word): Builder - I like making things work \u2013 fixing broken builds, unblocking teammates, shipping features, building internal tools that save hours of manual work. The satisfaction is in the craft: clean APIs, tests that actually test something, code that's easier to read tomorrow than it was today.",
+      "x": 0.19946646690368652,
+      "y": 0.738389253616333,
+      "cluster": 0,
+      "decision_style": "Mostly rational",
+      "social_energy": "Depends",
+      "region": "North America",
+      "nickname": "dev_builder"
+    },
+    {
+      "id": "p_041",
+      "text": "Q1 (safe place): I feel safe where I imagine home to be. And 'home' probably doesn't mean home with family and others. Since living on my own and actually alone in an apartment for a few years, my sense of safety comes from knowing how close I am to home. Whenever I'm returning from work or coming back from a road trip, I pretty much have my guard up the entire time and I'm on high alert but the moment I enter within a kilometre radius of my home, I start easing up and taking things slow. Home is also where I ca...\nQ2 (stress): The most recent moment of stress came from just not being able to manage everything that I had going on in the way I had liked to. There was obviously work, my relationships, my hobbies and taking care of myself with cooking, cleaning and personal hygiene. All of it together coming at you is a big ball of chaos that I was not ready for. Eventually, I realised I can't run away or hide or stay still and have to deal with it on my own. I started at the smallest of tasks and worked my way up from th...\nQ3 (understood): My classmates, I can sense they understand my recent anxiety, as we all tend to procrastinate until the last few days before tackling assignments. Simply by commiserating and sharing our progress, I realise their work pace is much like mine. This makes me less worried about not finishing my tasks in time.\nQ4 (free day): It depends on what happened the previous day. If it was a very taxing day, then I'd want to spend the whole day in bed and be lazy. But if I had a good day and slept well, then I'd like to step out and go somewhere that I like going to often or someplace new.\nQ5 (one word): Resilient",
+      "x": 0.7591136693954468,
+      "y": 0.855688214302063,
+      "cluster": 1,
+      "decision_style": "Depends",
+      "social_energy": "Depends",
+      "region": "East Asia",
+      "nickname": "home_sage"
+    },
+    {
+      "id": "p_042",
+      "text": "Q1 (safe place): A cosy little home with a study, a games room, and a private cinema, nestled in a quiet, low-density neighbourhood within a city offering excellent transport links and infrastructure.\nQ2 (stress): I'm currently preparing to apply for a PhD, but I've been procrastinating. I only started working on my assignments when the deadline was looming. On top of that, several tasks suddenly piled up at my part-time jobs, and all this work converged into one week. I felt extremely anxious. Yet I didn't take any action. I chose to sleep during the day to relax, only starting work late at night when it was quiet and no one disturbed me.\nQ3 (understood): My classmates, I can sense they understand my recent anxiety, as we all tend to procrastinate until the last few days before tackling assignments. Simply by commiserating and sharing our progress, I realise their work pace is much like mine.\nQ4 (free day): I'll stay home alone, watching television series, films or gaming all day, before taking an evening stroll. If I feel like it, I might pop into the city centre to catch an exhibition, do a spot of window shopping or snap some photos of the scenery.\nQ5 (one word): Laissez-faire - Because I seem to care little about most things, I take things as they come, drift along with the current, and accept all the unknowns with quiet resignation.",
+      "x": 0.45061779022216797,
+      "y": 0.8840467929840088,
+      "cluster": 1,
+      "decision_style": "Depends",
+      "social_energy": "Drained",
+      "region": "Europe",
+      "nickname": "phd_drifter"
+    }
+  ],
+  "links": [
+    [
+      6,
+      25,
+      0.784
+    ],
+    [
+      6,
+      14,
+      0.618
+    ],
+    [
+      6,
+      35,
+      0.564
+    ],
+    [
+      14,
+      40,
+      0.664
+    ],
+    [
+      14,
+      25,
+      0.658
+    ],
+    [
+      14,
+      35,
+      0.658
+    ],
+    [
+      25,
+      40,
+      0.601
+    ],
+    [
+      35,
+      41,
+      0.637
+    ],
+    [
+      35,
+      40,
+      0.618
+    ],
+    [
+      38,
+      41,
+      0.584
+    ],
+    [
+      38,
+      40,
+      0.579
+    ],
+    [
+      40,
+      41,
+      0.726
+    ],
+    [
+      0,
+      1,
+      0.786
+    ],
+    [
+      0,
+      5,
+      0.743
+    ],
+    [
+      0,
+      3,
+      0.737
+    ],
+    [
+      1,
+      3,
+      0.79
+    ],
+    [
+      1,
+      15,
+      0.756
+    ],
+    [
+      3,
+      21,
+      0.747
+    ],
+    [
+      3,
+      10,
+      0.744
+    ],
+    [
+      4,
+      7,
+      0.76
+    ],
+    [
+      4,
+      16,
+      0.734
+    ],
+    [
+      5,
+      10,
+      0.808
+    ],
+    [
+      5,
+      15,
+      0.752
+    ],
+    [
+      7,
+      24,
+      0.764
+    ],
+    [
+      7,
+      31,
+      0.762
+    ],
+    [
+      8,
+      10,
+      0.769
+    ],
+    [
+      9,
+      11,
+      0.708
+    ],
+    [
+      10,
+      15,
+      0.754
+    ],
+    [
+      11,
+      23,
+      0.735
+    ],
+    [
+      11,
+      15,
+      0.731
+    ],
+    [
+      16,
+      23,
+      0.744
+    ],
+    [
+      23,
+      30,
+      0.764
+    ],
+    [
+      26,
+      31,
+      0.661
+    ],
+    [
+      27,
+      30,
+      0.701
+    ],
+    [
+      2,
+      17,
+      0.751
+    ],
+    [
+      2,
+      19,
+      0.715
+    ],
+    [
+      2,
+      12,
+      0.714
+    ],
+    [
+      12,
+      17,
+      0.801
+    ],
+    [
+      12,
+      34,
+      0.654
+    ],
+    [
+      13,
+      33,
+      0.738
+    ],
+    [
+      13,
+      17,
+      0.676
+    ],
+    [
+      13,
+      18,
+      0.639
+    ],
+    [
+      17,
+      32,
+      0.701
+    ],
+    [
+      28,
+      34,
+      0.576
+    ],
+    [
+      36,
+      37,
+      0.836
+    ]
+  ],
+  "clusters": 5
+}

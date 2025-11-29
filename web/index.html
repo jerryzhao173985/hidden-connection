@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hidden Connections - A semantic nebula visualization">
+    <title>Hidden Connections</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loading" class="loading">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Mapping the semantic nebula...</p>
+        </div>
+    </div>
+
+    <canvas id="nebula"></canvas>
+
+    <header>
+        <h1>Hidden Connections</h1>
+        <span id="point-count" class="point-count"></span>
+    </header>
+
+    <aside id="info-panel" class="info-panel">
+        <div class="panel-header">
+            <span id="panel-nickname" class="nickname"></span>
+            <span id="panel-cluster" class="cluster-badge"></span>
+        </div>
+        <div id="panel-content" class="panel-content"></div>
+        <div id="panel-meta" class="panel-meta"></div>
+    </aside>
+
+    <footer>
+        <p class="hint">Hover over stars to explore connections</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

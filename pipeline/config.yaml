@@ -1,0 +1,22 @@
+embedding_model: "all-MiniLM-L6-v2"
+
+umap:
+  n_neighbors: 15
+  min_dist: 0.1
+  metric: cosine
+  random_state: 42
+
+clustering:
+  algorithm: kmeans
+  n_clusters: 5
+  random_state: 42
+
+text_processing:
+  max_chars_per_question: 500
+
+visualization:
+  k_neighbors: 3  # Number of nearest neighbors to link within each cluster
+
+paths:
+  input: "../data/responses_projective.csv"
+  output: "../processed/points.json"
