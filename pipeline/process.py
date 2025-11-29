@@ -267,8 +267,9 @@ def process_data(config: dict, base_dir: Path) -> dict:
     logger.info("Building output records...")
     points = []
     for i, row in enumerate(df.itertuples()):
-        nickname = getattr(row, "nickname", "") if hasattr(row, "nickname") else ""
-        if pd.isna(nickname) or str(nickname).strip() == "":
+        # getattr with default handles missing attribute; explicit check for empty/nan
+        nickname = getattr(row, "nickname", "")
+        if pd.isna(nickname) or not str(nickname).strip():
             nickname = "anonymous"
 
         point = {

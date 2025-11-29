@@ -185,6 +185,9 @@ let clusterCenters = [];
 let targetBrightness = new Map();
 let currentBrightness = new Map();
 
+// Animation phases (preserved across resize)
+let animationPhases = new Map();
+
 // DOM elements
 let loading, infoPanel, pointCount;
 let panelNickname, panelCluster, panelContent, panelMeta;
@@ -294,14 +297,25 @@ function computeScreenPositions() {
     const availableWidth = width - padding * 2;
     const availableHeight = height - padding * 2;
 
-    pointsWithScreen = data.points.map((point, index) => ({
-        ...point,
-        index,
-        screenX: padding + ((point.x + 1) / 2) * availableWidth,
-        screenY: padding + ((1 - point.y) / 2) * availableHeight,
-        breathPhase: Math.random() * Math.PI * 2,
-        twinklePhase: Math.random() * Math.PI * 2,
-    }));
+    pointsWithScreen = data.points.map((point, index) => {
+        // Preserve animation phases across resize - only generate once per point
+        if (!animationPhases.has(point.id)) {
+            animationPhases.set(point.id, {
+                breathPhase: Math.random() * Math.PI * 2,
+                twinklePhase: Math.random() * Math.PI * 2,
+            });
+        }
+        const phases = animationPhases.get(point.id);
+
+        return {
+            ...point,
+            index,
+            screenX: padding + ((point.x + 1) / 2) * availableWidth,
+            screenY: padding + ((1 - point.y) / 2) * availableHeight,
+            breathPhase: phases.breathPhase,
+            twinklePhase: phases.twinklePhase,
+        };
+    });
 }
 
 function buildLinkMap() {
@@ -507,9 +521,13 @@ function drawLinks() {
         const brightB = currentBrightness.get(bIdx);
         const linkBright = Math.max(brightA, brightB);
 
-        // Calculate line properties
-        const baseAlpha = isHovered ? CONFIG.link.hoverAlpha : CONFIG.link.baseAlpha;
-        const lineWidth = isHovered ? CONFIG.link.hoverWidth : CONFIG.link.baseWidth;
+        // Use strength to scale link visibility (stronger connections more visible)
+        // strength ranges from ~0.3 to ~1.0, normalize to 0.5-1.0 range for visual effect
+        const strengthFactor = 0.5 + (strength || 0.5) * 0.5;
+
+        // Calculate line properties - modulated by connection strength
+        const baseAlpha = isHovered ? CONFIG.link.hoverAlpha : CONFIG.link.baseAlpha * strengthFactor;
+        const lineWidth = isHovered ? CONFIG.link.hoverWidth : CONFIG.link.baseWidth * (0.7 + strengthFactor * 0.6);
 
         // Pulse effect - subtle wave along line
         const pulsePhase = (a.screenX + a.screenY) * 0.005;
@@ -574,11 +592,13 @@ function drawStars() {
         return currentBrightness.get(a.index) - currentBrightness.get(b.index);
     });
 
+    // Calculate active point once outside the loop (optimization)
+    const activePoint = selectedPoint || hoveredPoint;
+    const activeIndex = activePoint ? activePoint.index : -1;
+
     for (const point of sortedPoints) {
         const brightness = currentBrightness.get(point.index);
-        // Check if this point is the active one - prioritize selected over hovered
-        const activePoint = selectedPoint || hoveredPoint;
-        const isActive = activePoint && activePoint.index === point.index;
+        const isActive = point.index === activeIndex;
         const isNeighbor = hoveredNeighbors.has(point.index);
 
         // Breathing effect - slow, organic pulsation
