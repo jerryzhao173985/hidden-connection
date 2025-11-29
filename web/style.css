@@ -246,6 +246,38 @@ footer {
     opacity: 0.7;
 }
 
+/* Connected neighbors section */
+.neighbors-block {
+    margin-top: 12px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-glow);
+}
+
+.neighbors-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.neighbor-link {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 6px 14px;
+    font-size: 11px;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.neighbor-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-white);
+    transform: translateY(-1px);
+}
+
 /* Scrollbar */
 .panel-content::-webkit-scrollbar {
     width: 4px;

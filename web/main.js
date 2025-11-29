@@ -166,6 +166,7 @@ let canvas, ctx;
 let width, height, dpr;
 let data = { points: [], links: [] };
 let hoveredPoint = null;
+let selectedPoint = null;  // Click to lock selection
 let hoveredNeighbors = new Set();
 let hoveredLinks = new Set();
 let time = 0;
@@ -213,6 +214,7 @@ async function init() {
     window.addEventListener('resize', handleResize);
     canvas.addEventListener('mousemove', handleMouseMove);
     canvas.addEventListener('mouseleave', handleMouseLeave);
+    canvas.addEventListener('click', handleClick);
 
     await loadData();
 
@@ -671,8 +673,60 @@ function handleMouseMove(event) {
 
 function handleMouseLeave() {
     hoveredPoint = null;
+    // Only clear if not locked on a selection
+    if (!selectedPoint) {
+        updateHoverState();
+        updatePanel();
+    }
+}
+
+function handleClick(event) {
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+
+    // Find nearest point
+    let nearest = null;
+    let nearestDist = CONFIG.hoverThreshold;
+
+    for (const point of pointsWithScreen) {
+        const dx = mouseX - point.screenX;
+        const dy = mouseY - point.screenY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < nearestDist) {
+            nearestDist = dist;
+            nearest = point;
+        }
+    }
+
+    // Toggle selection
+    if (nearest) {
+        if (selectedPoint && selectedPoint.index === nearest.index) {
+            // Clicking same point - deselect
+            selectedPoint = null;
+        } else {
+            // Select new point
+            selectedPoint = nearest;
+        }
+    } else {
+        // Clicking empty space - deselect
+        selectedPoint = null;
+    }
+
     updateHoverState();
     updatePanel();
+}
+
+// Navigate to a connected neighbor
+function navigateToNeighbor(index) {
+    const point = pointsWithScreen.find(p => p.index === index);
+    if (point) {
+        selectedPoint = point;
+        hoveredPoint = point;
+        updateHoverState();
+        updatePanel();
+    }
 }
 
 function updateHoverState() {
@@ -684,25 +738,28 @@ function updateHoverState() {
         targetBrightness.set(point.index, 0.5);
     }
 
-    if (hoveredPoint) {
-        // Brighten hovered point
-        targetBrightness.set(hoveredPoint.index, 1.0);
+    // Use selected point if available, otherwise use hovered point
+    const activePoint = selectedPoint || hoveredPoint;
+
+    if (activePoint) {
+        // Brighten active point
+        targetBrightness.set(activePoint.index, 1.0);
 
         // Get and brighten neighbors
-        const neighbors = linkMap.get(hoveredPoint.index);
+        const neighbors = linkMap.get(activePoint.index);
         if (neighbors) {
             for (const n of neighbors) {
                 hoveredNeighbors.add(n);
                 targetBrightness.set(n, 0.85);
 
-                const linkKey = `${Math.min(hoveredPoint.index, n)}-${Math.max(hoveredPoint.index, n)}`;
+                const linkKey = `${Math.min(activePoint.index, n)}-${Math.max(activePoint.index, n)}`;
                 hoveredLinks.add(linkKey);
             }
         }
 
         // Dim non-connected points slightly
         for (const point of pointsWithScreen) {
-            if (point.index !== hoveredPoint.index && !hoveredNeighbors.has(point.index)) {
+            if (point.index !== activePoint.index && !hoveredNeighbors.has(point.index)) {
                 targetBrightness.set(point.index, 0.3);
             }
         }
@@ -710,26 +767,30 @@ function updateHoverState() {
 }
 
 function updatePanel() {
-    if (!hoveredPoint) {
+    // Use selected point if available, otherwise use hovered point
+    const activePoint = selectedPoint || hoveredPoint;
+
+    if (!activePoint) {
         infoPanel.classList.remove('visible');
         return;
     }
 
     infoPanel.classList.add('visible');
 
-    // Nickname with fallback
-    const nickname = hoveredPoint.nickname || 'anonymous';
-    panelNickname.textContent = nickname;
+    // Nickname with fallback, add lock indicator if selected
+    const nickname = activePoint.nickname || 'anonymous';
+    const lockIndicator = selectedPoint ? ' \u2022' : '';  // bullet indicates locked
+    panelNickname.textContent = nickname + lockIndicator;
 
     // Cluster badge with color
-    const color = CONFIG.colors[hoveredPoint.cluster % CONFIG.colors.length];
-    panelCluster.textContent = color.name || `Cluster ${hoveredPoint.cluster + 1}`;
+    const color = CONFIG.colors[activePoint.cluster % CONFIG.colors.length];
+    panelCluster.textContent = color.name || `Cluster ${activePoint.cluster + 1}`;
     panelCluster.style.background = `rgba(${color.r}, ${color.g}, ${color.b}, 0.15)`;
     panelCluster.style.color = `rgb(${color.r}, ${color.g}, ${color.b})`;
     panelCluster.style.borderColor = `rgba(${color.r}, ${color.g}, ${color.b}, 0.3)`;
 
     // Parse and display responses
-    const lines = hoveredPoint.text.split('\n');
+    const lines = activePoint.text.split('\n');
     let html = '';
 
     const labelMap = {
@@ -758,25 +819,47 @@ function updatePanel() {
         }
     }
 
+    // Add connected neighbors section
+    const neighbors = linkMap.get(activePoint.index);
+    if (neighbors && neighbors.size > 0) {
+        html += `<div class="response-block neighbors-block">
+            <div class="response-label">Connected Souls</div>
+            <div class="neighbors-list">`;
+
+        for (const neighborIdx of neighbors) {
+            const neighbor = pointsWithScreen[neighborIdx];
+            if (neighbor) {
+                const neighborColor = CONFIG.colors[neighbor.cluster % CONFIG.colors.length];
+                html += `
+                    <button class="neighbor-link" onclick="navigateToNeighbor(${neighborIdx})"
+                            style="border-color: rgba(${neighborColor.r}, ${neighborColor.g}, ${neighborColor.b}, 0.4)">
+                        ${escapeHtml(neighbor.nickname || 'anonymous')}
+                    </button>`;
+            }
+        }
+
+        html += `</div></div>`;
+    }
+
     panelContent.innerHTML = html;
 
-    // Meta info
-    const region = hoveredPoint.region || '—';
-    const energy = hoveredPoint.social_energy || '—';
-    const decision = hoveredPoint.decision_style || '—';
+    // Meta info - useful connection data
+    const connections = neighbors?.size || 0;
+    const clusterInfo = clusterCenters.find(c => c.cluster === activePoint.cluster);
+    const clusterSize = clusterInfo?.count || 1;
 
     panelMeta.innerHTML = `
         <div class="meta-item">
-            <span class="meta-label">Region</span>
-            <span class="meta-value">${escapeHtml(region)}</span>
+            <span class="meta-label">Connections</span>
+            <span class="meta-value">${connections} soul${connections !== 1 ? 's' : ''}</span>
         </div>
         <div class="meta-item">
-            <span class="meta-label">Social Energy</span>
-            <span class="meta-value">${escapeHtml(energy)}</span>
+            <span class="meta-label">Cluster</span>
+            <span class="meta-value">${clusterSize} member${clusterSize !== 1 ? 's' : ''}</span>
         </div>
         <div class="meta-item">
-            <span class="meta-label">Decision Style</span>
-            <span class="meta-value">${escapeHtml(decision)}</span>
+            <span class="meta-label">ID</span>
+            <span class="meta-value">${escapeHtml(activePoint.id)}</span>
         </div>
     `;
 }

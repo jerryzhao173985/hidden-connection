@@ -10,7 +10,6 @@ import argparse
 import logging
 import sys
 from pathlib import Path
-from enum import Enum
 
 import numpy as np
 import pandas as pd
@@ -29,19 +28,6 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# Valid enum values for validation
-class DecisionStyle(str, Enum):
-    RATIONAL = "Mostly rational"
-    EMOTIONAL = "Mostly emotional"
-    DEPENDS = "Depends"
-
-
-class SocialEnergy(str, Enum):
-    ENERGISED = "Energised"
-    DRAINED = "Drained"
-    DEPENDS = "Depends"
-
-
 # Question field mappings for display labels
 QUESTION_LABELS = {
     "q1_safe_place": "Q1 (safe place)",
@@ -56,9 +42,6 @@ TEXT_FIELDS = list(QUESTION_LABELS.keys())
 REQUIRED_COLUMNS = [
     "id",
     *TEXT_FIELDS,
-    "q6_decision_style",
-    "q7_social_energy",
-    "q8_region",
 ]
 
 
@@ -145,16 +128,6 @@ def validate_data_quality(df: pd.DataFrame) -> None:
     if df["id"].duplicated().any():
         dup_count = df["id"].duplicated().sum()
         errors.append(f"Found {dup_count} duplicate participant IDs")
-
-    valid_decision = {e.value for e in DecisionStyle}
-    invalid_decision = set(df["q6_decision_style"].dropna().unique()) - valid_decision
-    if invalid_decision:
-        errors.append(f"Invalid decision_style values: {invalid_decision}")
-
-    valid_energy = {e.value for e in SocialEnergy}
-    invalid_energy = set(df["q7_social_energy"].dropna().unique()) - valid_energy
-    if invalid_energy:
-        errors.append(f"Invalid social_energy values: {invalid_energy}")
 
     for field in TEXT_FIELDS:
         empty_count = df[field].isna().sum() + (df[field] == "").sum()
@@ -304,9 +277,6 @@ def process_data(config: dict, base_dir: Path) -> dict:
             "x": float(coords_2d[i, 0]),
             "y": float(coords_2d[i, 1]),
             "cluster": int(clusters[i]),
-            "decision_style": str(getattr(row, "q6_decision_style", "")),
-            "social_energy": str(getattr(row, "q7_social_energy", "")),
-            "region": str(getattr(row, "q8_region", "")),
             "nickname": str(nickname),
         }
         points.append(point)
