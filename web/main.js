@@ -532,7 +532,6 @@ function drawLinks() {
         if (isHovered) {
             const dx = b.screenX - a.screenX;
             const dy = b.screenY - a.screenY;
-            const len = Math.sqrt(dx * dx + dy * dy);
 
             for (let i = 0; i < CONFIG.link.particleCount; i++) {
                 const offset = i / CONFIG.link.particleCount;
@@ -577,7 +576,9 @@ function drawStars() {
 
     for (const point of sortedPoints) {
         const brightness = currentBrightness.get(point.index);
-        const isHovered = hoveredPoint && hoveredPoint.index === point.index;
+        // Check if this point is the active one (selected OR hovered)
+        const isActive = (selectedPoint && selectedPoint.index === point.index) ||
+                         (hoveredPoint && hoveredPoint.index === point.index);
         const isNeighbor = hoveredNeighbors.has(point.index);
 
         // Breathing effect - slow, organic pulsation
@@ -588,7 +589,7 @@ function drawStars() {
 
         // Calculate radius
         let baseRadius = CONFIG.star.baseRadius;
-        if (isHovered) baseRadius = CONFIG.star.hoverRadius;
+        if (isActive) baseRadius = CONFIG.star.hoverRadius;
         else if (isNeighbor) baseRadius = CONFIG.star.neighborRadius;
 
         const radius = baseRadius * (1 + breath + twinkle * 0.5);
@@ -620,7 +621,7 @@ function drawStars() {
         );
 
         // Brighter core for highlighted stars
-        const coreWhite = isHovered ? 255 : (isNeighbor ? 240 : 200 + brightness * 55);
+        const coreWhite = isActive ? 255 : (isNeighbor ? 240 : 200 + brightness * 55);
         coreGradient.addColorStop(0, `rgba(${coreWhite}, ${coreWhite}, ${coreWhite}, ${0.8 + brightness * 0.2})`);
         coreGradient.addColorStop(0.4, `rgba(${Math.min(255, color.r + 60)}, ${Math.min(255, color.g + 60)}, ${Math.min(255, color.b + 60)}, ${0.7 + brightness * 0.3})`);
         coreGradient.addColorStop(1, `rgba(${color.r}, ${color.g}, ${color.b}, ${0.5 + brightness * 0.3})`);
@@ -673,11 +674,10 @@ function handleMouseMove(event) {
 
 function handleMouseLeave() {
     hoveredPoint = null;
-    // Only clear if not locked on a selection
-    if (!selectedPoint) {
-        updateHoverState();
-        updatePanel();
-    }
+    // Always update state - if selected, it will stay on selection
+    // If not selected, everything will dim back to normal
+    updateHoverState();
+    updatePanel();
 }
 
 function handleClick(event) {
