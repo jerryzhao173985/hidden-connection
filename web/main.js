@@ -67,23 +67,23 @@ const CONFIG = {
     // Animation
     transitionSpeed: 0.08,
 
-    // 3D Galaxy motion
+    // 3D Galaxy motion - gentle chaos within bounds
     galaxy: {
         enabled: true,
-        // Orbital motion around cluster centers
-        orbitSpeed: 0.0003,          // Very slow orbit
-        orbitRadius: 15,              // Max pixels to drift
-        // Depth simulation (z-axis)
-        depthRange: 0.4,              // How much z varies (0-1)
-        depthSpeed: 0.0002,           // How fast z oscillates
-        // Gentle drift using noise
-        driftSpeed: 0.0001,
-        driftAmount: 8,
-        // Global rotation
-        rotationSpeed: 0.00005,       // Entire galaxy slowly rotates
-        rotationCenter: { x: 0.5, y: 0.5 }, // Center of rotation (normalized)
-        // Perspective
-        perspectiveStrength: 0.3,     // How much depth affects size/brightness
+        // Orbital motion - each star gently orbits its semantic position
+        orbitSpeed: 0.0012,           // Noticeable but gentle orbit
+        orbitRadius: 12,              // Bounded drift area (pixels)
+        // Depth simulation (z-axis breathing)
+        depthRange: 0.35,             // Subtle depth variation
+        depthSpeed: 0.0006,           // Gentle depth oscillation
+        // Noise-based drift - organic chaos feel
+        driftSpeed: 0.0004,           // Organic wandering speed
+        driftAmount: 6,               // Small chaotic drift
+        // Global rotation - entire galaxy slowly spins
+        rotationSpeed: 0.00012,       // Perceptible but slow rotation
+        rotationCenter: { x: 0.5, y: 0.5 },
+        // Perspective depth effect
+        perspectiveStrength: 0.25,
     },
 };
 
