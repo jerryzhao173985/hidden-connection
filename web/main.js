@@ -164,7 +164,8 @@ class SimplexNoise {
 
 let canvas, ctx;
 let width, height, dpr;
-let data = { points: [], links: [] };
+let data = { views: {}, points: [], links: {} };
+let currentView = 'combined';
 let hoveredPoint = null;
 let selectedPoint = null;  // Click to lock selection
 let hoveredNeighbors = new Set();
@@ -188,8 +189,13 @@ let currentBrightness = new Map();
 // Animation phases (preserved across resize)
 let animationPhases = new Map();
 
+// Smooth position transitions for view changes
+let targetPositions = new Map();  // {index: {x, y}}
+let currentPositions = new Map(); // {index: {x, y}}
+let isTransitioning = false;
+
 // DOM elements
-let loading, infoPanel, pointCount;
+let loading, infoPanel, pointCount, viewTabs, viewDescription;
 let panelNickname, panelCluster, panelContent, panelMeta;
 
 // ============================================================================
@@ -205,6 +211,8 @@ async function init() {
     loading = document.getElementById('loading');
     infoPanel = document.getElementById('info-panel');
     pointCount = document.getElementById('point-count');
+    viewTabs = document.getElementById('view-tabs');
+    viewDescription = document.getElementById('view-description');
     panelNickname = document.getElementById('panel-nickname');
     panelCluster = document.getElementById('panel-cluster');
     panelContent = document.getElementById('panel-content');
@@ -255,6 +263,12 @@ function handleResize() {
     setupCanvas();
     generateBackgroundStars();
     if (data.points.length > 0) {
+        // Update target positions for new screen size
+        setTargetPositions();
+        // Jump directly to new positions (no animation on resize)
+        for (const [index, target] of targetPositions) {
+            currentPositions.set(index, { x: target.x, y: target.y });
+        }
         computeScreenPositions();
         computeClusterCenters();
     }
@@ -272,23 +286,127 @@ async function loadData() {
         }
         const json = await response.json();
 
+        data.views = json.views || {};
         data.points = json.points || [];
-        data.links = json.links || [];
+        data.links = json.links || {};
 
-        console.log(`Loaded ${data.points.length} points and ${data.links.length} links`);
+        console.log(`Loaded ${data.points.length} points with ${Object.keys(data.views).length} views`);
 
         pointCount.textContent = `${data.points.length} souls`;
 
+        // Build the tabs UI
+        buildViewTabs();
+
+        // Initialize with combined view
+        currentView = 'combined';
         computeScreenPositions();
         buildLinkMap();
         computeClusterCenters();
         initializeBrightness();
+        initializePositions();
+        updateViewDescription();
 
         console.log(`Computed ${clusterCenters.length} cluster centers`);
 
     } catch (error) {
         console.error('Failed to load data:', error);
         pointCount.textContent = 'Error loading data';
+    }
+}
+
+function buildViewTabs() {
+    viewTabs.innerHTML = '';
+
+    // Define view order (combined first, then questions in order)
+    const viewOrder = ['combined', 'q1_safe_place', 'q2_stress', 'q3_understood', 'q4_free_day', 'q5_one_word'];
+
+    for (const viewId of viewOrder) {
+        const viewConfig = data.views[viewId];
+        if (!viewConfig) continue;
+
+        const tab = document.createElement('button');
+        tab.className = 'view-tab' + (viewId === currentView ? ' active' : '');
+        tab.textContent = viewConfig.shortLabel;
+        tab.dataset.view = viewId;
+        tab.title = viewConfig.description;
+
+        tab.addEventListener('click', () => switchView(viewId));
+
+        viewTabs.appendChild(tab);
+    }
+}
+
+function switchView(viewId) {
+    if (viewId === currentView) return;
+    if (!data.views[viewId]) return;
+
+    console.log(`Switching to view: ${viewId}`);
+
+    // Update tab active state
+    const tabs = viewTabs.querySelectorAll('.view-tab');
+    tabs.forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.view === viewId);
+    });
+
+    // Clear selection when switching views
+    selectedPoint = null;
+    hoveredPoint = null;
+
+    // Set target positions for the new view
+    currentView = viewId;
+    setTargetPositions();
+    buildLinkMap();
+    computeScreenPositions();  // Update cluster info for new view
+    computeClusterCenters();
+    isTransitioning = true;
+
+    // Update view description
+    updateViewDescription();
+
+    // Update hover state and panel
+    updateHoverState();
+    updatePanel();
+}
+
+function updateViewDescription() {
+    const viewConfig = data.views[currentView];
+    if (viewConfig && viewDescription) {
+        viewDescription.textContent = viewConfig.description;
+    }
+}
+
+function setTargetPositions() {
+    const padding = 120;
+    const availableWidth = width - padding * 2;
+    const availableHeight = height - padding * 2;
+
+    for (let i = 0; i < data.points.length; i++) {
+        const point = data.points[i];
+        const viewData = point.views[currentView];
+
+        if (viewData) {
+            const screenX = padding + ((viewData.x + 1) / 2) * availableWidth;
+            const screenY = padding + ((1 - viewData.y) / 2) * availableHeight;
+            targetPositions.set(i, { x: screenX, y: screenY });
+        }
+    }
+}
+
+function initializePositions() {
+    const padding = 120;
+    const availableWidth = width - padding * 2;
+    const availableHeight = height - padding * 2;
+
+    for (let i = 0; i < data.points.length; i++) {
+        const point = data.points[i];
+        const viewData = point.views[currentView];
+
+        if (viewData) {
+            const screenX = padding + ((viewData.x + 1) / 2) * availableWidth;
+            const screenY = padding + ((1 - viewData.y) / 2) * availableHeight;
+            currentPositions.set(i, { x: screenX, y: screenY });
+            targetPositions.set(i, { x: screenX, y: screenY });
+        }
     }
 }
 
@@ -307,11 +425,27 @@ function computeScreenPositions() {
         }
         const phases = animationPhases.get(point.id);
 
+        // Get view-specific data
+        const viewData = point.views[currentView] || point.views['combined'];
+
+        // Use current animated positions if available, else calculate from view data
+        let screenX, screenY;
+        if (currentPositions.has(index)) {
+            const pos = currentPositions.get(index);
+            screenX = pos.x;
+            screenY = pos.y;
+        } else {
+            screenX = padding + ((viewData.x + 1) / 2) * availableWidth;
+            screenY = padding + ((1 - viewData.y) / 2) * availableHeight;
+        }
+
         return {
             ...point,
             index,
-            screenX: padding + ((point.x + 1) / 2) * availableWidth,
-            screenY: padding + ((1 - point.y) / 2) * availableHeight,
+            screenX,
+            screenY,
+            cluster: viewData.cluster,
+            text: viewData.text,
             breathPhase: phases.breathPhase,
             twinklePhase: phases.twinklePhase,
         };
@@ -321,7 +455,10 @@ function computeScreenPositions() {
 function buildLinkMap() {
     linkMap.clear();
 
-    for (const link of data.links) {
+    // Get links for current view
+    const viewLinks = data.links[currentView] || [];
+
+    for (const link of viewLinks) {
         const [a, b] = link;
 
         if (!linkMap.has(a)) linkMap.set(a, new Set());
@@ -383,6 +520,11 @@ function animate() {
     // Smooth brightness transitions
     updateBrightness();
 
+    // Smooth position transitions for view changes
+    if (isTransitioning) {
+        updatePositions();
+    }
+
     // Clear with deep space gradient
     drawBackground();
 
@@ -399,6 +541,37 @@ function animate() {
     drawStars();
 
     animationId = requestAnimationFrame(animate);
+}
+
+function updatePositions() {
+    const transitionSpeed = 0.08;
+    let stillTransitioning = false;
+
+    for (const [index, target] of targetPositions) {
+        const current = currentPositions.get(index);
+        if (!current) continue;
+
+        const dx = target.x - current.x;
+        const dy = target.y - current.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist > 0.5) {
+            stillTransitioning = true;
+            current.x += dx * transitionSpeed;
+            current.y += dy * transitionSpeed;
+            currentPositions.set(index, current);
+        } else {
+            currentPositions.set(index, { x: target.x, y: target.y });
+        }
+    }
+
+    // Update screen positions with interpolated values
+    if (stillTransitioning) {
+        computeScreenPositions();
+        computeClusterCenters();
+    } else {
+        isTransitioning = false;
+    }
 }
 
 function updateBrightness() {
@@ -506,7 +679,10 @@ function drawLinks() {
     const pulseTime = time * CONFIG.link.pulseSpeed;
     const travelTime = time * CONFIG.link.travelSpeed;
 
-    for (const link of data.links) {
+    // Get links for current view
+    const viewLinks = data.links[currentView] || [];
+
+    for (const link of viewLinks) {
         const [aIdx, bIdx, strength] = link;
         const a = pointsWithScreen[aIdx];
         const b = pointsWithScreen[bIdx];
@@ -802,40 +978,77 @@ function updatePanel() {
     const lockIndicator = selectedPoint ? ' \u2022' : '';  // bullet indicates locked
     panelNickname.textContent = nickname + lockIndicator;
 
-    // Cluster badge with color
+    // Cluster badge with color (use current view's cluster)
     const color = CONFIG.colors[activePoint.cluster % CONFIG.colors.length];
     panelCluster.textContent = color.name || `Cluster ${activePoint.cluster + 1}`;
     panelCluster.style.background = `rgba(${color.r}, ${color.g}, ${color.b}, 0.15)`;
     panelCluster.style.color = `rgb(${color.r}, ${color.g}, ${color.b})`;
     panelCluster.style.borderColor = `rgba(${color.r}, ${color.g}, ${color.b}, 0.3)`;
 
-    // Parse and display responses
-    const lines = activePoint.text.split('\n');
     let html = '';
 
+    // Get raw responses for this point
+    const responses = activePoint.responses || {};
+
     const labelMap = {
-        'Q1 (safe place)': 'Safe Place',
-        'Q2 (stress)': 'Stress Response',
-        'Q3 (understood)': 'Feeling Understood',
-        'Q4 (free day)': 'Free Day',
-        'Q5 (one word)': 'One Word',
+        'q1_safe_place': 'Safe Place',
+        'q2_stress': 'Stress Response',
+        'q3_understood': 'Feeling Understood',
+        'q4_free_day': 'Free Day',
+        'q5_one_word': 'One Word',
     };
 
-    for (const line of lines) {
-        const colonIndex = line.indexOf(':');
-        if (colonIndex > -1) {
-            let label = line.substring(0, colonIndex).trim();
-            const text = line.substring(colonIndex + 1).trim();
+    // Determine which questions to show based on current view
+    const viewConfig = data.views[currentView];
+    const questionOrder = ['q1_safe_place', 'q2_stress', 'q3_understood', 'q4_free_day', 'q5_one_word'];
 
-            // Map to friendlier labels
-            label = labelMap[label] || label;
+    if (currentView === 'combined') {
+        // Show all responses
+        for (const field of questionOrder) {
+            const text = responses[field];
+            if (text) {
+                html += `
+                    <div class="response-block">
+                        <div class="response-label">${escapeHtml(labelMap[field])}</div>
+                        <div class="response-text">${escapeHtml(text)}</div>
+                    </div>
+                `;
+            }
+        }
+    } else {
+        // Individual question view - show the featured question prominently
+        const featuredField = currentView;
+        const featuredText = responses[featuredField];
 
+        if (featuredText) {
             html += `
-                <div class="response-block">
-                    <div class="response-label">${escapeHtml(label)}</div>
-                    <div class="response-text">${escapeHtml(text)}</div>
+                <div class="response-block featured">
+                    <div class="response-label">${escapeHtml(viewConfig?.label || labelMap[featuredField])}</div>
+                    <div class="response-text">${escapeHtml(featuredText)}</div>
                 </div>
             `;
+        }
+
+        // Show other responses in a collapsed/secondary section
+        const otherResponses = questionOrder.filter(f => f !== featuredField);
+        let hasOthers = false;
+        let othersHtml = '';
+
+        for (const field of otherResponses) {
+            const text = responses[field];
+            if (text) {
+                hasOthers = true;
+                othersHtml += `
+                    <div class="response-block secondary">
+                        <div class="response-label">${escapeHtml(labelMap[field])}</div>
+                        <div class="response-text">${escapeHtml(text)}</div>
+                    </div>
+                `;
+            }
+        }
+
+        if (hasOthers) {
+            html += `<div class="other-responses">${othersHtml}</div>`;
         }
     }
 

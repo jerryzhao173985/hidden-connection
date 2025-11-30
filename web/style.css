@@ -83,7 +83,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    padding: 28px 36px;
+    padding: 20px 36px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -91,8 +91,14 @@ header {
     pointer-events: none;
 }
 
+.header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
 h1 {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -101,11 +107,54 @@ h1 {
 }
 
 .point-count {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-dim);
     letter-spacing: 1px;
     font-weight: 300;
 }
+
+/* View tabs */
+.view-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--bg-panel);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-subtle);
+    border-radius: 28px;
+    padding: 5px;
+    pointer-events: auto;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.view-tab {
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+}
+
+.view-tab:hover {
+    color: var(--text-mid);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.view-tab.active {
+    color: var(--text-white);
+    background: rgba(255, 255, 255, 0.12);
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* View description - removed since it's shown in footer now */
 
 /* Info panel */
 .info-panel {
@@ -183,6 +232,34 @@ h1 {
     border-bottom: none;
 }
 
+.response-block.featured .response-label {
+    color: var(--accent);
+}
+
+.response-block.featured .response-text {
+    font-size: 14px;
+    color: var(--text-bright);
+    line-height: 1.8;
+}
+
+.other-responses {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.other-responses .response-block {
+    opacity: 0.7;
+}
+
+.other-responses .response-block.secondary .response-text {
+    font-size: 12px;
+}
+
+.other-responses .response-block:first-child {
+    margin-top: 0;
+}
+
 .response-label {
     font-size: 10px;
     font-weight: 600;
@@ -244,6 +321,16 @@ footer {
     letter-spacing: 0.5px;
     font-weight: 300;
     opacity: 0.7;
+}
+
+.view-hint {
+    font-size: 12px;
+    color: var(--text-mid);
+    letter-spacing: 0.3px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    opacity: 0.9;
+    font-style: italic;
 }
 
 /* Connected neighbors section */
@@ -315,11 +402,32 @@ footer {
     }
 
     header {
-        padding: 20px 24px;
+        padding: 16px 20px;
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+
+    .header-left {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
     }
 
     h1 {
-        font-size: 12px;
+        font-size: 11px;
+    }
+
+    .view-tabs {
+        overflow-x: auto;
+        padding: 4px;
+        gap: 2px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .view-tab {
+        font-size: 10px;
+        padding: 6px 12px;
     }
 
     footer {

@@ -3,6 +3,7 @@
 Hidden Connections - ML Pipeline
 Processes participant responses into semantic embeddings for visualization.
 Outputs point data with nearest neighbor links for constellation visualization.
+Supports multiple views: combined (all questions) and individual question views.
 """
 
 import json
@@ -35,6 +36,46 @@ QUESTION_LABELS = {
     "q3_understood": "Q3 (understood)",
     "q4_free_day": "Q4 (free day)",
     "q5_one_word": "Q5 (one word)",
+}
+
+# View definitions for multi-view visualization
+VIEW_CONFIG = {
+    "combined": {
+        "label": "All Responses",
+        "shortLabel": "All",
+        "fields": list(QUESTION_LABELS.keys()),
+        "description": "Semantic similarity across all responses",
+    },
+    "q1_safe_place": {
+        "label": "Safe Place",
+        "shortLabel": "Safe",
+        "fields": ["q1_safe_place"],
+        "description": "Where do you feel safe?",
+    },
+    "q2_stress": {
+        "label": "Stress Response",
+        "shortLabel": "Stress",
+        "fields": ["q2_stress"],
+        "description": "How do you cope with stress?",
+    },
+    "q3_understood": {
+        "label": "Feeling Understood",
+        "shortLabel": "Understood",
+        "fields": ["q3_understood"],
+        "description": "When did you feel seen?",
+    },
+    "q4_free_day": {
+        "label": "Free Day",
+        "shortLabel": "Free",
+        "fields": ["q4_free_day"],
+        "description": "How would you spend a free day?",
+    },
+    "q5_one_word": {
+        "label": "One Word",
+        "shortLabel": "Word",
+        "fields": ["q5_one_word"],
+        "description": "One word to describe yourself",
+    },
 }
 
 TEXT_FIELDS = list(QUESTION_LABELS.keys())
@@ -138,10 +179,16 @@ def validate_data_quality(df: pd.DataFrame) -> None:
         raise DataValidationError("\n".join(errors))
 
 
-def concatenate_responses(row: pd.Series, max_chars: int) -> str:
+def concatenate_responses(row: pd.Series, max_chars: int, fields: list[str] | None = None) -> str:
     """Concatenate text fields into a single string with labels."""
+    if fields is None:
+        fields = list(QUESTION_LABELS.keys())
+
     parts = []
-    for field, label in QUESTION_LABELS.items():
+    for field in fields:
+        if field not in QUESTION_LABELS:
+            continue
+        label = QUESTION_LABELS[field]
         text = str(row.get(field, "")).strip()
         if text and text.lower() != "nan":
             if len(text) > max_chars:
@@ -198,8 +245,63 @@ def compute_neighbor_links(embeddings: np.ndarray, clusters: np.ndarray, k: int 
     return links
 
 
+def process_view(
+    df: pd.DataFrame,
+    view_id: str,
+    view_config: dict,
+    model: SentenceTransformer,
+    umap_config: dict,
+    cluster_config: dict,
+    max_chars: int,
+    k_links: int,
+) -> dict:
+    """Process a single view (combined or individual question)."""
+    fields = view_config["fields"]
+    logger.info(f"Processing view '{view_id}' with fields: {fields}")
+
+    # Generate text for this view
+    texts = df.apply(
+        lambda row: concatenate_responses(row, max_chars, fields), axis=1
+    ).tolist()
+
+    # Generate embeddings
+    embeddings = model.encode(texts, show_progress_bar=False)
+
+    # Apply UMAP
+    reducer = UMAP(
+        n_neighbors=umap_config["n_neighbors"],
+        min_dist=umap_config["min_dist"],
+        metric=umap_config["metric"],
+        random_state=umap_config.get("random_state", 42),
+        n_components=2,
+    )
+    coords_2d = reducer.fit_transform(embeddings)
+    coords_2d = normalize_coordinates(coords_2d)
+
+    # Clustering
+    kmeans = KMeans(
+        n_clusters=cluster_config["n_clusters"],
+        random_state=cluster_config.get("random_state", 42),
+        n_init=10,
+    )
+    clusters = kmeans.fit_predict(embeddings)
+
+    # Compute nearest neighbor links
+    links = compute_neighbor_links(embeddings, clusters, k=k_links)
+    formatted_links = [[s, t, round(w, 3)] for s, t, w in links]
+
+    logger.info(f"  View '{view_id}': {len(formatted_links)} links")
+
+    return {
+        "texts": texts,
+        "coords": coords_2d,
+        "clusters": clusters,
+        "links": formatted_links,
+    }
+
+
 def process_data(config: dict, base_dir: Path) -> dict:
-    """Main processing pipeline. Returns dict with points and links."""
+    """Main processing pipeline. Returns dict with multi-view points and links."""
     input_path = validate_path(base_dir, config["paths"]["input"])
 
     logger.info(f"Loading data from {input_path}")
@@ -221,9 +323,9 @@ def process_data(config: dict, base_dir: Path) -> dict:
         )
 
     max_chars = config["text_processing"]["max_chars_per_question"]
-
-    logger.info("Concatenating text responses...")
-    texts = df.apply(lambda row: concatenate_responses(row, max_chars), axis=1).tolist()
+    k_links = config.get("visualization", {}).get("k_neighbors", 3)
+    umap_config = config["umap"]
+    cluster_config = config["clustering"]
 
     model_name = config["embedding_model"]
     logger.info(f"Loading embedding model: {model_name}")
@@ -232,62 +334,68 @@ def process_data(config: dict, base_dir: Path) -> dict:
     except Exception as e:
         raise PipelineError(f"Failed to load embedding model '{model_name}': {e}")
 
-    logger.info("Generating embeddings...")
-    embeddings = model.encode(texts, show_progress_bar=True)
-    logger.info(f"Embedding shape: {embeddings.shape}")
+    # Process each view
+    logger.info(f"Processing {len(VIEW_CONFIG)} views...")
+    view_results = {}
+    for view_id, view_cfg in VIEW_CONFIG.items():
+        view_results[view_id] = process_view(
+            df, view_id, view_cfg, model, umap_config, cluster_config, max_chars, k_links
+        )
 
-    logger.info("Applying UMAP...")
-    umap_config = config["umap"]
-    reducer = UMAP(
-        n_neighbors=umap_config["n_neighbors"],
-        min_dist=umap_config["min_dist"],
-        metric=umap_config["metric"],
-        random_state=umap_config.get("random_state", 42),
-        n_components=2,
-    )
-    coords_2d = reducer.fit_transform(embeddings)
-    coords_2d = normalize_coordinates(coords_2d)
-
-    logger.info("Clustering...")
-    cluster_config = config["clustering"]
-    kmeans = KMeans(
-        n_clusters=cluster_config["n_clusters"],
-        random_state=cluster_config.get("random_state", 42),
-        n_init=10,
-    )
-    clusters = kmeans.fit_predict(embeddings)
-
-    # Compute nearest neighbor links within clusters
-    logger.info("Computing neighbor links...")
-    k_links = config.get("visualization", {}).get("k_neighbors", 3)
-    links = compute_neighbor_links(embeddings, clusters, k=k_links)
-    logger.info(f"Created {len(links)} constellation links")
-
-    # Build output records
+    # Build output structure
     logger.info("Building output records...")
+
+    # Views metadata
+    views_meta = {}
+    for view_id, view_cfg in VIEW_CONFIG.items():
+        views_meta[view_id] = {
+            "label": view_cfg["label"],
+            "shortLabel": view_cfg["shortLabel"],
+            "description": view_cfg["description"],
+        }
+
+    # Build points with per-view data
     points = []
     for i, row in enumerate(df.itertuples()):
-        # getattr with default handles missing attribute; explicit check for empty/nan
         nickname = getattr(row, "nickname", "")
         if pd.isna(nickname) or not str(nickname).strip():
             nickname = "anonymous"
 
+        # Collect raw responses
+        responses = {}
+        for field in TEXT_FIELDS:
+            val = getattr(row, field, "")
+            if pd.isna(val):
+                val = ""
+            responses[field] = str(val).strip()
+
+        # Build per-view data
+        views_data = {}
+        for view_id, result in view_results.items():
+            views_data[view_id] = {
+                "x": float(result["coords"][i, 0]),
+                "y": float(result["coords"][i, 1]),
+                "cluster": int(result["clusters"][i]),
+                "text": result["texts"][i],
+            }
+
         point = {
             "id": str(row.id),
-            "text": texts[i],
-            "x": float(coords_2d[i, 0]),
-            "y": float(coords_2d[i, 1]),
-            "cluster": int(clusters[i]),
             "nickname": str(nickname),
+            "responses": responses,
+            "views": views_data,
         }
         points.append(point)
 
-    # Format links as list of [source, target, strength]
-    formatted_links = [[s, t, round(w, 3)] for s, t, w in links]
+    # Collect links per view
+    links = {}
+    for view_id, result in view_results.items():
+        links[view_id] = result["links"]
 
     return {
+        "views": views_meta,
         "points": points,
-        "links": formatted_links,
+        "links": links,
         "clusters": cluster_config["n_clusters"],
     }
 

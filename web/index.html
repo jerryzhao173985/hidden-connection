@@ -18,8 +18,11 @@
     <canvas id="nebula"></canvas>
 
     <header>
-        <h1>Hidden Connections</h1>
-        <span id="point-count" class="point-count"></span>
+        <div class="header-left">
+            <h1>Hidden Connections</h1>
+            <span id="point-count" class="point-count"></span>
+        </div>
+        <nav id="view-tabs" class="view-tabs"></nav>
     </header>
 
     <aside id="info-panel" class="info-panel">
@@ -32,7 +35,8 @@
     </aside>
 
     <footer>
-        <p class="hint">Hover to preview &bull; Click to lock &bull; Navigate between connected souls</p>
+        <p id="view-description" class="view-hint"></p>
+        <p class="hint">Hover to preview &bull; Click to lock &bull; Switch views to explore different questions</p>
     </footer>
 
     <script src="main.js"></script>
