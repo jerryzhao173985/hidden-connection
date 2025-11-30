@@ -128,6 +128,7 @@ h1 {
 }
 
 .view-tab {
+    position: relative;
     font-family: inherit;
     font-size: 11px;
     font-weight: 400;
@@ -140,11 +141,16 @@ h1 {
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
+    outline: none;
 }
 
 .view-tab:hover {
     color: var(--text-mid);
     background: rgba(255, 255, 255, 0.05);
+}
+
+.view-tab:focus-visible {
+    box-shadow: 0 0 0 2px var(--accent);
 }
 
 .view-tab.active {
@@ -154,7 +160,70 @@ h1 {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* View description - removed since it's shown in footer now */
+/* Active tab accent underline */
+.view-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+    opacity: 0.8;
+    box-shadow: 0 0 8px var(--accent);
+}
+
+/* Custom tooltip for tabs */
+.tab-tooltip {
+    position: fixed;
+    z-index: 1000;
+    padding: 8px 14px;
+    background: var(--bg-panel);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-glow);
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--text-bright);
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+}
+
+.tab-tooltip.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Tooltip arrow - uses --arrow-offset custom property for dynamic positioning */
+.tab-tooltip::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: calc(50% + var(--arrow-offset, 0px));
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid var(--border-glow);
+}
+
+.tab-tooltip::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: calc(50% + var(--arrow-offset, 0px));
+    transform: translateX(-50%);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid var(--bg-panel);
+}
 
 /* Info panel */
 .info-panel {

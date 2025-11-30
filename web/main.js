@@ -166,6 +166,7 @@ let canvas, ctx;
 let width, height, dpr;
 let data = { views: {}, points: [], links: {} };
 let currentView = 'combined';
+const VIEW_ORDER = ['combined', 'q1_safe_place', 'q2_stress', 'q3_understood', 'q4_free_day', 'q5_one_word'];
 let hoveredPoint = null;
 let selectedPoint = null;  // Click to lock selection
 let hoveredNeighbors = new Set();
@@ -195,7 +196,7 @@ let currentPositions = new Map(); // {index: {x, y}}
 let isTransitioning = false;
 
 // DOM elements
-let loading, infoPanel, pointCount, viewTabs, viewDescription;
+let loading, infoPanel, pointCount, viewTabs, viewDescription, tabTooltip;
 let panelNickname, panelCluster, panelContent, panelMeta;
 
 // ============================================================================
@@ -213,6 +214,7 @@ async function init() {
     pointCount = document.getElementById('point-count');
     viewTabs = document.getElementById('view-tabs');
     viewDescription = document.getElementById('view-description');
+    tabTooltip = document.getElementById('tab-tooltip');
     panelNickname = document.getElementById('panel-nickname');
     panelCluster = document.getElementById('panel-cluster');
     panelContent = document.getElementById('panel-content');
@@ -223,6 +225,7 @@ async function init() {
     console.log(`Canvas size: ${width}x${height}, DPR: ${dpr}`);
 
     window.addEventListener('resize', handleResize);
+    window.addEventListener('keydown', handleKeyDown);
     canvas.addEventListener('mousemove', handleMouseMove);
     canvas.addEventListener('mouseleave', handleMouseLeave);
     canvas.addEventListener('click', handleClick);
@@ -317,10 +320,7 @@ async function loadData() {
 function buildViewTabs() {
     viewTabs.innerHTML = '';
 
-    // Define view order (combined first, then questions in order)
-    const viewOrder = ['combined', 'q1_safe_place', 'q2_stress', 'q3_understood', 'q4_free_day', 'q5_one_word'];
-
-    for (const viewId of viewOrder) {
+    for (const viewId of VIEW_ORDER) {
         const viewConfig = data.views[viewId];
         if (!viewConfig) continue;
 
@@ -328,11 +328,50 @@ function buildViewTabs() {
         tab.className = 'view-tab' + (viewId === currentView ? ' active' : '');
         tab.textContent = viewConfig.shortLabel;
         tab.dataset.view = viewId;
-        tab.title = viewConfig.description;
+        tab.dataset.description = viewConfig.description;
 
         tab.addEventListener('click', () => switchView(viewId));
+        tab.addEventListener('mouseenter', showTabTooltip);
+        tab.addEventListener('mouseleave', hideTabTooltip);
 
         viewTabs.appendChild(tab);
+    }
+}
+
+function showTabTooltip(e) {
+    const tab = e.currentTarget;
+    const description = tab.dataset.description;
+    if (!description || !tabTooltip) return;
+
+    tabTooltip.textContent = description;
+
+    // Position tooltip below the tab
+    const rect = tab.getBoundingClientRect();
+    const tabCenter = rect.left + rect.width / 2;
+
+    // Calculate initial centered position
+    let left = tabCenter - tabTooltip.offsetWidth / 2;
+    const top = rect.bottom + 8;
+
+    // Keep tooltip within viewport
+    const padding = 12;
+    if (left < padding) left = padding;
+    if (left + tabTooltip.offsetWidth > window.innerWidth - padding) {
+        left = window.innerWidth - tabTooltip.offsetWidth - padding;
+    }
+
+    // Calculate arrow offset to point at tab center
+    const arrowOffset = tabCenter - left - tabTooltip.offsetWidth / 2;
+
+    tabTooltip.style.left = `${left}px`;
+    tabTooltip.style.top = `${top}px`;
+    tabTooltip.style.setProperty('--arrow-offset', `${arrowOffset}px`);
+    tabTooltip.classList.add('visible');
+}
+
+function hideTabTooltip() {
+    if (tabTooltip) {
+        tabTooltip.classList.remove('visible');
     }
 }
 
@@ -912,6 +951,50 @@ function handleClick(event) {
 
     updateHoverState();
     updatePanel();
+}
+
+function handleKeyDown(event) {
+    const currentIndex = VIEW_ORDER.indexOf(currentView);
+
+    switch (event.key) {
+        case 'ArrowLeft':
+            // Previous view
+            if (currentIndex > 0) {
+                switchView(VIEW_ORDER[currentIndex - 1]);
+            }
+            event.preventDefault();
+            break;
+
+        case 'ArrowRight':
+            // Next view
+            if (currentIndex < VIEW_ORDER.length - 1) {
+                switchView(VIEW_ORDER[currentIndex + 1]);
+            }
+            event.preventDefault();
+            break;
+
+        case 'Escape':
+            // Clear selection
+            if (selectedPoint) {
+                selectedPoint = null;
+                updateHoverState();
+                updatePanel();
+            }
+            break;
+
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+            // Quick jump to view by number
+            const viewNum = parseInt(event.key) - 1;
+            if (viewNum >= 0 && viewNum < VIEW_ORDER.length) {
+                switchView(VIEW_ORDER[viewNum]);
+            }
+            break;
+    }
 }
 
 // Navigate to a connected neighbor
