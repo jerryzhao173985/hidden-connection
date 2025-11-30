@@ -1,1 +1,1564 @@
-/Users/jerry/hidden-connections/1/processed/points.json
+{
+  "views": {
+    "combined": {
+      "label": "All Responses",
+      "shortLabel": "All",
+      "description": "Semantic similarity across all responses"
+    },
+    "q1_safe_place": {
+      "label": "Safe Place",
+      "shortLabel": "Safe",
+      "description": "Where do you feel safe?"
+    },
+    "q2_stress": {
+      "label": "Stress Response",
+      "shortLabel": "Stress",
+      "description": "How do you cope with stress?"
+    },
+    "q3_understood": {
+      "label": "Feeling Understood",
+      "shortLabel": "Understood",
+      "description": "When did you feel seen?"
+    },
+    "q4_free_day": {
+      "label": "Free Day",
+      "shortLabel": "Free",
+      "description": "How would you spend a free day?"
+    },
+    "q5_one_word": {
+      "label": "One Word",
+      "shortLabel": "Word",
+      "description": "One word to describe yourself"
+    }
+  },
+  "points": [
+    {
+      "id": "p_001",
+      "nickname": "builder",
+      "responses": {
+        "q1_safe_place": "Home office, 11pm. Dual monitors with dark mode everything, mechanical keyboard, good headphones playing lo-fi. Hot tea. Terminal split between vim and a running test suite. The satisfying rhythm of write-test-refactor when everything's flowing.",
+        "q2_stress": "Production incident at 2am \u2013 service degradation traced to a memory leak in a feature I'd shipped. Slack blowing up, metrics dashboards red. Coped by: methodically walking through recent commits, adding targeted logging, resisting the urge to just revert blindly. Fixed it, wrote the postmortem, then couldn't sleep anyway.",
+        "q3_understood": "Pair programming session where my teammate didn't just wait for their turn to type \u2013 they actually tracked my reasoning, caught a subtle race condition I was about to introduce, and explained why without making me feel stupid. That kind of engaged collaboration is rare.",
+        "q4_free_day": "Sleep in. Morning coffee while tinkering with a side project \u2013 maybe that iOS app idea I've been sketching, or some generative art in Swift/Metal. Afternoon vibe coding: no PRs, no tickets, just following curiosity. Evening: good food, maybe a tech talk on YouTube, early to bed.",
+        "q5_one_word": "\"Builder\" - I like making things work \u2013 fixing broken builds, unblocking teammates, shipping features, building internal tools that save hours of manual work. The satisfaction is in the craft: clean APIs, tests that actually test something, code that's easier to read tomorrow than it was today."
+      },
+      "views": {
+        "combined": {
+          "x": 0.04301595687866211,
+          "y": 0.2406374216079712,
+          "cluster": 2,
+          "text": "Q1 (safe place): Home office, 11pm. Dual monitors with dark mode everything, mechanical keyboard, good headphones playing lo-fi. Hot tea. Terminal split between vim and a running test suite. The satisfying rhythm of write-test-refactor when everything's flowing.\nQ2 (stress): Production incident at 2am \u2013 service degradation traced to a memory leak in a feature I'd shipped. Slack blowing up, metrics dashboards red. Coped by: methodically walking through recent commits, adding targeted logging, resisting the urge to just revert blindly. Fixed it, wrote the postmortem, then couldn't sleep anyway.\nQ3 (understood): Pair programming session where my teammate didn't just wait for their turn to type \u2013 they actually tracked my reasoning, caught a subtle race condition I was about to introduce, and explained why without making me feel stupid. That kind of engaged collaboration is rare.\nQ4 (free day): Sleep in. Morning coffee while tinkering with a side project \u2013 maybe that iOS app idea I've been sketching, or some generative art in Swift/Metal. Afternoon vibe coding: no PRs, no tickets, just following curiosity. Evening: good food, maybe a tech talk on YouTube, early to bed.\nQ5 (one word): \"Builder\" - I like making things work \u2013 fixing broken builds, unblocking teammates, shipping features, building internal tools that save hours of manual work. The satisfaction is in the craft: clean APIs, tests that actually test something, code that's easier to read tomorrow than it was today."
+        },
+        "q1_safe_place": {
+          "x": 0.6356030702590942,
+          "y": -0.24081969261169434,
+          "cluster": 2,
+          "text": "Q1 (safe place): Home office, 11pm. Dual monitors with dark mode everything, mechanical keyboard, good headphones playing lo-fi. Hot tea. Terminal split between vim and a running test suite. The satisfying rhythm of write-test-refactor when everything's flowing."
+        },
+        "q2_stress": {
+          "x": 0.9210277795791626,
+          "y": 0.5057327747344971,
+          "cluster": 2,
+          "text": "Q2 (stress): Production incident at 2am \u2013 service degradation traced to a memory leak in a feature I'd shipped. Slack blowing up, metrics dashboards red. Coped by: methodically walking through recent commits, adding targeted logging, resisting the urge to just revert blindly. Fixed it, wrote the postmortem, then couldn't sleep anyway."
+        },
+        "q3_understood": {
+          "x": 0.8003485202789307,
+          "y": 0.14498090744018555,
+          "cluster": 4,
+          "text": "Q3 (understood): Pair programming session where my teammate didn't just wait for their turn to type \u2013 they actually tracked my reasoning, caught a subtle race condition I was about to introduce, and explained why without making me feel stupid. That kind of engaged collaboration is rare."
+        },
+        "q4_free_day": {
+          "x": -0.4951642155647278,
+          "y": 0.5348577499389648,
+          "cluster": 3,
+          "text": "Q4 (free day): Sleep in. Morning coffee while tinkering with a side project \u2013 maybe that iOS app idea I've been sketching, or some generative art in Swift/Metal. Afternoon vibe coding: no PRs, no tickets, just following curiosity. Evening: good food, maybe a tech talk on YouTube, early to bed."
+        },
+        "q5_one_word": {
+          "x": -0.3294486403465271,
+          "y": -0.7014758586883545,
+          "cluster": 1,
+          "text": "Q5 (one word): \"Builder\" - I like making things work \u2013 fixing broken builds, unblocking teammates, shipping features, building internal tools that save hours of manual work. The satisfaction is in the craft: clean APIs, tests that actually test something, code that's easier to read tomorrow than it was today."
+        }
+      }
+    },
+    {
+      "id": "p_002",
+      "nickname": "dancing",
+      "responses": {
+        "q1_safe_place": "In my cosy bedroom with a candle and many wool blankets, it is small there are two warm lights on either side of the bed, I have my laptop with me and I am with someone they have a book and we have a large pot of coffee to share.",
+        "q2_stress": "I made a mistake in my workplace that effected other people. I had to write an apology email and contact my line manager who helped through it. I felt tired sweaty and very stressed. All I was thinking was shame and how much extra work I was causing other people, not only at work but also at home, I was on holiday visiting my family and I had to deal with the mistake. I took deep breaths and tried to think more reasonably about the situation, calculating the appropriate next steps to resolve it without letting myself get encumbered by regret.",
+        "q3_understood": "This year a close family member has become quite sick, the response from my freinds has been very comforting most noticeably one friend who said they want to be there to support me. That reassured me that I wouldn't have to deal with it alone.",
+        "q4_free_day": "I would like to go to a coast on mediterranian sea maybe greece and have a fisherman show me how to eat sea urchins. My freinds would be with me, we would colect our urchins and have ouzo somewhere.",
+        "q5_one_word": "Dancing"
+      },
+      "views": {
+        "combined": {
+          "x": -0.11901384592056274,
+          "y": 0.7541662454605103,
+          "cluster": 4,
+          "text": "Q1 (safe place): In my cosy bedroom with a candle and many wool blankets, it is small there are two warm lights on either side of the bed, I have my laptop with me and I am with someone they have a book and we have a large pot of coffee to share.\nQ2 (stress): I made a mistake in my workplace that effected other people. I had to write an apology email and contact my line manager who helped through it. I felt tired sweaty and very stressed. All I was thinking was shame and how much extra work I was causing other people, not only at work but also at home, I was on holiday visiting my family and I had to deal with the mistake. I took deep breaths and tried to think more reasonably about the situation, calculating the appropriate next steps to resolve it ...\nQ3 (understood): This year a close family member has become quite sick, the response from my freinds has been very comforting most noticeably one friend who said they want to be there to support me. That reassured me that I wouldn't have to deal with it alone.\nQ4 (free day): I would like to go to a coast on mediterranian sea maybe greece and have a fisherman show me how to eat sea urchins. My freinds would be with me, we would colect our urchins and have ouzo somewhere.\nQ5 (one word): Dancing"
+        },
+        "q1_safe_place": {
+          "x": 0.2487013339996338,
+          "y": 0.8370645046234131,
+          "cluster": 1,
+          "text": "Q1 (safe place): In my cosy bedroom with a candle and many wool blankets, it is small there are two warm lights on either side of the bed, I have my laptop with me and I am with someone they have a book and we have a large pot of coffee to share."
+        },
+        "q2_stress": {
+          "x": 0.10573780536651611,
+          "y": -0.10435432195663452,
+          "cluster": 4,
+          "text": "Q2 (stress): I made a mistake in my workplace that effected other people. I had to write an apology email and contact my line manager who helped through it. I felt tired sweaty and very stressed. All I was thinking was shame and how much extra work I was causing other people, not only at work but also at home, I was on holiday visiting my family and I had to deal with the mistake. I took deep breaths and tried to think more reasonably about the situation, calculating the appropriate next steps to resolve it ..."
+        },
+        "q3_understood": {
+          "x": 0.36267852783203125,
+          "y": 0.30701303482055664,
+          "cluster": 4,
+          "text": "Q3 (understood): This year a close family member has become quite sick, the response from my freinds has been very comforting most noticeably one friend who said they want to be there to support me. That reassured me that I wouldn't have to deal with it alone."
+        },
+        "q4_free_day": {
+          "x": 0.2850135564804077,
+          "y": 0.5085936784744263,
+          "cluster": 4,
+          "text": "Q4 (free day): I would like to go to a coast on mediterranian sea maybe greece and have a fisherman show me how to eat sea urchins. My freinds would be with me, we would colect our urchins and have ouzo somewhere."
+        },
+        "q5_one_word": {
+          "x": 0.10469985008239746,
+          "y": 1.0,
+          "cluster": 3,
+          "text": "Q5 (one word): Dancing"
+        }
+      }
+    },
+    {
+      "id": "p_003",
+      "nickname": "laissez",
+      "responses": {
+        "q1_safe_place": "A cosy little home with a study, a games room, and a private cinema, nestled in a quiet, low-density neighbourhood within a city offering excellent transport links and infrastructure.",
+        "q2_stress": "I'm currently preparing to apply for a PhD, but I've been procrastinating. I only started working on my assignments when the deadline was looming. On top of that, several tasks suddenly piled up at my part-time jobs, and all this work converged into one week. I felt extremely anxious. Yet I didn't take any action. I chose to sleep during the day to relax, only starting work late at night when it was quiet and no one disturbed me. My efficiency wasn't low initially, but it only shot up in the final two days before the deadline, allowing me to finish on time. I haven't adopted any methods that feel particularly effective\u2014just sleeping and listening to music.",
+        "q3_understood": "My classmates, I can sense they understand my recent anxiety, as we all tend to procrastinate until the last few days before tackling assignments. Simply by commiserating and sharing our progress, I realise their work pace is much like mine. This makes me less worried about not finishing my tasks in time.",
+        "q4_free_day": "I'll stay home alone, watching television series, films or gaming all day, before taking an evening stroll. If I feel like it, I might pop into the city centre to catch an exhibition, do a spot of window shopping or snap some photos of the scenery.",
+        "q5_one_word": "Laissez-faire. Because I seem to care little about most things, I take things as they come, drift along with the current, and accept all the unknowns with quiet resignation."
+      },
+      "views": {
+        "combined": {
+          "x": 0.3840367794036865,
+          "y": 0.6836785078048706,
+          "cluster": 0,
+          "text": "Q1 (safe place): A cosy little home with a study, a games room, and a private cinema, nestled in a quiet, low-density neighbourhood within a city offering excellent transport links and infrastructure.\nQ2 (stress): I'm currently preparing to apply for a PhD, but I've been procrastinating. I only started working on my assignments when the deadline was looming. On top of that, several tasks suddenly piled up at my part-time jobs, and all this work converged into one week. I felt extremely anxious. Yet I didn't take any action. I chose to sleep during the day to relax, only starting work late at night when it was quiet and no one disturbed me. My efficiency wasn't low initially, but it only shot up in the fin...\nQ3 (understood): My classmates, I can sense they understand my recent anxiety, as we all tend to procrastinate until the last few days before tackling assignments. Simply by commiserating and sharing our progress, I realise their work pace is much like mine. This makes me less worried about not finishing my tasks in time.\nQ4 (free day): I'll stay home alone, watching television series, films or gaming all day, before taking an evening stroll. If I feel like it, I might pop into the city centre to catch an exhibition, do a spot of window shopping or snap some photos of the scenery.\nQ5 (one word): Laissez-faire. Because I seem to care little about most things, I take things as they come, drift along with the current, and accept all the unknowns with quiet resignation."
+        },
+        "q1_safe_place": {
+          "x": 0.01608443260192871,
+          "y": -0.3312522768974304,
+          "cluster": 2,
+          "text": "Q1 (safe place): A cosy little home with a study, a games room, and a private cinema, nestled in a quiet, low-density neighbourhood within a city offering excellent transport links and infrastructure."
+        },
+        "q2_stress": {
+          "x": -0.5126117467880249,
+          "y": 0.9915146827697754,
+          "cluster": 1,
+          "text": "Q2 (stress): I'm currently preparing to apply for a PhD, but I've been procrastinating. I only started working on my assignments when the deadline was looming. On top of that, several tasks suddenly piled up at my part-time jobs, and all this work converged into one week. I felt extremely anxious. Yet I didn't take any action. I chose to sleep during the day to relax, only starting work late at night when it was quiet and no one disturbed me. My efficiency wasn't low initially, but it only shot up in the fin..."
+        },
+        "q3_understood": {
+          "x": -0.24848926067352295,
+          "y": 0.8698557615280151,
+          "cluster": 0,
+          "text": "Q3 (understood): My classmates, I can sense they understand my recent anxiety, as we all tend to procrastinate until the last few days before tackling assignments. Simply by commiserating and sharing our progress, I realise their work pace is much like mine. This makes me less worried about not finishing my tasks in time."
+        },
+        "q4_free_day": {
+          "x": -0.46057093143463135,
+          "y": 0.06815648078918457,
+          "cluster": 3,
+          "text": "Q4 (free day): I'll stay home alone, watching television series, films or gaming all day, before taking an evening stroll. If I feel like it, I might pop into the city centre to catch an exhibition, do a spot of window shopping or snap some photos of the scenery."
+        },
+        "q5_one_word": {
+          "x": 0.6218520402908325,
+          "y": 0.41356873512268066,
+          "cluster": 4,
+          "text": "Q5 (one word): Laissez-faire. Because I seem to care little about most things, I take things as they come, drift along with the current, and accept all the unknowns with quiet resignation."
+        }
+      }
+    },
+    {
+      "id": "p_004",
+      "nickname": "\u534a\u6b7b\u4e0d\u6d3b\u7684",
+      "responses": {
+        "q1_safe_place": "\u5b83\u5728\u4e2d\u4e1c\u5730\u533a\uff0c\u50cf\u662f\u4e00\u5343\u96f6\u4e00\u591c\u91cc\u90a3\u79cd\u963f\u62c9\u4f2f\u5efa\u7b51\u3002\u508d\u665a\uff0c\u5929\u7a7a\u662f\u514b\u83b1\u56e0\u84dd\uff0c\u6ca1\u6709\u4e91\u6735\uff0c\u5efa\u7b51\u88ab\u6253\u4e0a\u6696\u9ec4\u7684\u5149\u3002\u4f1a\u6709\u5c11\u6570\u8f7b\u5fae\u7684\u4ea4\u8c08\u58f0\u548c\u98ce\u58f0\u3002\u53ef\u4ee5\u770b\u5230\u6709\u9ed1\u767d\u6591\u9a6c\u7eb9\u7684\u9a86\u9a7c\u88ab\u4eba\u7275\u7740\u8d70\u5411\u84dd\u8272\u7684\u6c99\u6f20\u91cc\u3002",
+        "q2_stress": "\u5199\u4e0d\u51fa\u6765\u6587\u732e\u7efc\u8ff0\uff0c\u4e0d\u60f3\u770b\u6587\u732e\uff0c\u53d1\u73b0AI\u7ed9\u6211\u5047\u6587\u732e\uff0c\u4f46\u662f\u7b97\u4e86\u4e00\u4e0b\u65e5\u5b50\u8981\u505a\u4e0d\u5b8c\u4f5c\u4e1a\u4e86\uff0c\u53c8\u4e0d\u60f3\u505a\uff0c\u89c9\u5f97\u81ea\u5df1\u6ca1\u6709\u79d1\u7814\u80fd\u529b\u3002\u5e94\u5bf9\uff1a\u5403\u597d\u5403\u7684\uff0c\u5403\u6ca1\u4e86\u5c31\u7761\u89c9\uff0c\u7761\u4e0d\u7740\u53c8\u8d77\u6765\u8c03\u6559\u4e86\u4e00\u6b21ai\uff0c\u7136\u540e\u544a\u8bc9\u81ea\u5df1\u5df2\u7ecf\u52aa\u529b\u4e86\uff0c\u7136\u540e\u73a9\u6e38\u620f\u6216\u8005\u73a9\u624b\u673a\uff0c\u56f0\u4e86\u7761\u89c9\u3002",
+        "q3_understood": "\u53d1\u670b\u53cb\u5708\u663e\u793a\u5728\u4f26\u6566\uff0c\u591a\u5e74\u4e0d\u8054\u7cfb\u7684\u9ad8\u4e2d\u73ed\u4e3b\u4efb\u79c1\u804a\u95ee\u6211\u662f\u53bb\u7559\u5b66\u4e86\u5417\uff0c\u8bf4\u5f88\u7fa1\u6155\u6211\uff0c\u5979\u8fd9\u8f88\u5b50\u4f30\u8ba1\u4e5f\u6ca1\u673a\u4f1a\u51fa\u56fd\uff0c\u8ba9\u6211\u6709\u7a7a\u62cd\u70b9\u7167\u7247\u7ed9\u5979\u770b\u3002\u8fd9\u8ba9\u6211\u611f\u89c9\u88ab\u5173\u6ce8\uff0c\u6211\u6709\u7a7a\u4f1a\u62cd\u7167\u7684\uff0c\u4f46\u662f\u6211\u53ea\u60f3\u53d1\u670b\u53cb\u5708\uff0c\u4e0d\u60f3\u548c\u5979\u79c1\u804a\uff0c\u4e0d\u662f\u4e0d\u559c\u6b22\u5979\uff0c\u662f\u89c9\u5f97\u597d\u9ebb\u70e6\uff0c\u8fd8\u8981\u548c\u522b\u4eba\u4ea4\u6d41\uff0c\u4e5f\u4e0d\u77e5\u9053\u4ea4\u6d41\u4ec0\u4e48\uff0c\u4e5f\u4e0d\u60f3\u4ea4\u6d41\uff0c\u4f46\u662f\u5979\u90fd\u8bf4\u4e86\u8fd8\u662f\u4f1a\u7ed9\u5979\u53d1\u7684\uff0c\u8fd9\u662f\u4e00\u79cd\u590d\u6742\u7684\u611f\u89c9\u3002",
+        "q4_free_day": "\u770b\u7cbe\u529b\u5982\u4f55\u3002\u5982\u679c\u4e0d\u60f3\u52a8\u5c31\u5b85\u4e00\u5929\uff0c\u505a\u996d\u6216\u8005\u70b9\u5916\u5356\uff0c\u7136\u540e\u6253\u6e38\u620f\u6216\u8005\u73a9\u624b\u673a\u3002\u5982\u679c\u5929\u6c14\u4e0d\u9519\u7cbe\u529b\u4e5f\u4e0d\u9519\uff0c\u5c31\u81ea\u5df1\u51fa\u53bb\u5403\u7f8e\u98df\uff0c\u5403\u5b8c\u518d\u4e70\u4e00\u4e9b\u7f8e\u98df\u5e26\u56de\u5bb6\uff0c\u518d\u4e70\u4e00\u676f\u5976\u8336\uff0c\u7136\u540e\u56de\u6765\u6253\u6e38\u620f\u3002",
+        "q5_one_word": "\u534a\u6b7b\u4e0d\u6d3b\u7684\u3002\u4f4e\u7cbe\u529b\u4eba\u4e0d\u60f3\u52a8\u5c31\u4e0d\u52a8\uff0c\u4f46\u5076\u5c14\u4e5f\u60f3\u52a8\u4e00\u4e0b\u3002\u611f\u89c9\u751f\u6d3b\u672c\u8d28\u5f88\u65e0\u8da3\uff0c\u5927\u591a\u6570\u65f6\u5019\u6ca1\u6709\u60f3\u505a\u7684\u4e8b\uff0c\u4f46\u5076\u5c14\u4e5f\u4f1a\u6709\u70b9\uff0c\u6240\u4ee5\u662f\u534a\u6b7b\u4e0d\u6d3b\u7684\u3002"
+      },
+      "views": {
+        "combined": {
+          "x": -1.0,
+          "y": -0.576524019241333,
+          "cluster": 1,
+          "text": "Q1 (safe place): \u5b83\u5728\u4e2d\u4e1c\u5730\u533a\uff0c\u50cf\u662f\u4e00\u5343\u96f6\u4e00\u591c\u91cc\u90a3\u79cd\u963f\u62c9\u4f2f\u5efa\u7b51\u3002\u508d\u665a\uff0c\u5929\u7a7a\u662f\u514b\u83b1\u56e0\u84dd\uff0c\u6ca1\u6709\u4e91\u6735\uff0c\u5efa\u7b51\u88ab\u6253\u4e0a\u6696\u9ec4\u7684\u5149\u3002\u4f1a\u6709\u5c11\u6570\u8f7b\u5fae\u7684\u4ea4\u8c08\u58f0\u548c\u98ce\u58f0\u3002\u53ef\u4ee5\u770b\u5230\u6709\u9ed1\u767d\u6591\u9a6c\u7eb9\u7684\u9a86\u9a7c\u88ab\u4eba\u7275\u7740\u8d70\u5411\u84dd\u8272\u7684\u6c99\u6f20\u91cc\u3002\nQ2 (stress): \u5199\u4e0d\u51fa\u6765\u6587\u732e\u7efc\u8ff0\uff0c\u4e0d\u60f3\u770b\u6587\u732e\uff0c\u53d1\u73b0AI\u7ed9\u6211\u5047\u6587\u732e\uff0c\u4f46\u662f\u7b97\u4e86\u4e00\u4e0b\u65e5\u5b50\u8981\u505a\u4e0d\u5b8c\u4f5c\u4e1a\u4e86\uff0c\u53c8\u4e0d\u60f3\u505a\uff0c\u89c9\u5f97\u81ea\u5df1\u6ca1\u6709\u79d1\u7814\u80fd\u529b\u3002\u5e94\u5bf9\uff1a\u5403\u597d\u5403\u7684\uff0c\u5403\u6ca1\u4e86\u5c31\u7761\u89c9\uff0c\u7761\u4e0d\u7740\u53c8\u8d77\u6765\u8c03\u6559\u4e86\u4e00\u6b21ai\uff0c\u7136\u540e\u544a\u8bc9\u81ea\u5df1\u5df2\u7ecf\u52aa\u529b\u4e86\uff0c\u7136\u540e\u73a9\u6e38\u620f\u6216\u8005\u73a9\u624b\u673a\uff0c\u56f0\u4e86\u7761\u89c9\u3002\nQ3 (understood): \u53d1\u670b\u53cb\u5708\u663e\u793a\u5728\u4f26\u6566\uff0c\u591a\u5e74\u4e0d\u8054\u7cfb\u7684\u9ad8\u4e2d\u73ed\u4e3b\u4efb\u79c1\u804a\u95ee\u6211\u662f\u53bb\u7559\u5b66\u4e86\u5417\uff0c\u8bf4\u5f88\u7fa1\u6155\u6211\uff0c\u5979\u8fd9\u8f88\u5b50\u4f30\u8ba1\u4e5f\u6ca1\u673a\u4f1a\u51fa\u56fd\uff0c\u8ba9\u6211\u6709\u7a7a\u62cd\u70b9\u7167\u7247\u7ed9\u5979\u770b\u3002\u8fd9\u8ba9\u6211\u611f\u89c9\u88ab\u5173\u6ce8\uff0c\u6211\u6709\u7a7a\u4f1a\u62cd\u7167\u7684\uff0c\u4f46\u662f\u6211\u53ea\u60f3\u53d1\u670b\u53cb\u5708\uff0c\u4e0d\u60f3\u548c\u5979\u79c1\u804a\uff0c\u4e0d\u662f\u4e0d\u559c\u6b22\u5979\uff0c\u662f\u89c9\u5f97\u597d\u9ebb\u70e6\uff0c\u8fd8\u8981\u548c\u522b\u4eba\u4ea4\u6d41\uff0c\u4e5f\u4e0d\u77e5\u9053\u4ea4\u6d41\u4ec0\u4e48\uff0c\u4e5f\u4e0d\u60f3\u4ea4\u6d41\uff0c\u4f46\u662f\u5979\u90fd\u8bf4\u4e86\u8fd8\u662f\u4f1a\u7ed9\u5979\u53d1\u7684\uff0c\u8fd9\u662f\u4e00\u79cd\u590d\u6742\u7684\u611f\u89c9\u3002\nQ4 (free day): \u770b\u7cbe\u529b\u5982\u4f55\u3002\u5982\u679c\u4e0d\u60f3\u52a8\u5c31\u5b85\u4e00\u5929\uff0c\u505a\u996d\u6216\u8005\u70b9\u5916\u5356\uff0c\u7136\u540e\u6253\u6e38\u620f\u6216\u8005\u73a9\u624b\u673a\u3002\u5982\u679c\u5929\u6c14\u4e0d\u9519\u7cbe\u529b\u4e5f\u4e0d\u9519\uff0c\u5c31\u81ea\u5df1\u51fa\u53bb\u5403\u7f8e\u98df\uff0c\u5403\u5b8c\u518d\u4e70\u4e00\u4e9b\u7f8e\u98df\u5e26\u56de\u5bb6\uff0c\u518d\u4e70\u4e00\u676f\u5976\u8336\uff0c\u7136\u540e\u56de\u6765\u6253\u6e38\u620f\u3002\nQ5 (one word): \u534a\u6b7b\u4e0d\u6d3b\u7684\u3002\u4f4e\u7cbe\u529b\u4eba\u4e0d\u60f3\u52a8\u5c31\u4e0d\u52a8\uff0c\u4f46\u5076\u5c14\u4e5f\u60f3\u52a8\u4e00\u4e0b\u3002\u611f\u89c9\u751f\u6d3b\u672c\u8d28\u5f88\u65e0\u8da3\uff0c\u5927\u591a\u6570\u65f6\u5019\u6ca1\u6709\u60f3\u505a\u7684\u4e8b\uff0c\u4f46\u5076\u5c14\u4e5f\u4f1a\u6709\u70b9\uff0c\u6240\u4ee5\u662f\u534a\u6b7b\u4e0d\u6d3b\u7684\u3002"
+        },
+        "q1_safe_place": {
+          "x": -0.9475734829902649,
+          "y": 0.29104697704315186,
+          "cluster": 0,
+          "text": "Q1 (safe place): \u5b83\u5728\u4e2d\u4e1c\u5730\u533a\uff0c\u50cf\u662f\u4e00\u5343\u96f6\u4e00\u591c\u91cc\u90a3\u79cd\u963f\u62c9\u4f2f\u5efa\u7b51\u3002\u508d\u665a\uff0c\u5929\u7a7a\u662f\u514b\u83b1\u56e0\u84dd\uff0c\u6ca1\u6709\u4e91\u6735\uff0c\u5efa\u7b51\u88ab\u6253\u4e0a\u6696\u9ec4\u7684\u5149\u3002\u4f1a\u6709\u5c11\u6570\u8f7b\u5fae\u7684\u4ea4\u8c08\u58f0\u548c\u98ce\u58f0\u3002\u53ef\u4ee5\u770b\u5230\u6709\u9ed1\u767d\u6591\u9a6c\u7eb9\u7684\u9a86\u9a7c\u88ab\u4eba\u7275\u7740\u8d70\u5411\u84dd\u8272\u7684\u6c99\u6f20\u91cc\u3002"
+        },
+        "q2_stress": {
+          "x": -0.9125678539276123,
+          "y": -0.6729950904846191,
+          "cluster": 0,
+          "text": "Q2 (stress): \u5199\u4e0d\u51fa\u6765\u6587\u732e\u7efc\u8ff0\uff0c\u4e0d\u60f3\u770b\u6587\u732e\uff0c\u53d1\u73b0AI\u7ed9\u6211\u5047\u6587\u732e\uff0c\u4f46\u662f\u7b97\u4e86\u4e00\u4e0b\u65e5\u5b50\u8981\u505a\u4e0d\u5b8c\u4f5c\u4e1a\u4e86\uff0c\u53c8\u4e0d\u60f3\u505a\uff0c\u89c9\u5f97\u81ea\u5df1\u6ca1\u6709\u79d1\u7814\u80fd\u529b\u3002\u5e94\u5bf9\uff1a\u5403\u597d\u5403\u7684\uff0c\u5403\u6ca1\u4e86\u5c31\u7761\u89c9\uff0c\u7761\u4e0d\u7740\u53c8\u8d77\u6765\u8c03\u6559\u4e86\u4e00\u6b21ai\uff0c\u7136\u540e\u544a\u8bc9\u81ea\u5df1\u5df2\u7ecf\u52aa\u529b\u4e86\uff0c\u7136\u540e\u73a9\u6e38\u620f\u6216\u8005\u73a9\u624b\u673a\uff0c\u56f0\u4e86\u7761\u89c9\u3002"
+        },
+        "q3_understood": {
+          "x": -0.17718464136123657,
+          "y": -1.0,
+          "cluster": 2,
+          "text": "Q3 (understood): \u53d1\u670b\u53cb\u5708\u663e\u793a\u5728\u4f26\u6566\uff0c\u591a\u5e74\u4e0d\u8054\u7cfb\u7684\u9ad8\u4e2d\u73ed\u4e3b\u4efb\u79c1\u804a\u95ee\u6211\u662f\u53bb\u7559\u5b66\u4e86\u5417\uff0c\u8bf4\u5f88\u7fa1\u6155\u6211\uff0c\u5979\u8fd9\u8f88\u5b50\u4f30\u8ba1\u4e5f\u6ca1\u673a\u4f1a\u51fa\u56fd\uff0c\u8ba9\u6211\u6709\u7a7a\u62cd\u70b9\u7167\u7247\u7ed9\u5979\u770b\u3002\u8fd9\u8ba9\u6211\u611f\u89c9\u88ab\u5173\u6ce8\uff0c\u6211\u6709\u7a7a\u4f1a\u62cd\u7167\u7684\uff0c\u4f46\u662f\u6211\u53ea\u60f3\u53d1\u670b\u53cb\u5708\uff0c\u4e0d\u60f3\u548c\u5979\u79c1\u804a\uff0c\u4e0d\u662f\u4e0d\u559c\u6b22\u5979\uff0c\u662f\u89c9\u5f97\u597d\u9ebb\u70e6\uff0c\u8fd8\u8981\u548c\u522b\u4eba\u4ea4\u6d41\uff0c\u4e5f\u4e0d\u77e5\u9053\u4ea4\u6d41\u4ec0\u4e48\uff0c\u4e5f\u4e0d\u60f3\u4ea4\u6d41\uff0c\u4f46\u662f\u5979\u90fd\u8bf4\u4e86\u8fd8\u662f\u4f1a\u7ed9\u5979\u53d1\u7684\uff0c\u8fd9\u662f\u4e00\u79cd\u590d\u6742\u7684\u611f\u89c9\u3002"
+        },
+        "q4_free_day": {
+          "x": 0.7446458339691162,
+          "y": -0.5851434469223022,
+          "cluster": 2,
+          "text": "Q4 (free day): \u770b\u7cbe\u529b\u5982\u4f55\u3002\u5982\u679c\u4e0d\u60f3\u52a8\u5c31\u5b85\u4e00\u5929\uff0c\u505a\u996d\u6216\u8005\u70b9\u5916\u5356\uff0c\u7136\u540e\u6253\u6e38\u620f\u6216\u8005\u73a9\u624b\u673a\u3002\u5982\u679c\u5929\u6c14\u4e0d\u9519\u7cbe\u529b\u4e5f\u4e0d\u9519\uff0c\u5c31\u81ea\u5df1\u51fa\u53bb\u5403\u7f8e\u98df\uff0c\u5403\u5b8c\u518d\u4e70\u4e00\u4e9b\u7f8e\u98df\u5e26\u56de\u5bb6\uff0c\u518d\u4e70\u4e00\u676f\u5976\u8336\uff0c\u7136\u540e\u56de\u6765\u6253\u6e38\u620f\u3002"
+        },
+        "q5_one_word": {
+          "x": 0.13075006008148193,
+          "y": 0.5381970405578613,
+          "cluster": 0,
+          "text": "Q5 (one word): \u534a\u6b7b\u4e0d\u6d3b\u7684\u3002\u4f4e\u7cbe\u529b\u4eba\u4e0d\u60f3\u52a8\u5c31\u4e0d\u52a8\uff0c\u4f46\u5076\u5c14\u4e5f\u60f3\u52a8\u4e00\u4e0b\u3002\u611f\u89c9\u751f\u6d3b\u672c\u8d28\u5f88\u65e0\u8da3\uff0c\u5927\u591a\u6570\u65f6\u5019\u6ca1\u6709\u60f3\u505a\u7684\u4e8b\uff0c\u4f46\u5076\u5c14\u4e5f\u4f1a\u6709\u70b9\uff0c\u6240\u4ee5\u662f\u534a\u6b7b\u4e0d\u6d3b\u7684\u3002"
+        }
+      }
+    },
+    {
+      "id": "p_005",
+      "nickname": "\u597d\u5947",
+      "responses": {
+        "q1_safe_place": "\u6211\u611f\u89c9\u611f\u5230\u5b89\u5168\u7684\u5730\u65b9\u662f\u4e00\u4e2a \u6696\u8272\u8c03\u7684\u5730\u65b9 \u8ba9\u4eba\u611f\u89c9\u5f88\u8212\u670d \u6709\u9633\u5149 \u6709\u7537\u670b\u53cb \u5149\u7ebf\u5f88\u67d4\u548c \u5f88\u5b89\u9759 \u8303\u56f4\u4e0d\u662f\u5f88\u5927\u4e0d\u662f\u5f88\u5c0f 100\u591a\u5e73\u5de6\u53f3",
+        "q2_stress": "\u6700\u8fd1\u538b\u529b\u5927\u5c31\u662f \u4e00\u5f00\u59cb\u542c\u4e0d\u61c2\u8001\u5e08\u8bb2\u8bdd \u6709\u70b9\u4e0d\u4e60\u60ef \u6211\u540e\u9762\u6162\u6162\u4e60\u60ef\u4e86\u8fd9\u4e2a\u8282\u594f \u6211\u5b89\u6170\u81ea\u5df1\u8bf4 \u505a\u5230\u5f88\u597d\u4e86",
+        "q3_understood": "\u6211\u6700\u8fd1\u611f\u89c9\u88ab\u5173\u5fc3\u662f \u6709\u4e00\u6b21\u8eab\u4f53\u4e0d\u8212\u670d \u820d\u53cb\u7ed9\u6211\u716e\u4e86\u70ed\u91aa\u7cdf\u8fd8\u7a9d\u4e86\u4e2a\u86cb \u70e7\u4e86\u70ed\u6c34 \u5f88\u611f\u52a8  \u611f\u89c9\u81ea\u5df1\u547d\u771f\u597d\u554a",
+        "q4_free_day": "\u6211\u60f3\u548c\u7537\u670b\u53cb\u4e00\u8d77 \u5728\u5bb6\u770b\u7535\u89c6 \u5403\u597d\u5403\u7684 \u6709\u4e00\u90e8\u5f88\u597d\u770b\u7684\u7535\u5f71 \u4e70\u4e86\u4e00\u4ef6\u5f88\u559c\u6b22\u7684\u8863\u670d",
+        "q5_one_word": "\u597d\u5947 \u60c5\u7eea\u5316 \u6297\u6253\u51fb\u80fd\u529b\u5f31 \u4f46\u662f\u5f88\u5e78\u8fd0 \u547d\u5f88\u597d \u9047\u5230\u5f88\u591a\u597d\u4eba"
+      },
+      "views": {
+        "combined": {
+          "x": -0.8822990655899048,
+          "y": -0.8135160803794861,
+          "cluster": 1,
+          "text": "Q1 (safe place): \u6211\u611f\u89c9\u611f\u5230\u5b89\u5168\u7684\u5730\u65b9\u662f\u4e00\u4e2a \u6696\u8272\u8c03\u7684\u5730\u65b9 \u8ba9\u4eba\u611f\u89c9\u5f88\u8212\u670d \u6709\u9633\u5149 \u6709\u7537\u670b\u53cb \u5149\u7ebf\u5f88\u67d4\u548c \u5f88\u5b89\u9759 \u8303\u56f4\u4e0d\u662f\u5f88\u5927\u4e0d\u662f\u5f88\u5c0f 100\u591a\u5e73\u5de6\u53f3\nQ2 (stress): \u6700\u8fd1\u538b\u529b\u5927\u5c31\u662f \u4e00\u5f00\u59cb\u542c\u4e0d\u61c2\u8001\u5e08\u8bb2\u8bdd \u6709\u70b9\u4e0d\u4e60\u60ef \u6211\u540e\u9762\u6162\u6162\u4e60\u60ef\u4e86\u8fd9\u4e2a\u8282\u594f \u6211\u5b89\u6170\u81ea\u5df1\u8bf4 \u505a\u5230\u5f88\u597d\u4e86\nQ3 (understood): \u6211\u6700\u8fd1\u611f\u89c9\u88ab\u5173\u5fc3\u662f \u6709\u4e00\u6b21\u8eab\u4f53\u4e0d\u8212\u670d \u820d\u53cb\u7ed9\u6211\u716e\u4e86\u70ed\u91aa\u7cdf\u8fd8\u7a9d\u4e86\u4e2a\u86cb \u70e7\u4e86\u70ed\u6c34 \u5f88\u611f\u52a8  \u611f\u89c9\u81ea\u5df1\u547d\u771f\u597d\u554a\nQ4 (free day): \u6211\u60f3\u548c\u7537\u670b\u53cb\u4e00\u8d77 \u5728\u5bb6\u770b\u7535\u89c6 \u5403\u597d\u5403\u7684 \u6709\u4e00\u90e8\u5f88\u597d\u770b\u7684\u7535\u5f71 \u4e70\u4e86\u4e00\u4ef6\u5f88\u559c\u6b22\u7684\u8863\u670d\nQ5 (one word): \u597d\u5947 \u60c5\u7eea\u5316 \u6297\u6253\u51fb\u80fd\u529b\u5f31 \u4f46\u662f\u5f88\u5e78\u8fd0 \u547d\u5f88\u597d \u9047\u5230\u5f88\u591a\u597d\u4eba"
+        },
+        "q1_safe_place": {
+          "x": -0.6135019063949585,
+          "y": 0.4653834104537964,
+          "cluster": 0,
+          "text": "Q1 (safe place): \u6211\u611f\u89c9\u611f\u5230\u5b89\u5168\u7684\u5730\u65b9\u662f\u4e00\u4e2a \u6696\u8272\u8c03\u7684\u5730\u65b9 \u8ba9\u4eba\u611f\u89c9\u5f88\u8212\u670d \u6709\u9633\u5149 \u6709\u7537\u670b\u53cb \u5149\u7ebf\u5f88\u67d4\u548c \u5f88\u5b89\u9759 \u8303\u56f4\u4e0d\u662f\u5f88\u5927\u4e0d\u662f\u5f88\u5c0f 100\u591a\u5e73\u5de6\u53f3"
+        },
+        "q2_stress": {
+          "x": -0.041100919246673584,
+          "y": -0.8584763407707214,
+          "cluster": 0,
+          "text": "Q2 (stress): \u6700\u8fd1\u538b\u529b\u5927\u5c31\u662f \u4e00\u5f00\u59cb\u542c\u4e0d\u61c2\u8001\u5e08\u8bb2\u8bdd \u6709\u70b9\u4e0d\u4e60\u60ef \u6211\u540e\u9762\u6162\u6162\u4e60\u60ef\u4e86\u8fd9\u4e2a\u8282\u594f \u6211\u5b89\u6170\u81ea\u5df1\u8bf4 \u505a\u5230\u5f88\u597d\u4e86"
+        },
+        "q3_understood": {
+          "x": -0.5312508344650269,
+          "y": -0.5673923492431641,
+          "cluster": 2,
+          "text": "Q3 (understood): \u6211\u6700\u8fd1\u611f\u89c9\u88ab\u5173\u5fc3\u662f \u6709\u4e00\u6b21\u8eab\u4f53\u4e0d\u8212\u670d \u820d\u53cb\u7ed9\u6211\u716e\u4e86\u70ed\u91aa\u7cdf\u8fd8\u7a9d\u4e86\u4e2a\u86cb \u70e7\u4e86\u70ed\u6c34 \u5f88\u611f\u52a8  \u611f\u89c9\u81ea\u5df1\u547d\u771f\u597d\u554a"
+        },
+        "q4_free_day": {
+          "x": 1.0,
+          "y": -0.3829972743988037,
+          "cluster": 2,
+          "text": "Q4 (free day): \u6211\u60f3\u548c\u7537\u670b\u53cb\u4e00\u8d77 \u5728\u5bb6\u770b\u7535\u89c6 \u5403\u597d\u5403\u7684 \u6709\u4e00\u90e8\u5f88\u597d\u770b\u7684\u7535\u5f71 \u4e70\u4e86\u4e00\u4ef6\u5f88\u559c\u6b22\u7684\u8863\u670d"
+        },
+        "q5_one_word": {
+          "x": 0.0202103853225708,
+          "y": 0.34265995025634766,
+          "cluster": 0,
+          "text": "Q5 (one word): \u597d\u5947 \u60c5\u7eea\u5316 \u6297\u6253\u51fb\u80fd\u529b\u5f31 \u4f46\u662f\u5f88\u5e78\u8fd0 \u547d\u5f88\u597d \u9047\u5230\u5f88\u591a\u597d\u4eba"
+        }
+      }
+    },
+    {
+      "id": "p_006",
+      "nickname": "resilient",
+      "responses": {
+        "q1_safe_place": "I feel safe where I imagine home to be. And 'home' probably doesn't mean home with family and others. Since living on my own and actually alone in an apartment for a few years, my sense of safety comes from knowing how close I am to home. Whenever I'm returning from work or coming back from a road trip, I pretty much have my guard up the entire time and I'm on high alert but the moment I enter within a kilometre radius of my home, I start easing up and taking things slow. Home is also where I can be comfortable and take things at my own pace. I don't have to put up facades or be a certain way to fit in. I can fit in any way I like and my home will accommodate me. Whether it be on the messy, lazy days or the neat and tidy, home takes care of who I am and preserves my identity to a large extent.",
+        "q2_stress": "The most recent moment of stress came from just not being able to manage everything that I had going on in the way I had liked to. There was obviously work, my relationships, my hobbies and taking care of myself with cooking, cleaning and personal hygiene. All of it together coming at you is big ball of chaos that I was not ready for. For a while, I thought I could duck some of them and stay still and hope that they would go away on their own. It could also just be me being paralysed by the amount of things that needed my attention. Eventually, I realised I can't run away or hide or stay still and have to deal with it on my own. I started at the smallest of tasks and worked my way up from there. Bit by bit, I felt good enough to start doing more things and then move on to bigger issues and things that needed my attention. I started with my own self and room to begin with. I threw my dirty clothes to laundry, I folded all the clothes that were done drying, I tidied up my room. Then I proceeded onto shower and trim and make myself look presentable. That in itself was a big boost to my self-esteem and helped me move on to my work and relationships.",
+        "q3_understood": "",
+        "q4_free_day": "It depends on what happened the previous day. If it was a very taxing day, then I'd want to spend the whole day in bed and be lazy. But if I had a good day and slept well, then I'd like to step out and go somewhere that I like going to often or someplace new. It's either for the feeling of comfort and safety from known places or feeling curious and sometimes adventurous to try or experience something new. I'm the kind of human who can spend a whole day at home or a whole day outdoors. I do both from time to time.",
+        "q5_one_word": "Resilient"
+      },
+      "views": {
+        "combined": {
+          "x": 0.2869529724121094,
+          "y": 1.0,
+          "cluster": 0,
+          "text": "Q1 (safe place): I feel safe where I imagine home to be. And 'home' probably doesn't mean home with family and others. Since living on my own and actually alone in an apartment for a few years, my sense of safety comes from knowing how close I am to home. Whenever I'm returning from work or coming back from a road trip, I pretty much have my guard up the entire time and I'm on high alert but the moment I enter within a kilometre radius of my home, I start easing up and taking things slow. Home is also where I ca...\nQ2 (stress): The most recent moment of stress came from just not being able to manage everything that I had going on in the way I had liked to. There was obviously work, my relationships, my hobbies and taking care of myself with cooking, cleaning and personal hygiene. All of it together coming at you is big ball of chaos that I was not ready for. For a while, I thought I could duck some of them and stay still and hope that they would go away on their own. It could also just be me being paralysed by the amou...\nQ4 (free day): It depends on what happened the previous day. If it was a very taxing day, then I'd want to spend the whole day in bed and be lazy. But if I had a good day and slept well, then I'd like to step out and go somewhere that I like going to often or someplace new. It's either for the feeling of comfort and safety from known places or feeling curious and sometimes adventurous to try or experience something new. I'm the kind of human who can spend a whole day at home or a whole day outdoors. I do both ...\nQ5 (one word): Resilient"
+        },
+        "q1_safe_place": {
+          "x": 0.2691187858581543,
+          "y": -0.9777637720108032,
+          "cluster": 3,
+          "text": "Q1 (safe place): I feel safe where I imagine home to be. And 'home' probably doesn't mean home with family and others. Since living on my own and actually alone in an apartment for a few years, my sense of safety comes from knowing how close I am to home. Whenever I'm returning from work or coming back from a road trip, I pretty much have my guard up the entire time and I'm on high alert but the moment I enter within a kilometre radius of my home, I start easing up and taking things slow. Home is also where I ca..."
+        },
+        "q2_stress": {
+          "x": -0.34674012660980225,
+          "y": 0.2819942235946655,
+          "cluster": 1,
+          "text": "Q2 (stress): The most recent moment of stress came from just not being able to manage everything that I had going on in the way I had liked to. There was obviously work, my relationships, my hobbies and taking care of myself with cooking, cleaning and personal hygiene. All of it together coming at you is big ball of chaos that I was not ready for. For a while, I thought I could duck some of them and stay still and hope that they would go away on their own. It could also just be me being paralysed by the amou..."
+        },
+        "q3_understood": {
+          "x": 1.0,
+          "y": 0.6047224998474121,
+          "cluster": 3,
+          "text": ""
+        },
+        "q4_free_day": {
+          "x": -0.794214129447937,
+          "y": -0.07681483030319214,
+          "cluster": 1,
+          "text": "Q4 (free day): It depends on what happened the previous day. If it was a very taxing day, then I'd want to spend the whole day in bed and be lazy. But if I had a good day and slept well, then I'd like to step out and go somewhere that I like going to often or someplace new. It's either for the feeling of comfort and safety from known places or feeling curious and sometimes adventurous to try or experience something new. I'm the kind of human who can spend a whole day at home or a whole day outdoors. I do both ..."
+        },
+        "q5_one_word": {
+          "x": 0.22018706798553467,
+          "y": -0.5103539228439331,
+          "cluster": 2,
+          "text": "Q5 (one word): Resilient"
+        }
+      }
+    },
+    {
+      "id": "p_007",
+      "nickname": "focused",
+      "responses": {
+        "q1_safe_place": "I like water. I imagine I am floating in water and it holds my weight. When I am inside the water, the sounds are muffled together. It is just a big body of water that I am in.",
+        "q2_stress": "I actually feel burnt out pretty much every day, I just need to take time off doing things. I love going to sauna, it helps me feel less stressed. And I am just thinking about taking time off and going on some nice holiday. Also limiting social media, for example instagram, helps a lot as well.",
+        "q3_understood": "I generally think that people care about me a lot. And this makes me happy every day and that is why I have energy to do things.",
+        "q4_free_day": "I would go on a hike to mountains and see the snow. I would bring some friends around and just hike up and down.",
+        "q5_one_word": "Focused - I like to follow ideas I have in my head and implement them in real world.."
+      },
+      "views": {
+        "combined": {
+          "x": 0.9627652168273926,
+          "y": 0.3714597225189209,
+          "cluster": 0,
+          "text": "Q1 (safe place): I like water. I imagine I am floating in water and it holds my weight. When I am inside the water, the sounds are muffled together. It is just a big body of water that I am in.\nQ2 (stress): I actually feel burnt out pretty much every day, I just need to take time off doing things. I love going to sauna, it helps me feel less stressed. And I am just thinking about taking time off and going on some nice holiday. Also limiting social media, for example instagram, helps a lot as well.\nQ3 (understood): I generally think that people care about me a lot. And this makes me happy every day and that is why I have energy to do things.\nQ4 (free day): I would go on a hike to mountains and see the snow. I would bring some friends around and just hike up and down.\nQ5 (one word): Focused - I like to follow ideas I have in my head and implement them in real world.."
+        },
+        "q1_safe_place": {
+          "x": 0.809492826461792,
+          "y": 0.35036373138427734,
+          "cluster": 4,
+          "text": "Q1 (safe place): I like water. I imagine I am floating in water and it holds my weight. When I am inside the water, the sounds are muffled together. It is just a big body of water that I am in."
+        },
+        "q2_stress": {
+          "x": -0.7997333407402039,
+          "y": 0.7401145696640015,
+          "cluster": 1,
+          "text": "Q2 (stress): I actually feel burnt out pretty much every day, I just need to take time off doing things. I love going to sauna, it helps me feel less stressed. And I am just thinking about taking time off and going on some nice holiday. Also limiting social media, for example instagram, helps a lot as well."
+        },
+        "q3_understood": {
+          "x": -0.4429551959037781,
+          "y": 0.5899471044540405,
+          "cluster": 0,
+          "text": "Q3 (understood): I generally think that people care about me a lot. And this makes me happy every day and that is why I have energy to do things."
+        },
+        "q4_free_day": {
+          "x": -0.13805776834487915,
+          "y": 1.0,
+          "cluster": 3,
+          "text": "Q4 (free day): I would go on a hike to mountains and see the snow. I would bring some friends around and just hike up and down."
+        },
+        "q5_one_word": {
+          "x": -0.28196048736572266,
+          "y": -1.0,
+          "cluster": 1,
+          "text": "Q5 (one word): Focused - I like to follow ideas I have in my head and implement them in real world.."
+        }
+      }
+    },
+    {
+      "id": "p_008",
+      "nickname": "observe",
+      "responses": {
+        "q1_safe_place": "A room or library, very quiet and alone. I feel safe mostly by myself",
+        "q2_stress": "Frequently questioning whether human needs dreams. And how people deal with their dreams.",
+        "q3_understood": "\u6211\u8ddf\u6211\u4f34\u4fa3\u5728\u56db\u6708\u4efd\u7684\u65f6\u5019\u7ed9\u5bf9\u65b9\u5199\u4e86\u4e00\u5c01\u4fe1\uff0c\u5728\u7eaa\u5ff5\u65e5\u8fd9\u4e00\u5929\u6253\u5f00\uff0c\u91cc\u9762\u6709\u4e00\u53e5\u4ed6\u7ed9\u6211\u5199\u7684\u8bdd\u6211\u6070\u597d\u6709\u4e00\u5929\u5bf9\u4ed6\u8bf4\u8fc7",
+        "q4_free_day": "I want to draw or paint something. And spend the entire day all by myself",
+        "q5_one_word": "Observe"
+      },
+      "views": {
+        "combined": {
+          "x": 0.09751653671264648,
+          "y": -0.6976354122161865,
+          "cluster": 3,
+          "text": "Q1 (safe place): A room or library, very quiet and alone. I feel safe mostly by myself\nQ2 (stress): Frequently questioning whether human needs dreams. And how people deal with their dreams.\nQ3 (understood): \u6211\u8ddf\u6211\u4f34\u4fa3\u5728\u56db\u6708\u4efd\u7684\u65f6\u5019\u7ed9\u5bf9\u65b9\u5199\u4e86\u4e00\u5c01\u4fe1\uff0c\u5728\u7eaa\u5ff5\u65e5\u8fd9\u4e00\u5929\u6253\u5f00\uff0c\u91cc\u9762\u6709\u4e00\u53e5\u4ed6\u7ed9\u6211\u5199\u7684\u8bdd\u6211\u6070\u597d\u6709\u4e00\u5929\u5bf9\u4ed6\u8bf4\u8fc7\nQ4 (free day): I want to draw or paint something. And spend the entire day all by myself\nQ5 (one word): Observe"
+        },
+        "q1_safe_place": {
+          "x": 0.5078513622283936,
+          "y": -0.6062297821044922,
+          "cluster": 2,
+          "text": "Q1 (safe place): A room or library, very quiet and alone. I feel safe mostly by myself"
+        },
+        "q2_stress": {
+          "x": 0.2335801124572754,
+          "y": 0.4641587734222412,
+          "cluster": 3,
+          "text": "Q2 (stress): Frequently questioning whether human needs dreams. And how people deal with their dreams."
+        },
+        "q3_understood": {
+          "x": -0.6346555948257446,
+          "y": -0.9659334421157837,
+          "cluster": 2,
+          "text": "Q3 (understood): \u6211\u8ddf\u6211\u4f34\u4fa3\u5728\u56db\u6708\u4efd\u7684\u65f6\u5019\u7ed9\u5bf9\u65b9\u5199\u4e86\u4e00\u5c01\u4fe1\uff0c\u5728\u7eaa\u5ff5\u65e5\u8fd9\u4e00\u5929\u6253\u5f00\uff0c\u91cc\u9762\u6709\u4e00\u53e5\u4ed6\u7ed9\u6211\u5199\u7684\u8bdd\u6211\u6070\u597d\u6709\u4e00\u5929\u5bf9\u4ed6\u8bf4\u8fc7"
+        },
+        "q4_free_day": {
+          "x": -0.19079726934432983,
+          "y": -0.8355876207351685,
+          "cluster": 0,
+          "text": "Q4 (free day): I want to draw or paint something. And spend the entire day all by myself"
+        },
+        "q5_one_word": {
+          "x": -1.0,
+          "y": -0.020163238048553467,
+          "cluster": 1,
+          "text": "Q5 (one word): Observe"
+        }
+      }
+    },
+    {
+      "id": "p_009",
+      "nickname": "optimistic",
+      "responses": {
+        "q1_safe_place": "Home. like together with my family with mygirlfriend, she cooks for me and we enjoy the movie together, we talk about our future happily and we spend time together. because I feel very warm and like the atmosphere surrounded by love and caring.",
+        "q2_stress": "The work has made me very stress. it was past week that I have been working on a software project for a month but still keeps getting code review and people still do not approve my work, And then later on my tech team lead also says I am being slow in work, I really feel stressful because i need time to learn that\u2019s why i take long time and I also want my work to be perfect. At that time, the only way I tried to feel better is being together with my girlfriend and also forget about work and just do what i truly love for the moment.",
+        "q3_understood": "I feel very happy and understood for when I do something that people know that my intention is to helping them at that moment i think i feel Lucky they know me and my personality.",
+        "q4_free_day": "I will spend the whole time to do things I like. I can focus on a specific task , mostly self-assigned that i think it is very interesting, for example i like coding and programming so i may just sit in front of computer to build a entire software using the day and also i like learn new knowledge, i would probably watch YouTube lectures and take notes to enhance my skills and broaden my knowledge.",
+        "q5_one_word": "Optimistic. i am an optimistic person if not I am at least during the hard times i still can see some light and think the better way even if it is dreaming or speaking about far future i still feel optimistic like nothing can hold me forever."
+      },
+      "views": {
+        "combined": {
+          "x": 0.8197680711746216,
+          "y": 0.8043992519378662,
+          "cluster": 0,
+          "text": "Q1 (safe place): Home. like together with my family with mygirlfriend, she cooks for me and we enjoy the movie together, we talk about our future happily and we spend time together. because I feel very warm and like the atmosphere surrounded by love and caring.\nQ2 (stress): The work has made me very stress. it was past week that I have been working on a software project for a month but still keeps getting code review and people still do not approve my work, And then later on my tech team lead also says I am being slow in work, I really feel stressful because i need time to learn that\u2019s why i take long time and I also want my work to be perfect. At that time, the only way I tried to feel better is being together with my girlfriend and also forget about work and just...\nQ3 (understood): I feel very happy and understood for when I do something that people know that my intention is to helping them at that moment i think i feel Lucky they know me and my personality.\nQ4 (free day): I will spend the whole time to do things I like. I can focus on a specific task , mostly self-assigned that i think it is very interesting, for example i like coding and programming so i may just sit in front of computer to build a entire software using the day and also i like learn new knowledge, i would probably watch YouTube lectures and take notes to enhance my skills and broaden my knowledge.\nQ5 (one word): Optimistic. i am an optimistic person if not I am at least during the hard times i still can see some light and think the better way even if it is dreaming or speaking about far future i still feel optimistic like nothing can hold me forever."
+        },
+        "q1_safe_place": {
+          "x": -0.17067569494247437,
+          "y": 0.1297820806503296,
+          "cluster": 2,
+          "text": "Q1 (safe place): Home. like together with my family with mygirlfriend, she cooks for me and we enjoy the movie together, we talk about our future happily and we spend time together. because I feel very warm and like the atmosphere surrounded by love and caring."
+        },
+        "q2_stress": {
+          "x": -1.0,
+          "y": 0.2759963274002075,
+          "cluster": 1,
+          "text": "Q2 (stress): The work has made me very stress. it was past week that I have been working on a software project for a month but still keeps getting code review and people still do not approve my work, And then later on my tech team lead also says I am being slow in work, I really feel stressful because i need time to learn that\u2019s why i take long time and I also want my work to be perfect. At that time, the only way I tried to feel better is being together with my girlfriend and also forget about work and just..."
+        },
+        "q3_understood": {
+          "x": -0.4899613857269287,
+          "y": 0.2413623332977295,
+          "cluster": 0,
+          "text": "Q3 (understood): I feel very happy and understood for when I do something that people know that my intention is to helping them at that moment i think i feel Lucky they know me and my personality."
+        },
+        "q4_free_day": {
+          "x": -0.5273820161819458,
+          "y": -0.34745997190475464,
+          "cluster": 1,
+          "text": "Q4 (free day): I will spend the whole time to do things I like. I can focus on a specific task , mostly self-assigned that i think it is very interesting, for example i like coding and programming so i may just sit in front of computer to build a entire software using the day and also i like learn new knowledge, i would probably watch YouTube lectures and take notes to enhance my skills and broaden my knowledge."
+        },
+        "q5_one_word": {
+          "x": 0.19375824928283691,
+          "y": -0.17261546850204468,
+          "cluster": 4,
+          "text": "Q5 (one word): Optimistic. i am an optimistic person if not I am at least during the hard times i still can see some light and think the better way even if it is dreaming or speaking about far future i still feel optimistic like nothing can hold me forever."
+        }
+      }
+    },
+    {
+      "id": "p_010",
+      "nickname": "adaptable",
+      "responses": {
+        "q1_safe_place": "I feel safest on a long-distance night bus, when everyone is asleep and the road lights flicker by. I put on headphones, listen to Icelandic post-rock, and it feels like the whole world pauses for me.",
+        "q2_stress": "I recently had to finish two deadlines on the same day, and I felt my chest tighten from panic. I coped by breaking everything into tiny steps and taking a long shower afterward.",
+        "q3_understood": "A friend sent me a message out of nowhere saying, \u201cJust checking if you\u2019re okay.\u201d I didn\u2019t realize how much I needed that until then.",
+        "q4_free_day": "I\u2019d sleep in, then spend the afternoon reading in a sunlit park, and end the day with a simple homemade dinner.",
+        "q5_one_word": "Adaptable \u2013 I adjust quickly to new environments, even if they overwhelm me at first."
+      },
+      "views": {
+        "combined": {
+          "x": 0.5080820322036743,
+          "y": 0.22996914386749268,
+          "cluster": 3,
+          "text": "Q1 (safe place): I feel safest on a long-distance night bus, when everyone is asleep and the road lights flicker by. I put on headphones, listen to Icelandic post-rock, and it feels like the whole world pauses for me.\nQ2 (stress): I recently had to finish two deadlines on the same day, and I felt my chest tighten from panic. I coped by breaking everything into tiny steps and taking a long shower afterward.\nQ3 (understood): A friend sent me a message out of nowhere saying, \u201cJust checking if you\u2019re okay.\u201d I didn\u2019t realize how much I needed that until then.\nQ4 (free day): I\u2019d sleep in, then spend the afternoon reading in a sunlit park, and end the day with a simple homemade dinner.\nQ5 (one word): Adaptable \u2013 I adjust quickly to new environments, even if they overwhelm me at first."
+        },
+        "q1_safe_place": {
+          "x": -0.12785083055496216,
+          "y": -1.0,
+          "cluster": 3,
+          "text": "Q1 (safe place): I feel safest on a long-distance night bus, when everyone is asleep and the road lights flicker by. I put on headphones, listen to Icelandic post-rock, and it feels like the whole world pauses for me."
+        },
+        "q2_stress": {
+          "x": -0.35819917917251587,
+          "y": 0.6628537178039551,
+          "cluster": 1,
+          "text": "Q2 (stress): I recently had to finish two deadlines on the same day, and I felt my chest tighten from panic. I coped by breaking everything into tiny steps and taking a long shower afterward."
+        },
+        "q3_understood": {
+          "x": -0.007484853267669678,
+          "y": 0.10802435874938965,
+          "cluster": 4,
+          "text": "Q3 (understood): A friend sent me a message out of nowhere saying, \u201cJust checking if you\u2019re okay.\u201d I didn\u2019t realize how much I needed that until then."
+        },
+        "q4_free_day": {
+          "x": -0.23240059614181519,
+          "y": 0.6014680862426758,
+          "cluster": 3,
+          "text": "Q4 (free day): I\u2019d sleep in, then spend the afternoon reading in a sunlit park, and end the day with a simple homemade dinner."
+        },
+        "q5_one_word": {
+          "x": -0.7262507677078247,
+          "y": -0.7579341530799866,
+          "cluster": 1,
+          "text": "Q5 (one word): Adaptable \u2013 I adjust quickly to new environments, even if they overwhelm me at first."
+        }
+      }
+    },
+    {
+      "id": "p_011",
+      "nickname": "reflective",
+      "responses": {
+        "q1_safe_place": "A dimly lit caf\u00e9 where soft jazz plays. I sit alone with a warm drink, surrounded by murmured conversations that comfort me without pulling me in.",
+        "q2_stress": "I miscommunicated with a colleague and caused unnecessary rework. I felt embarrassed and stressed, but I apologized and focused on fixing it piece by piece.",
+        "q3_understood": "Someone remembered my favorite snack and brought it to me during a long day. It was such a small gesture but made me feel seen.",
+        "q4_free_day": "I\u2019d take a short train trip to a nearby town, try local food, wander aimlessly, and come back by evening.",
+        "q5_one_word": "Reflective"
+      },
+      "views": {
+        "combined": {
+          "x": 0.4240715503692627,
+          "y": -0.25141245126724243,
+          "cluster": 3,
+          "text": "Q1 (safe place): A dimly lit caf\u00e9 where soft jazz plays. I sit alone with a warm drink, surrounded by murmured conversations that comfort me without pulling me in.\nQ2 (stress): I miscommunicated with a colleague and caused unnecessary rework. I felt embarrassed and stressed, but I apologized and focused on fixing it piece by piece.\nQ3 (understood): Someone remembered my favorite snack and brought it to me during a long day. It was such a small gesture but made me feel seen.\nQ4 (free day): I\u2019d take a short train trip to a nearby town, try local food, wander aimlessly, and come back by evening.\nQ5 (one word): Reflective"
+        },
+        "q1_safe_place": {
+          "x": -0.3569420576095581,
+          "y": -0.35543930530548096,
+          "cluster": 2,
+          "text": "Q1 (safe place): A dimly lit caf\u00e9 where soft jazz plays. I sit alone with a warm drink, surrounded by murmured conversations that comfort me without pulling me in."
+        },
+        "q2_stress": {
+          "x": 1.0,
+          "y": -0.05995464324951172,
+          "cluster": 4,
+          "text": "Q2 (stress): I miscommunicated with a colleague and caused unnecessary rework. I felt embarrassed and stressed, but I apologized and focused on fixing it piece by piece."
+        },
+        "q3_understood": {
+          "x": 0.43035972118377686,
+          "y": 0.7845554351806641,
+          "cluster": 4,
+          "text": "Q3 (understood): Someone remembered my favorite snack and brought it to me during a long day. It was such a small gesture but made me feel seen."
+        },
+        "q4_free_day": {
+          "x": 0.012591361999511719,
+          "y": 0.22954630851745605,
+          "cluster": 3,
+          "text": "Q4 (free day): I\u2019d take a short train trip to a nearby town, try local food, wander aimlessly, and come back by evening."
+        },
+        "q5_one_word": {
+          "x": -0.38026612997055054,
+          "y": -0.1707766056060791,
+          "cluster": 2,
+          "text": "Q5 (one word): Reflective"
+        }
+      }
+    },
+    {
+      "id": "p_012",
+      "nickname": "persistent",
+      "responses": {
+        "q1_safe_place": "A mountain cabin in winter. There's snow outside, a fireplace inside, and thick blankets. The silence feels protective.",
+        "q2_stress": "I had a sudden financial worry last week. I couldn't sleep, so I made a detailed budget plan at 3 a.m., which gave me a sense of control again.",
+        "q3_understood": "I was talking about something emotional, and instead of giving advice, my friend simply said, \u201cI hear you.\u201d That felt incredibly validating.",
+        "q4_free_day": "I\u2019d go to an art museum alone, listening to an audio guide, letting myself get lost in paintings.",
+        "q5_one_word": "Persistent"
+      },
+      "views": {
+        "combined": {
+          "x": 1.0,
+          "y": -0.4427998661994934,
+          "cluster": 3,
+          "text": "Q1 (safe place): A mountain cabin in winter. There's snow outside, a fireplace inside, and thick blankets. The silence feels protective.\nQ2 (stress): I had a sudden financial worry last week. I couldn't sleep, so I made a detailed budget plan at 3 a.m., which gave me a sense of control again.\nQ3 (understood): I was talking about something emotional, and instead of giving advice, my friend simply said, \u201cI hear you.\u201d That felt incredibly validating.\nQ4 (free day): I\u2019d go to an art museum alone, listening to an audio guide, letting myself get lost in paintings.\nQ5 (one word): Persistent"
+        },
+        "q1_safe_place": {
+          "x": 0.20760738849639893,
+          "y": 0.47000181674957275,
+          "cluster": 2,
+          "text": "Q1 (safe place): A mountain cabin in winter. There's snow outside, a fireplace inside, and thick blankets. The silence feels protective."
+        },
+        "q2_stress": {
+          "x": 0.14667940139770508,
+          "y": 1.0,
+          "cluster": 1,
+          "text": "Q2 (stress): I had a sudden financial worry last week. I couldn't sleep, so I made a detailed budget plan at 3 a.m., which gave me a sense of control again."
+        },
+        "q3_understood": {
+          "x": -0.33196961879730225,
+          "y": -0.13032346963882446,
+          "cluster": 4,
+          "text": "Q3 (understood): I was talking about something emotional, and instead of giving advice, my friend simply said, \u201cI hear you.\u201d That felt incredibly validating."
+        },
+        "q4_free_day": {
+          "x": -0.5560917854309082,
+          "y": -1.0,
+          "cluster": 0,
+          "text": "Q4 (free day): I\u2019d go to an art museum alone, listening to an audio guide, letting myself get lost in paintings."
+        },
+        "q5_one_word": {
+          "x": -0.7901209592819214,
+          "y": 0.42852282524108887,
+          "cluster": 2,
+          "text": "Q5 (one word): Persistent"
+        }
+      }
+    },
+    {
+      "id": "p_013",
+      "nickname": "observant",
+      "responses": {
+        "q1_safe_place": "My safe place is the corner of a library where sunlight pools on the floor. I sit cross-legged with a stack of books and forget time.",
+        "q2_stress": "A friend canceled plans last minute, and I spiraled into overthinking. I calmed myself by journaling everything I felt, then reading it back more rationally.",
+        "q3_understood": "During a stressful week, my roommate quietly washed the dishes for me without saying anything. I felt deeply cared for.",
+        "q4_free_day": "I\u2019d stay home, bake something sweet, and watch a documentary I\u2019ve been saving for weeks.",
+        "q5_one_word": "Observant"
+      },
+      "views": {
+        "combined": {
+          "x": 0.9063700437545776,
+          "y": -0.13654488325119019,
+          "cluster": 3,
+          "text": "Q1 (safe place): My safe place is the corner of a library where sunlight pools on the floor. I sit cross-legged with a stack of books and forget time.\nQ2 (stress): A friend canceled plans last minute, and I spiraled into overthinking. I calmed myself by journaling everything I felt, then reading it back more rationally.\nQ3 (understood): During a stressful week, my roommate quietly washed the dishes for me without saying anything. I felt deeply cared for.\nQ4 (free day): I\u2019d stay home, bake something sweet, and watch a documentary I\u2019ve been saving for weeks.\nQ5 (one word): Observant"
+        },
+        "q1_safe_place": {
+          "x": 0.3151273727416992,
+          "y": 0.026160001754760742,
+          "cluster": 2,
+          "text": "Q1 (safe place): My safe place is the corner of a library where sunlight pools on the floor. I sit cross-legged with a stack of books and forget time."
+        },
+        "q2_stress": {
+          "x": 0.5666728019714355,
+          "y": 0.22587323188781738,
+          "cluster": 4,
+          "text": "Q2 (stress): A friend canceled plans last minute, and I spiraled into overthinking. I calmed myself by journaling everything I felt, then reading it back more rationally."
+        },
+        "q3_understood": {
+          "x": 0.1279137134552002,
+          "y": 0.6236640214920044,
+          "cluster": 0,
+          "text": "Q3 (understood): During a stressful week, my roommate quietly washed the dishes for me without saying anything. I felt deeply cared for."
+        },
+        "q4_free_day": {
+          "x": -0.8801047801971436,
+          "y": 0.6156967878341675,
+          "cluster": 3,
+          "text": "Q4 (free day): I\u2019d stay home, bake something sweet, and watch a documentary I\u2019ve been saving for weeks."
+        },
+        "q5_one_word": {
+          "x": -0.9303975105285645,
+          "y": -0.38893580436706543,
+          "cluster": 1,
+          "text": "Q5 (one word): Observant"
+        }
+      }
+    },
+    {
+      "id": "p_014",
+      "nickname": "soft",
+      "responses": {
+        "q1_safe_place": "A late-night kitchen with only the stove light on. I make tea slowly, and the quiet hum of the fridge makes the room feel alive but gentle.",
+        "q2_stress": "I got overwhelmed by household chores piling up. I played upbeat music and cleaned just one surface first. That momentum helped me regain clarity.",
+        "q3_understood": "A coworker noticed I looked overwhelmed during a meeting and subtly took over part of the presentation. It made me feel supported.",
+        "q4_free_day": "I\u2019d go swimming early in the morning, then spend the rest of the day doing nothing but listening to music.",
+        "q5_one_word": "Soft-spoken"
+      },
+      "views": {
+        "combined": {
+          "x": -0.025825321674346924,
+          "y": -0.11806505918502808,
+          "cluster": 3,
+          "text": "Q1 (safe place): A late-night kitchen with only the stove light on. I make tea slowly, and the quiet hum of the fridge makes the room feel alive but gentle.\nQ2 (stress): I got overwhelmed by household chores piling up. I played upbeat music and cleaned just one surface first. That momentum helped me regain clarity.\nQ3 (understood): A coworker noticed I looked overwhelmed during a meeting and subtly took over part of the presentation. It made me feel supported.\nQ4 (free day): I\u2019d go swimming early in the morning, then spend the rest of the day doing nothing but listening to music.\nQ5 (one word): Soft-spoken"
+        },
+        "q1_safe_place": {
+          "x": 0.5991264581680298,
+          "y": 1.0,
+          "cluster": 1,
+          "text": "Q1 (safe place): A late-night kitchen with only the stove light on. I make tea slowly, and the quiet hum of the fridge makes the room feel alive but gentle."
+        },
+        "q2_stress": {
+          "x": 0.7597097158432007,
+          "y": 0.8848392963409424,
+          "cluster": 4,
+          "text": "Q2 (stress): I got overwhelmed by household chores piling up. I played upbeat music and cleaned just one surface first. That momentum helped me regain clarity."
+        },
+        "q3_understood": {
+          "x": 0.809190034866333,
+          "y": 1.0,
+          "cluster": 4,
+          "text": "Q3 (understood): A coworker noticed I looked overwhelmed during a meeting and subtly took over part of the presentation. It made me feel supported."
+        },
+        "q4_free_day": {
+          "x": -1.0,
+          "y": -0.46566641330718994,
+          "cluster": 3,
+          "text": "Q4 (free day): I\u2019d go swimming early in the morning, then spend the rest of the day doing nothing but listening to music."
+        },
+        "q5_one_word": {
+          "x": 1.0,
+          "y": 0.6272597312927246,
+          "cluster": 3,
+          "text": "Q5 (one word): Soft-spoken"
+        }
+      }
+    },
+    {
+      "id": "p_015",
+      "nickname": "ambivalent",
+      "responses": {
+        "q1_safe_place": "A warm bath with eucalyptus steam. The echo of water against the tub makes me feel cocooned.",
+        "q2_stress": "A project update went poorly and I started doubting my competence. I took a walk outside and reminded myself that one mistake does not define a pattern.",
+        "q3_understood": "I was worried about a decision, and someone told me, \u201cWhatever you choose, I\u2019ll back you.\u201d That sense of unconditional support stayed with me.",
+        "q4_free_day": "I\u2019d dedicate the day to a personal project\u2014coding, drawing, or learning something new\u2014without pressure or deadlines.",
+        "q5_one_word": "Ambivalent"
+      },
+      "views": {
+        "combined": {
+          "x": 0.6130876541137695,
+          "y": -0.6362156271934509,
+          "cluster": 3,
+          "text": "Q1 (safe place): A warm bath with eucalyptus steam. The echo of water against the tub makes me feel cocooned.\nQ2 (stress): A project update went poorly and I started doubting my competence. I took a walk outside and reminded myself that one mistake does not define a pattern.\nQ3 (understood): I was worried about a decision, and someone told me, \u201cWhatever you choose, I\u2019ll back you.\u201d That sense of unconditional support stayed with me.\nQ4 (free day): I\u2019d dedicate the day to a personal project\u2014coding, drawing, or learning something new\u2014without pressure or deadlines.\nQ5 (one word): Ambivalent"
+        },
+        "q1_safe_place": {
+          "x": 1.0,
+          "y": 0.7479500770568848,
+          "cluster": 4,
+          "text": "Q1 (safe place): A warm bath with eucalyptus steam. The echo of water against the tub makes me feel cocooned."
+        },
+        "q2_stress": {
+          "x": 0.6565417051315308,
+          "y": -0.30868101119995117,
+          "cluster": 4,
+          "text": "Q2 (stress): A project update went poorly and I started doubting my competence. I took a walk outside and reminded myself that one mistake does not define a pattern."
+        },
+        "q3_understood": {
+          "x": 0.25856125354766846,
+          "y": -0.25190603733062744,
+          "cluster": 1,
+          "text": "Q3 (understood): I was worried about a decision, and someone told me, \u201cWhatever you choose, I\u2019ll back you.\u201d That sense of unconditional support stayed with me."
+        },
+        "q4_free_day": {
+          "x": -0.021792709827423096,
+          "y": -0.4824994206428528,
+          "cluster": 0,
+          "text": "Q4 (free day): I\u2019d dedicate the day to a personal project\u2014coding, drawing, or learning something new\u2014without pressure or deadlines."
+        },
+        "q5_one_word": {
+          "x": 0.7078685760498047,
+          "y": -0.13892948627471924,
+          "cluster": 2,
+          "text": "Q5 (one word): Ambivalent"
+        }
+      }
+    },
+    {
+      "id": "p_016",
+      "nickname": "\u6e38\u79fb",
+      "responses": {
+        "q1_safe_place": "\u6211\u6700\u5b89\u5168\u7684\u5730\u65b9\u662f\u9ec4\u660f\u7684\u9633\u53f0\uff0cthe sky turns orange\uff0c\u7136\u540e\u6211\u542c\u4e00\u70b9\u8f7b\u97f3\u4e50\uff0c\u98ce\u5439\u8fc7\u6765\u5c31\u89c9\u5f97 everything slows down.",
+        "q2_stress": "\u6700\u8fd1\u538b\u529b\u6700\u5927\u7684\u65f6\u5019\u662f\u6211\u7a81\u7136\u6536\u5230\u4e00\u5c01\u91cd\u8981\u90ae\u4ef6\uff0c\u5fc3\u91cc\u4e00\u7d27\uff0cI froze for a moment\uff0c\u7136\u540e\u903c\u81ea\u5df1 calm down \u518d\u6162\u6162\u5904\u7406\u3002",
+        "q3_understood": "\u90a3\u5929\u6211\u5f88\u4e27\uff0c\u4f46\u670b\u53cb\u6ca1\u6709\u529d\u6211\u4ec0\u4e48 just sat with me\uff0c\u7136\u540e\u8ddf\u6211\u8bf4 \u201cI\u2019m here.\u201d \u90a3\u53e5\u8bdd\u8ba9\u6211\u77ac\u95f4 calm \u4e0b\u6765\u3002",
+        "q4_free_day": "\u6211\u4f1a\u548c\u670b\u53cb\u53bb\u5403 brunch\uff0c\u7136\u540e\u968f\u4fbf\u6563\u6b65\uff0ctalk about random silly things\uff0c\u665a\u4e0a\u56de\u5bb6\u8ffd\u5267\u3002",
+        "q5_one_word": "\u6e38\u79fb / Drifting"
+      },
+      "views": {
+        "combined": {
+          "x": -0.3536008596420288,
+          "y": -0.6666501760482788,
+          "cluster": 1,
+          "text": "Q1 (safe place): \u6211\u6700\u5b89\u5168\u7684\u5730\u65b9\u662f\u9ec4\u660f\u7684\u9633\u53f0\uff0cthe sky turns orange\uff0c\u7136\u540e\u6211\u542c\u4e00\u70b9\u8f7b\u97f3\u4e50\uff0c\u98ce\u5439\u8fc7\u6765\u5c31\u89c9\u5f97 everything slows down.\nQ2 (stress): \u6700\u8fd1\u538b\u529b\u6700\u5927\u7684\u65f6\u5019\u662f\u6211\u7a81\u7136\u6536\u5230\u4e00\u5c01\u91cd\u8981\u90ae\u4ef6\uff0c\u5fc3\u91cc\u4e00\u7d27\uff0cI froze for a moment\uff0c\u7136\u540e\u903c\u81ea\u5df1 calm down \u518d\u6162\u6162\u5904\u7406\u3002\nQ3 (understood): \u90a3\u5929\u6211\u5f88\u4e27\uff0c\u4f46\u670b\u53cb\u6ca1\u6709\u529d\u6211\u4ec0\u4e48 just sat with me\uff0c\u7136\u540e\u8ddf\u6211\u8bf4 \u201cI\u2019m here.\u201d \u90a3\u53e5\u8bdd\u8ba9\u6211\u77ac\u95f4 calm \u4e0b\u6765\u3002\nQ4 (free day): \u6211\u4f1a\u548c\u670b\u53cb\u53bb\u5403 brunch\uff0c\u7136\u540e\u968f\u4fbf\u6563\u6b65\uff0ctalk about random silly things\uff0c\u665a\u4e0a\u56de\u5bb6\u8ffd\u5267\u3002\nQ5 (one word): \u6e38\u79fb / Drifting"
+        },
+        "q1_safe_place": {
+          "x": -0.6647711992263794,
+          "y": 0.9145443439483643,
+          "cluster": 0,
+          "text": "Q1 (safe place): \u6211\u6700\u5b89\u5168\u7684\u5730\u65b9\u662f\u9ec4\u660f\u7684\u9633\u53f0\uff0cthe sky turns orange\uff0c\u7136\u540e\u6211\u542c\u4e00\u70b9\u8f7b\u97f3\u4e50\uff0c\u98ce\u5439\u8fc7\u6765\u5c31\u89c9\u5f97 everything slows down."
+        },
+        "q2_stress": {
+          "x": -0.46286141872406006,
+          "y": -0.6962974071502686,
+          "cluster": 0,
+          "text": "Q2 (stress): \u6700\u8fd1\u538b\u529b\u6700\u5927\u7684\u65f6\u5019\u662f\u6211\u7a81\u7136\u6536\u5230\u4e00\u5c01\u91cd\u8981\u90ae\u4ef6\uff0c\u5fc3\u91cc\u4e00\u7d27\uff0cI froze for a moment\uff0c\u7136\u540e\u903c\u81ea\u5df1 calm down \u518d\u6162\u6162\u5904\u7406\u3002"
+        },
+        "q3_understood": {
+          "x": -1.0,
+          "y": -0.6585555076599121,
+          "cluster": 2,
+          "text": "Q3 (understood): \u90a3\u5929\u6211\u5f88\u4e27\uff0c\u4f46\u670b\u53cb\u6ca1\u6709\u529d\u6211\u4ec0\u4e48 just sat with me\uff0c\u7136\u540e\u8ddf\u6211\u8bf4 \u201cI\u2019m here.\u201d \u90a3\u53e5\u8bdd\u8ba9\u6211\u77ac\u95f4 calm \u4e0b\u6765\u3002"
+        },
+        "q4_free_day": {
+          "x": 0.8171074390411377,
+          "y": 0.03794252872467041,
+          "cluster": 2,
+          "text": "Q4 (free day): \u6211\u4f1a\u548c\u670b\u53cb\u53bb\u5403 brunch\uff0c\u7136\u540e\u968f\u4fbf\u6563\u6b65\uff0ctalk about random silly things\uff0c\u665a\u4e0a\u56de\u5bb6\u8ffd\u5267\u3002"
+        },
+        "q5_one_word": {
+          "x": -0.4758104681968689,
+          "y": 0.8008356094360352,
+          "cluster": 3,
+          "text": "Q5 (one word): \u6e38\u79fb / Drifting"
+        }
+      }
+    },
+    {
+      "id": "p_017",
+      "nickname": "quiet",
+      "responses": {
+        "q1_safe_place": "\u6211\u5b89\u5168\u7684\u5730\u65b9\u662f\u591c\u665a\u7684\u623f\u95f4\uff0c\u67d4\u67d4\u7684\u706f\u5149\u3068\u5c11\u3057\u51b7\u305f\u3044\u7a7a\u6c17\u3002\u5916\u306e\u4e16\u754c\u306f\u9060\u304f\u3066\u3001\u3053\u3053\u3060\u3051\u304c\u9759\u304b\u3002",
+        "q2_stress": "\u90a3\u5929\u4e8b\u60c5\u7279\u522b\u591a\uff0c\u6211\u5fc3\u91cc\u4e00\u76f4\u53d1\u7d27\u3002\u982d\u306e\u4e2d\u304c\u3050\u3061\u3083\u3050\u3061\u3083\u306b\u306a\u3063\u3066\u3001\u53ea\u80fd\u5750\u4e0b\u6765\u6df1\u547c\u5438\u3057\u3066\u3001\u300c\u5927\u4e08\u592b\u300d\u3068\u81ea\u5df1\u6697\u793a\u3002",
+        "q3_understood": "\u6211\u5f88\u75b2\u60eb\u7684\u65f6\u5019\uff0c\u670b\u53cb\u9012\u7ed9\u6211\u4e00\u676f\u70ed\u996e\uff0c\u8bf4\u300c\u7121\u7406\u3057\u306a\u3044\u3067\u306d\u300d\u3002\u90a3\u79cd\u6e29\u67d4\u8ba9\u6211\u89c9\u5f97\u5f88\u88ab\u7406\u89e3\u3002",
+        "q4_free_day": "\u6211\u4f1a\u4e00\u4e2a\u4eba\u53bb\u6d77\u8fb9\u8d70\u8d70\uff0c\u542c\u6d77\u58f0\u3001\u5439\u6d77\u98ce\u3002\u6c17\u304c\u5411\u3044\u305f\u3089\u30ab\u30d5\u30a7\u306b\u5bc4\u3063\u3066\u3001\u672c\u3092\u8aad\u307f\u306a\u304c\u3089\u4e00\u6574\u5929\u653e\u677e\u3002",
+        "q5_one_word": "Quiet"
+      },
+      "views": {
+        "combined": {
+          "x": -0.5665450692176819,
+          "y": -1.0,
+          "cluster": 1,
+          "text": "Q1 (safe place): \u6211\u5b89\u5168\u7684\u5730\u65b9\u662f\u591c\u665a\u7684\u623f\u95f4\uff0c\u67d4\u67d4\u7684\u706f\u5149\u3068\u5c11\u3057\u51b7\u305f\u3044\u7a7a\u6c17\u3002\u5916\u306e\u4e16\u754c\u306f\u9060\u304f\u3066\u3001\u3053\u3053\u3060\u3051\u304c\u9759\u304b\u3002\nQ2 (stress): \u90a3\u5929\u4e8b\u60c5\u7279\u522b\u591a\uff0c\u6211\u5fc3\u91cc\u4e00\u76f4\u53d1\u7d27\u3002\u982d\u306e\u4e2d\u304c\u3050\u3061\u3083\u3050\u3061\u3083\u306b\u306a\u3063\u3066\u3001\u53ea\u80fd\u5750\u4e0b\u6765\u6df1\u547c\u5438\u3057\u3066\u3001\u300c\u5927\u4e08\u592b\u300d\u3068\u81ea\u5df1\u6697\u793a\u3002\nQ3 (understood): \u6211\u5f88\u75b2\u60eb\u7684\u65f6\u5019\uff0c\u670b\u53cb\u9012\u7ed9\u6211\u4e00\u676f\u70ed\u996e\uff0c\u8bf4\u300c\u7121\u7406\u3057\u306a\u3044\u3067\u306d\u300d\u3002\u90a3\u79cd\u6e29\u67d4\u8ba9\u6211\u89c9\u5f97\u5f88\u88ab\u7406\u89e3\u3002\nQ4 (free day): \u6211\u4f1a\u4e00\u4e2a\u4eba\u53bb\u6d77\u8fb9\u8d70\u8d70\uff0c\u542c\u6d77\u58f0\u3001\u5439\u6d77\u98ce\u3002\u6c17\u304c\u5411\u3044\u305f\u3089\u30ab\u30d5\u30a7\u306b\u5bc4\u3063\u3066\u3001\u672c\u3092\u8aad\u307f\u306a\u304c\u3089\u4e00\u6574\u5929\u653e\u677e\u3002\nQ5 (one word): Quiet"
+        },
+        "q1_safe_place": {
+          "x": -1.0,
+          "y": 0.6877760887145996,
+          "cluster": 0,
+          "text": "Q1 (safe place): \u6211\u5b89\u5168\u7684\u5730\u65b9\u662f\u591c\u665a\u7684\u623f\u95f4\uff0c\u67d4\u67d4\u7684\u706f\u5149\u3068\u5c11\u3057\u51b7\u305f\u3044\u7a7a\u6c17\u3002\u5916\u306e\u4e16\u754c\u306f\u9060\u304f\u3066\u3001\u3053\u3053\u3060\u3051\u304c\u9759\u304b\u3002"
+        },
+        "q2_stress": {
+          "x": -0.5668177008628845,
+          "y": -1.0,
+          "cluster": 0,
+          "text": "Q2 (stress): \u90a3\u5929\u4e8b\u60c5\u7279\u522b\u591a\uff0c\u6211\u5fc3\u91cc\u4e00\u76f4\u53d1\u7d27\u3002\u982d\u306e\u4e2d\u304c\u3050\u3061\u3083\u3050\u3061\u3083\u306b\u306a\u3063\u3066\u3001\u53ea\u80fd\u5750\u4e0b\u6765\u6df1\u547c\u5438\u3057\u3066\u3001\u300c\u5927\u4e08\u592b\u300d\u3068\u81ea\u5df1\u6697\u793a\u3002"
+        },
+        "q3_understood": {
+          "x": -0.16232645511627197,
+          "y": -0.6630264520645142,
+          "cluster": 2,
+          "text": "Q3 (understood): \u6211\u5f88\u75b2\u60eb\u7684\u65f6\u5019\uff0c\u670b\u53cb\u9012\u7ed9\u6211\u4e00\u676f\u70ed\u996e\uff0c\u8bf4\u300c\u7121\u7406\u3057\u306a\u3044\u3067\u306d\u300d\u3002\u90a3\u79cd\u6e29\u67d4\u8ba9\u6211\u89c9\u5f97\u5f88\u88ab\u7406\u89e3\u3002"
+        },
+        "q4_free_day": {
+          "x": 0.5304505825042725,
+          "y": -0.25237560272216797,
+          "cluster": 2,
+          "text": "Q4 (free day): \u6211\u4f1a\u4e00\u4e2a\u4eba\u53bb\u6d77\u8fb9\u8d70\u8d70\uff0c\u542c\u6d77\u58f0\u3001\u5439\u6d77\u98ce\u3002\u6c17\u304c\u5411\u3044\u305f\u3089\u30ab\u30d5\u30a7\u306b\u5bc4\u3063\u3066\u3001\u672c\u3092\u8aad\u307f\u306a\u304c\u3089\u4e00\u6574\u5929\u653e\u677e\u3002"
+        },
+        "q5_one_word": {
+          "x": 0.5663844347000122,
+          "y": 0.8351380825042725,
+          "cluster": 3,
+          "text": "Q5 (one word): Quiet"
+        }
+      }
+    }
+  ],
+  "links": {
+    "combined": [
+      [
+        2,
+        8,
+        0.7
+      ],
+      [
+        2,
+        5,
+        0.694
+      ],
+      [
+        2,
+        6,
+        0.604
+      ],
+      [
+        5,
+        8,
+        0.636
+      ],
+      [
+        5,
+        6,
+        0.583
+      ],
+      [
+        6,
+        8,
+        0.667
+      ],
+      [
+        3,
+        4,
+        0.752
+      ],
+      [
+        3,
+        16,
+        0.728
+      ],
+      [
+        3,
+        15,
+        0.683
+      ],
+      [
+        4,
+        16,
+        0.775
+      ],
+      [
+        4,
+        15,
+        0.724
+      ],
+      [
+        15,
+        16,
+        0.821
+      ],
+      [
+        7,
+        11,
+        0.756
+      ],
+      [
+        7,
+        12,
+        0.69
+      ],
+      [
+        7,
+        9,
+        0.688
+      ],
+      [
+        9,
+        12,
+        0.794
+      ],
+      [
+        9,
+        13,
+        0.784
+      ],
+      [
+        9,
+        11,
+        0.757
+      ],
+      [
+        10,
+        13,
+        0.771
+      ],
+      [
+        10,
+        11,
+        0.76
+      ],
+      [
+        11,
+        12,
+        0.785
+      ],
+      [
+        11,
+        13,
+        0.765
+      ],
+      [
+        12,
+        13,
+        0.738
+      ]
+    ],
+    "q1_safe_place": [
+      [
+        3,
+        4,
+        0.792
+      ],
+      [
+        3,
+        16,
+        0.772
+      ],
+      [
+        3,
+        15,
+        0.749
+      ],
+      [
+        4,
+        16,
+        0.856
+      ],
+      [
+        4,
+        15,
+        0.759
+      ],
+      [
+        15,
+        16,
+        0.781
+      ],
+      [
+        1,
+        13,
+        0.676
+      ],
+      [
+        0,
+        7,
+        0.572
+      ],
+      [
+        0,
+        12,
+        0.56
+      ],
+      [
+        0,
+        2,
+        0.52
+      ],
+      [
+        2,
+        8,
+        0.749
+      ],
+      [
+        2,
+        7,
+        0.744
+      ],
+      [
+        2,
+        10,
+        0.646
+      ],
+      [
+        7,
+        12,
+        0.701
+      ],
+      [
+        7,
+        11,
+        0.689
+      ],
+      [
+        8,
+        11,
+        0.621
+      ],
+      [
+        10,
+        11,
+        0.599
+      ],
+      [
+        11,
+        12,
+        0.608
+      ],
+      [
+        5,
+        9,
+        0.601
+      ],
+      [
+        6,
+        14,
+        0.574
+      ]
+    ],
+    "q2_stress": [
+      [
+        3,
+        4,
+        0.849
+      ],
+      [
+        3,
+        16,
+        0.732
+      ],
+      [
+        3,
+        15,
+        0.724
+      ],
+      [
+        4,
+        15,
+        0.784
+      ],
+      [
+        4,
+        16,
+        0.769
+      ],
+      [
+        15,
+        16,
+        0.766
+      ],
+      [
+        2,
+        11,
+        0.682
+      ],
+      [
+        2,
+        9,
+        0.668
+      ],
+      [
+        2,
+        8,
+        0.628
+      ],
+      [
+        5,
+        9,
+        0.597
+      ],
+      [
+        5,
+        11,
+        0.574
+      ],
+      [
+        6,
+        9,
+        0.533
+      ],
+      [
+        8,
+        11,
+        0.531
+      ],
+      [
+        9,
+        11,
+        0.615
+      ],
+      [
+        1,
+        10,
+        0.774
+      ],
+      [
+        1,
+        14,
+        0.678
+      ],
+      [
+        1,
+        12,
+        0.621
+      ],
+      [
+        10,
+        14,
+        0.686
+      ],
+      [
+        10,
+        12,
+        0.65
+      ],
+      [
+        12,
+        13,
+        0.671
+      ],
+      [
+        12,
+        14,
+        0.651
+      ],
+      [
+        13,
+        14,
+        0.598
+      ]
+    ],
+    "q3_understood": [
+      [
+        2,
+        6,
+        0.476
+      ],
+      [
+        2,
+        12,
+        0.436
+      ],
+      [
+        2,
+        8,
+        0.39
+      ],
+      [
+        6,
+        8,
+        0.657
+      ],
+      [
+        6,
+        12,
+        0.508
+      ],
+      [
+        8,
+        12,
+        0.476
+      ],
+      [
+        3,
+        7,
+        0.626
+      ],
+      [
+        3,
+        4,
+        0.561
+      ],
+      [
+        3,
+        16,
+        0.53
+      ],
+      [
+        4,
+        16,
+        0.648
+      ],
+      [
+        4,
+        7,
+        0.59
+      ],
+      [
+        4,
+        15,
+        0.586
+      ],
+      [
+        7,
+        16,
+        0.652
+      ],
+      [
+        7,
+        15,
+        0.63
+      ],
+      [
+        15,
+        16,
+        0.608
+      ],
+      [
+        0,
+        13,
+        0.489
+      ],
+      [
+        0,
+        9,
+        0.418
+      ],
+      [
+        0,
+        11,
+        0.343
+      ],
+      [
+        1,
+        9,
+        0.499
+      ],
+      [
+        1,
+        13,
+        0.437
+      ],
+      [
+        1,
+        11,
+        0.432
+      ],
+      [
+        9,
+        11,
+        0.626
+      ],
+      [
+        9,
+        13,
+        0.426
+      ],
+      [
+        10,
+        13,
+        0.385
+      ],
+      [
+        10,
+        11,
+        0.362
+      ],
+      [
+        11,
+        13,
+        0.454
+      ]
+    ],
+    "q4_free_day": [
+      [
+        7,
+        14,
+        0.725
+      ],
+      [
+        7,
+        11,
+        0.612
+      ],
+      [
+        11,
+        14,
+        0.551
+      ],
+      [
+        5,
+        8,
+        0.662
+      ],
+      [
+        3,
+        16,
+        0.67
+      ],
+      [
+        3,
+        15,
+        0.664
+      ],
+      [
+        3,
+        4,
+        0.664
+      ],
+      [
+        4,
+        15,
+        0.655
+      ],
+      [
+        4,
+        16,
+        0.611
+      ],
+      [
+        15,
+        16,
+        0.617
+      ],
+      [
+        0,
+        9,
+        0.646
+      ],
+      [
+        0,
+        2,
+        0.614
+      ],
+      [
+        0,
+        12,
+        0.611
+      ],
+      [
+        2,
+        10,
+        0.755
+      ],
+      [
+        2,
+        9,
+        0.73
+      ],
+      [
+        2,
+        12,
+        0.709
+      ],
+      [
+        6,
+        9,
+        0.746
+      ],
+      [
+        6,
+        10,
+        0.733
+      ],
+      [
+        6,
+        13,
+        0.675
+      ],
+      [
+        9,
+        10,
+        0.785
+      ],
+      [
+        9,
+        12,
+        0.762
+      ],
+      [
+        9,
+        13,
+        0.752
+      ]
+    ],
+    "q5_one_word": [
+      [
+        3,
+        4,
+        0.707
+      ],
+      [
+        0,
+        9,
+        0.514
+      ],
+      [
+        0,
+        6,
+        0.508
+      ],
+      [
+        0,
+        12,
+        0.405
+      ],
+      [
+        6,
+        12,
+        0.596
+      ],
+      [
+        6,
+        9,
+        0.593
+      ],
+      [
+        6,
+        7,
+        0.548
+      ],
+      [
+        7,
+        12,
+        0.675
+      ],
+      [
+        7,
+        9,
+        0.421
+      ],
+      [
+        9,
+        12,
+        0.563
+      ],
+      [
+        5,
+        11,
+        0.591
+      ],
+      [
+        5,
+        10,
+        0.585
+      ],
+      [
+        5,
+        14,
+        0.541
+      ],
+      [
+        10,
+        14,
+        0.599
+      ],
+      [
+        10,
+        11,
+        0.541
+      ],
+      [
+        11,
+        14,
+        0.511
+      ],
+      [
+        1,
+        16,
+        0.569
+      ],
+      [
+        1,
+        15,
+        0.555
+      ],
+      [
+        1,
+        13,
+        0.554
+      ],
+      [
+        13,
+        16,
+        0.768
+      ],
+      [
+        13,
+        15,
+        0.531
+      ],
+      [
+        15,
+        16,
+        0.518
+      ],
+      [
+        2,
+        8,
+        0.478
+      ]
+    ]
+  },
+  "clusters": 5
+}
