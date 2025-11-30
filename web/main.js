@@ -30,18 +30,18 @@ const CONFIG = {
         twinkleAmount: 0.15,
     },
 
-    // Link settings - subtle stardust connections
+    // Link settings - subtle stardust connections (visible but ethereal)
     link: {
-        baseAlpha: 0.08,          // Subtle, ethereal
-        hoverAlpha: 0.5,
+        baseAlpha: 0.12,          // Slightly more visible
+        hoverAlpha: 0.55,
         pulseSpeed: 0.002,
         travelSpeed: 0.003,
-        baseWidth: 0.8,           // Thin, delicate
-        maxWidth: 1.8,            // Slightly thicker for strong connections
-        hoverWidth: 2,
+        baseWidth: 1.0,           // Thin but visible
+        maxWidth: 2.2,            // Slightly thicker for strong connections
+        hoverWidth: 2.5,
         particleCount: 2,
         glowEnabled: true,        // Soft glow for depth
-        glowAlpha: 0.15,          // Very subtle glow
+        glowAlpha: 0.18,          // Subtle glow
     },
 
     // Nebula settings
@@ -449,8 +449,11 @@ function setTargetPositions() {
         const viewData = point.views[currentView];
 
         if (viewData) {
-            const screenX = padding + ((viewData.x + 1) / 2) * availableWidth;
-            const screenY = padding + ((1 - viewData.y) / 2) * availableHeight;
+            // Clamp coordinates to -1 to 1 range (UMAP can exceed this)
+            const clampedX = Math.max(-1, Math.min(1, viewData.x));
+            const clampedY = Math.max(-1, Math.min(1, viewData.y));
+            const screenX = padding + ((clampedX + 1) / 2) * availableWidth;
+            const screenY = padding + ((1 - clampedY) / 2) * availableHeight;
             targetPositions.set(i, { x: screenX, y: screenY });
         }
     }
@@ -466,8 +469,11 @@ function initializePositions() {
         const viewData = point.views[currentView];
 
         if (viewData) {
-            const screenX = padding + ((viewData.x + 1) / 2) * availableWidth;
-            const screenY = padding + ((1 - viewData.y) / 2) * availableHeight;
+            // Clamp coordinates to -1 to 1 range (UMAP can exceed this)
+            const clampedX = Math.max(-1, Math.min(1, viewData.x));
+            const clampedY = Math.max(-1, Math.min(1, viewData.y));
+            const screenX = padding + ((clampedX + 1) / 2) * availableWidth;
+            const screenY = padding + ((1 - clampedY) / 2) * availableHeight;
             currentPositions.set(i, { x: screenX, y: screenY });
             targetPositions.set(i, { x: screenX, y: screenY });
         }
@@ -518,8 +524,11 @@ function computeScreenPositions() {
             baseX = pos.x;
             baseY = pos.y;
         } else {
-            baseX = padding + ((viewData.x + 1) / 2) * availableWidth;
-            baseY = padding + ((1 - viewData.y) / 2) * availableHeight;
+            // Clamp coordinates to -1 to 1 range (UMAP can exceed this)
+            const clampedX = Math.max(-1, Math.min(1, viewData.x));
+            const clampedY = Math.max(-1, Math.min(1, viewData.y));
+            baseX = padding + ((clampedX + 1) / 2) * availableWidth;
+            baseY = padding + ((1 - clampedY) / 2) * availableHeight;
         }
 
         let screenX = baseX;
@@ -559,6 +568,11 @@ function computeScreenPositions() {
             screenX = galaxyCenterX + (screenX - galaxyCenterX) * perspectiveScale;
             screenY = galaxyCenterY + (screenY - galaxyCenterY) * perspectiveScale;
         }
+
+        // Final bounds check - keep stars within clickable area
+        const margin = 40;
+        screenX = Math.max(margin, Math.min(width - margin, screenX));
+        screenY = Math.max(margin, Math.min(height - margin, screenY));
 
         return {
             ...point,
@@ -1159,25 +1173,37 @@ function updateHoverState() {
     const activePoint = selectedPoint || hoveredPoint;
 
     if (activePoint) {
-        // Brighten active point
+        const activeCluster = activePoint.cluster;
+
+        // Brighten active point (brightest)
         targetBrightness.set(activePoint.index, 1.0);
 
-        // Get and brighten neighbors
+        // Get and brighten direct neighbors (connected stars - second brightest)
         const neighbors = linkMap.get(activePoint.index);
         if (neighbors) {
             for (const n of neighbors) {
                 hoveredNeighbors.add(n);
-                targetBrightness.set(n, 0.85);
+                targetBrightness.set(n, 0.9);
 
                 const linkKey = `${Math.min(activePoint.index, n)}-${Math.max(activePoint.index, n)}`;
                 hoveredLinks.add(linkKey);
             }
         }
 
-        // Dim non-connected points slightly
+        // Brighten ALL stars in the same cluster (cluster members - third brightest)
         for (const point of pointsWithScreen) {
-            if (point.index !== activePoint.index && !hoveredNeighbors.has(point.index)) {
-                targetBrightness.set(point.index, 0.3);
+            if (point.cluster === activeCluster && point.index !== activePoint.index) {
+                // Only set if not already a neighbor (neighbors stay brighter)
+                if (!hoveredNeighbors.has(point.index)) {
+                    targetBrightness.set(point.index, 0.7);
+                }
+            }
+        }
+
+        // Dim stars in OTHER clusters
+        for (const point of pointsWithScreen) {
+            if (point.cluster !== activeCluster) {
+                targetBrightness.set(point.index, 0.25);
             }
         }
     }
