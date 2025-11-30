@@ -30,15 +30,18 @@ const CONFIG = {
         twinkleAmount: 0.15,
     },
 
-    // Link settings
+    // Link settings - subtle stardust connections
     link: {
-        baseAlpha: 0.06,
+        baseAlpha: 0.08,          // Subtle, ethereal
         hoverAlpha: 0.5,
         pulseSpeed: 0.002,
         travelSpeed: 0.003,
-        baseWidth: 0.6,
+        baseWidth: 0.8,           // Thin, delicate
+        maxWidth: 1.8,            // Slightly thicker for strong connections
         hoverWidth: 2,
         particleCount: 2,
+        glowEnabled: true,        // Soft glow for depth
+        glowAlpha: 0.15,          // Very subtle glow
     },
 
     // Nebula settings
@@ -63,6 +66,25 @@ const CONFIG = {
 
     // Animation
     transitionSpeed: 0.08,
+
+    // 3D Galaxy motion
+    galaxy: {
+        enabled: true,
+        // Orbital motion around cluster centers
+        orbitSpeed: 0.0003,          // Very slow orbit
+        orbitRadius: 15,              // Max pixels to drift
+        // Depth simulation (z-axis)
+        depthRange: 0.4,              // How much z varies (0-1)
+        depthSpeed: 0.0002,           // How fast z oscillates
+        // Gentle drift using noise
+        driftSpeed: 0.0001,
+        driftAmount: 8,
+        // Global rotation
+        rotationSpeed: 0.00005,       // Entire galaxy slowly rotates
+        rotationCenter: { x: 0.5, y: 0.5 }, // Center of rotation (normalized)
+        // Perspective
+        perspectiveStrength: 0.3,     // How much depth affects size/brightness
+    },
 };
 
 // ============================================================================
@@ -189,6 +211,9 @@ let currentBrightness = new Map();
 
 // Animation phases (preserved across resize)
 let animationPhases = new Map();
+
+// Galaxy motion state per star (z-depth, orbit phase, etc.)
+let galaxyMotion = new Map();
 
 // Smooth position transitions for view changes
 let targetPositions = new Map();  // {index: {x, y}}
@@ -453,6 +478,13 @@ function computeScreenPositions() {
     const padding = 120;
     const availableWidth = width - padding * 2;
     const availableHeight = height - padding * 2;
+    const g = CONFIG.galaxy;
+    const t = time;
+
+    // Galaxy center for rotation
+    const galaxyCenterX = width * g.rotationCenter.x;
+    const galaxyCenterY = height * g.rotationCenter.y;
+    const globalRotation = t * g.rotationSpeed;
 
     pointsWithScreen = data.points.map((point, index) => {
         // Preserve animation phases across resize - only generate once per point
@@ -464,18 +496,68 @@ function computeScreenPositions() {
         }
         const phases = animationPhases.get(point.id);
 
+        // Initialize galaxy motion state for this star
+        if (!galaxyMotion.has(point.id)) {
+            galaxyMotion.set(point.id, {
+                orbitPhase: Math.random() * Math.PI * 2,
+                orbitRadius: 0.5 + Math.random() * 0.5, // 50-100% of max orbit
+                depthPhase: Math.random() * Math.PI * 2,
+                baseDepth: Math.random(),               // 0-1 base z position
+                driftSeed: Math.random() * 1000,
+            });
+        }
+        const motion = galaxyMotion.get(point.id);
+
         // Get view-specific data
         const viewData = point.views[currentView] || point.views['combined'];
 
         // Use current animated positions if available, else calculate from view data
-        let screenX, screenY;
+        let baseX, baseY;
         if (currentPositions.has(index)) {
             const pos = currentPositions.get(index);
-            screenX = pos.x;
-            screenY = pos.y;
+            baseX = pos.x;
+            baseY = pos.y;
         } else {
-            screenX = padding + ((viewData.x + 1) / 2) * availableWidth;
-            screenY = padding + ((1 - viewData.y) / 2) * availableHeight;
+            baseX = padding + ((viewData.x + 1) / 2) * availableWidth;
+            baseY = padding + ((1 - viewData.y) / 2) * availableHeight;
+        }
+
+        let screenX = baseX;
+        let screenY = baseY;
+        let depth = 0.5; // Default mid-depth
+
+        // Apply galaxy motion if enabled
+        if (g.enabled) {
+            // Calculate current depth (z-axis simulation)
+            depth = motion.baseDepth + Math.sin(t * g.depthSpeed + motion.depthPhase) * g.depthRange * 0.5;
+            depth = Math.max(0, Math.min(1, depth)); // Clamp 0-1
+
+            // Orbital motion around the point's semantic position
+            const orbitAngle = t * g.orbitSpeed + motion.orbitPhase;
+            const orbitR = g.orbitRadius * motion.orbitRadius;
+            const orbitX = Math.cos(orbitAngle) * orbitR;
+            const orbitY = Math.sin(orbitAngle) * orbitR * 0.6; // Elliptical for 3D feel
+
+            // Noise-based drift for organic movement
+            const driftX = noise.noise2D(motion.driftSeed, t * g.driftSpeed) * g.driftAmount;
+            const driftY = noise.noise2D(motion.driftSeed + 100, t * g.driftSpeed) * g.driftAmount;
+
+            // Apply orbital and drift motion
+            screenX += orbitX + driftX;
+            screenY += orbitY + driftY;
+
+            // Apply subtle global rotation around galaxy center
+            const dx = screenX - galaxyCenterX;
+            const dy = screenY - galaxyCenterY;
+            const rotatedX = dx * Math.cos(globalRotation) - dy * Math.sin(globalRotation);
+            const rotatedY = dx * Math.sin(globalRotation) + dy * Math.cos(globalRotation);
+            screenX = galaxyCenterX + rotatedX;
+            screenY = galaxyCenterY + rotatedY;
+
+            // Perspective effect: stars further back appear slightly closer to center
+            const perspectiveScale = 1 - (1 - depth) * g.perspectiveStrength * 0.1;
+            screenX = galaxyCenterX + (screenX - galaxyCenterX) * perspectiveScale;
+            screenY = galaxyCenterY + (screenY - galaxyCenterY) * perspectiveScale;
         }
 
         return {
@@ -483,6 +565,9 @@ function computeScreenPositions() {
             index,
             screenX,
             screenY,
+            baseX,  // Original position for link drawing
+            baseY,
+            depth,  // For size/brightness modulation
             cluster: viewData.cluster,
             text: viewData.text,
             breathPhase: phases.breathPhase,
@@ -564,6 +649,11 @@ function animate() {
         updatePositions();
     }
 
+    // Update screen positions for galaxy motion (even when not transitioning)
+    if (CONFIG.galaxy.enabled) {
+        computeScreenPositions();
+    }
+
     // Clear with deep space gradient
     drawBackground();
 
@@ -642,13 +732,30 @@ function drawBackground() {
 
 function drawBackgroundStars() {
     const t = time * CONFIG.bgStars.twinkleSpeed;
+    const g = CONFIG.galaxy;
+
+    // Global rotation for parallax effect (slower than main stars)
+    const parallaxRotation = time * g.rotationSpeed * 0.3;
+    const centerX = width * g.rotationCenter.x;
+    const centerY = height * g.rotationCenter.y;
 
     for (const star of bgStars) {
         const twinkle = Math.sin(t * star.speed + star.phase) * 0.5 + 0.5;
         const alpha = 0.2 + twinkle * 0.4;
 
+        // Apply subtle parallax rotation
+        let x = star.x;
+        let y = star.y;
+        if (g.enabled) {
+            const dx = star.x - centerX;
+            const dy = star.y - centerY;
+            const parallaxFactor = 0.3 + star.size / CONFIG.bgStars.maxSize * 0.4; // Bigger stars move more
+            x = centerX + dx * Math.cos(parallaxRotation * parallaxFactor) - dy * Math.sin(parallaxRotation * parallaxFactor);
+            y = centerY + dx * Math.sin(parallaxRotation * parallaxFactor) + dy * Math.cos(parallaxRotation * parallaxFactor);
+        }
+
         ctx.beginPath();
-        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.arc(x, y, star.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(200, 210, 255, ${alpha})`;
         ctx.fill();
     }
@@ -732,27 +839,48 @@ function drawLinks() {
         const isHovered = hoveredLinks.has(linkKey);
 
         // Get current brightness of connected points
-        const brightA = currentBrightness.get(aIdx);
-        const brightB = currentBrightness.get(bIdx);
+        const brightA = currentBrightness.get(aIdx) || 0.5;
+        const brightB = currentBrightness.get(bIdx) || 0.5;
         const linkBright = Math.max(brightA, brightB);
 
-        // Use strength to scale link visibility (stronger connections more visible)
-        // strength ranges from ~0.3 to ~1.0, normalize to 0.5-1.0 range for visual effect
-        const strengthFactor = 0.5 + (strength || 0.5) * 0.5;
+        // Normalize strength to 0-1 range (raw strength is ~0.3-1.0 cosine similarity)
+        // Higher = more semantically similar
+        const rawStrength = strength || 0.5;
+        const normalizedStrength = Math.max(0, Math.min(1, (rawStrength - 0.3) / 0.7));
 
-        // Calculate line properties - modulated by connection strength
-        const baseAlpha = isHovered ? CONFIG.link.hoverAlpha : CONFIG.link.baseAlpha * strengthFactor;
-        const lineWidth = isHovered ? CONFIG.link.hoverWidth : CONFIG.link.baseWidth * (0.7 + strengthFactor * 0.6);
+        // Calculate line width based on strength (thicker = stronger connection)
+        const widthRange = CONFIG.link.maxWidth - CONFIG.link.baseWidth;
+        const lineWidth = isHovered
+            ? CONFIG.link.hoverWidth
+            : CONFIG.link.baseWidth + normalizedStrength * widthRange;
+
+        // Calculate alpha - stronger connections are more visible
+        const strengthAlpha = 0.5 + normalizedStrength * 0.5;
+        const baseAlpha = isHovered ? CONFIG.link.hoverAlpha : CONFIG.link.baseAlpha * strengthAlpha;
 
         // Pulse effect - subtle wave along line
         const pulsePhase = (a.screenX + a.screenY) * 0.005;
         const pulse = Math.sin(pulseTime + pulsePhase) * 0.5 + 0.5;
-        const alpha = baseAlpha * (0.6 + pulse * 0.4) * (0.5 + linkBright);
+        const alpha = baseAlpha * (0.7 + pulse * 0.3) * (0.4 + linkBright * 0.6);
 
         // Get color from cluster
         const color = CONFIG.colors[a.cluster % CONFIG.colors.length];
 
-        // Draw the base line
+        // Draw soft glow for stronger connections (very subtle)
+        if (CONFIG.link.glowEnabled && (normalizedStrength > 0.6 || isHovered)) {
+            const glowWidth = lineWidth * 2.5;
+            const glowAlpha = alpha * (CONFIG.link.glowAlpha || 0.15) * normalizedStrength;
+
+            ctx.beginPath();
+            ctx.moveTo(a.screenX, a.screenY);
+            ctx.lineTo(b.screenX, b.screenY);
+            ctx.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${glowAlpha})`;
+            ctx.lineWidth = glowWidth;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+        }
+
+        // Draw the main line
         ctx.beginPath();
         ctx.moveTo(a.screenX, a.screenY);
         ctx.lineTo(b.screenX, b.screenY);
@@ -801,10 +929,15 @@ function drawLinks() {
 function drawStars() {
     const breathTime = time * CONFIG.star.breathSpeed;
     const twinkleTime = time * CONFIG.star.twinkleSpeed;
+    const g = CONFIG.galaxy;
 
-    // Sort by brightness so highlighted stars draw on top
+    // Sort by depth (back to front) then by brightness so highlighted stars draw on top
     const sortedPoints = [...pointsWithScreen].sort((a, b) => {
-        return currentBrightness.get(a.index) - currentBrightness.get(b.index);
+        // First sort by depth (stars further back drawn first)
+        const depthDiff = (a.depth || 0.5) - (b.depth || 0.5);
+        if (Math.abs(depthDiff) > 0.1) return depthDiff;
+        // Then by brightness
+        return (currentBrightness.get(a.index) || 0.5) - (currentBrightness.get(b.index) || 0.5);
     });
 
     // Calculate active point once outside the loop (optimization)
@@ -812,9 +945,14 @@ function drawStars() {
     const activeIndex = activePoint ? activePoint.index : -1;
 
     for (const point of sortedPoints) {
-        const brightness = currentBrightness.get(point.index);
+        const brightness = currentBrightness.get(point.index) || 0.5;
         const isActive = point.index === activeIndex;
         const isNeighbor = hoveredNeighbors.has(point.index);
+
+        // Depth affects size and brightness (3D perspective)
+        const depth = point.depth || 0.5;
+        const depthScale = g.enabled ? (0.7 + depth * 0.6) : 1; // Stars closer (depth=1) are bigger
+        const depthBright = g.enabled ? (0.6 + depth * 0.4) : 1; // Stars closer are brighter
 
         // Breathing effect - slow, organic pulsation
         const breath = Math.sin(breathTime + point.breathPhase) * CONFIG.star.breathAmount;
@@ -822,18 +960,18 @@ function drawStars() {
         // Twinkle effect - faster, subtle shimmer
         const twinkle = Math.sin(twinkleTime + point.twinklePhase) * CONFIG.star.twinkleAmount;
 
-        // Calculate radius
+        // Calculate radius with depth scaling
         let baseRadius = CONFIG.star.baseRadius;
         if (isActive) baseRadius = CONFIG.star.hoverRadius;
         else if (isNeighbor) baseRadius = CONFIG.star.neighborRadius;
 
-        const radius = baseRadius * (1 + breath + twinkle * 0.5);
+        const radius = baseRadius * (1 + breath + twinkle * 0.5) * depthScale;
 
         const color = CONFIG.colors[point.cluster % CONFIG.colors.length];
 
-        // Outer glow - larger, softer
-        const glowRadius = CONFIG.star.glowRadius * (0.8 + brightness * 0.8);
-        const glowAlpha = 0.1 + brightness * 0.35;
+        // Outer glow - larger, softer, modulated by depth
+        const glowRadius = CONFIG.star.glowRadius * (0.8 + brightness * 0.8) * depthScale;
+        const glowAlpha = (0.1 + brightness * 0.35) * depthBright;
 
         const glowGradient = ctx.createRadialGradient(
             point.screenX, point.screenY, 0,
