@@ -661,11 +661,15 @@ function animate() {
     // Smooth position transitions for view changes
     if (isTransitioning) {
         updatePositions();
+        // Note: updatePositions() calls computeScreenPositions() when stillTransitioning,
+        // and sets isTransitioning=false when done
     }
 
-    // Update screen positions for galaxy motion (even when not transitioning)
-    if (CONFIG.galaxy.enabled) {
+    // Galaxy motion: update positions when enabled and not mid-transition
+    // (updatePositions already handles computeScreenPositions during active transitions)
+    if (CONFIG.galaxy.enabled && !isTransitioning) {
         computeScreenPositions();
+        computeClusterCenters();
     }
 
     // Clear with deep space gradient
