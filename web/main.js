@@ -1091,6 +1091,11 @@ function handleMouseLeave() {
 }
 
 function handleClick(event) {
+    // Safeguard: ensure positions are computed
+    if (!pointsWithScreen || pointsWithScreen.length === 0) {
+        return;
+    }
+
     const rect = canvas.getBoundingClientRect();
     const mouseX = event.clientX - rect.left;
     const mouseY = event.clientY - rect.top;
