@@ -4,6 +4,10 @@ venv/
 env/
 .env
 
+# Node
+node_modules/
+server/node_modules/
+
 # Python
 __pycache__/
 *.py[cod]
