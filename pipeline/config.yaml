@@ -1,22 +1,56 @@
-embedding_model: "all-MiniLM-L6-v2"
+# Hidden Connections - Configuration
+# Supports OpenAI API embeddings (default) with BGE fallback
 
+# =============================================================================
+# EMBEDDING CONFIGURATION
+# =============================================================================
+embedding:
+  # Backend: "openai" (default) or "bge" (local fallback)
+  backend: "openai"
+
+  # OpenAI settings (when backend: openai)
+  openai:
+    model: "text-embedding-3-large"
+    dimensions: 256  # Matryoshka: 256 dims still outperforms ada-002 at 1536
+
+  # BGE settings (when backend: bge) - local fallback
+  bge:
+    model: "BAAI/bge-large-en-v1.5"
+    instruction: "Represent this personal reflection for semantic clustering:"
+    device: "auto"  # auto, cuda, mps, cpu
+
+# =============================================================================
+# UMAP (Dimensionality Reduction)
+# =============================================================================
 umap:
   n_neighbors: 15
   min_dist: 0.1
   metric: cosine
   random_state: 42
 
+# =============================================================================
+# CLUSTERING
+# =============================================================================
 clustering:
   algorithm: kmeans
   n_clusters: 5
   random_state: 42
 
+# =============================================================================
+# TEXT PROCESSING
+# =============================================================================
 text_processing:
   max_chars_per_question: 500
 
+# =============================================================================
+# VISUALIZATION
+# =============================================================================
 visualization:
   k_neighbors: 3  # Number of nearest neighbors to link within each cluster
 
+# =============================================================================
+# FILE PATHS
+# =============================================================================
 paths:
   input: "../data/responses_projective.csv"
   output: "../processed/points.json"

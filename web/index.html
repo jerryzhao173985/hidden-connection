@@ -42,6 +42,23 @@
     <!-- Custom tooltip for view tabs -->
     <div id="tab-tooltip" class="tab-tooltip"></div>
 
-    <script src="main.js"></script>
+    <!-- Add Point Panel (hidden by default) -->
+    <aside id="add-point-panel" class="add-point-panel">
+        <div class="panel-header">
+            <span class="panel-title">Add Your Reflection</span>
+            <button id="close-add-panel" class="close-btn">&times;</button>
+        </div>
+        <div class="add-point-form">
+            <input type="text" id="new-nickname" placeholder="Nickname (optional)" maxlength="30">
+            <textarea id="new-response" placeholder="Share your reflection..." rows="4"></textarea>
+            <button id="add-point-btn" class="add-btn">Add to Galaxy</button>
+            <div id="add-point-status" class="status"></div>
+        </div>
+    </aside>
+
+    <!-- Floating Add Button -->
+    <button id="add-point-trigger" class="add-point-trigger" title="Add your reflection">+</button>
+
+    <script type="module" src="main.js"></script>
 </body>
 </html>

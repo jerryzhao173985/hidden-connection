@@ -2,6 +2,11 @@
 """
 Hidden Connections - ML Pipeline
 Processes participant responses into semantic embeddings for visualization.
+
+Supports two embedding backends:
+- OpenAI API (text-embedding-3-large with Matryoshka dimensions)
+- BGE local fallback (BAAI/bge-large-en-v1.5)
+
 Outputs point data with nearest neighbor links for constellation visualization.
 Supports multiple views: combined (all questions) and individual question views.
 """
@@ -9,13 +14,14 @@ Supports multiple views: combined (all questions) and individual question views.
 import json
 import argparse
 import logging
+import os
 import sys
+from abc import ABC, abstractmethod
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import yaml
-from sentence_transformers import SentenceTransformer
 from sklearn.cluster import KMeans
 from sklearn.neighbors import NearestNeighbors
 from umap import UMAP
@@ -28,6 +34,141 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
+# =============================================================================
+# EMBEDDING BACKENDS
+# =============================================================================
+
+class EmbeddingBackend(ABC):
+    """Abstract base class for embedding backends."""
+
+    @abstractmethod
+    def encode(self, texts: list[str]) -> np.ndarray:
+        """Encode texts to embeddings. Returns (n_texts, dim) array."""
+        pass
+
+    @property
+    @abstractmethod
+    def dimension(self) -> int:
+        """Return embedding dimension."""
+        pass
+
+
+class OpenAIBackend(EmbeddingBackend):
+    """OpenAI API embedding backend using text-embedding-3-large."""
+
+    def __init__(self, model: str = "text-embedding-3-large", dimensions: int = 256):
+        try:
+            from openai import OpenAI
+        except ImportError:
+            raise ImportError("Please install openai: pip install openai")
+
+        api_key = os.environ.get("OPENAI_API_KEY")
+        if not api_key:
+            raise ValueError("OPENAI_API_KEY environment variable not set")
+
+        self.client = OpenAI(api_key=api_key)
+        self.model = model
+        self._dimensions = dimensions
+        logger.info(f"Initialized OpenAI backend: {model} (dim={dimensions})")
+
+    def encode(self, texts: list[str]) -> np.ndarray:
+        """Encode texts using OpenAI embeddings API."""
+        # OpenAI API accepts list of strings
+        # Process in batches to avoid rate limits
+        batch_size = 100
+        all_embeddings = []
+
+        for i in range(0, len(texts), batch_size):
+            batch = texts[i:i + batch_size]
+            response = self.client.embeddings.create(
+                model=self.model,
+                input=batch,
+                dimensions=self._dimensions,
+            )
+            batch_embeddings = [item.embedding for item in response.data]
+            all_embeddings.extend(batch_embeddings)
+
+        return np.array(all_embeddings, dtype=np.float32)
+
+    @property
+    def dimension(self) -> int:
+        return self._dimensions
+
+
+class BGEBackend(EmbeddingBackend):
+    """BAAI/BGE local embedding backend (fallback)."""
+
+    def __init__(
+        self,
+        model: str = "BAAI/bge-large-en-v1.5",
+        instruction: str = None,
+        device: str = "auto",
+    ):
+        try:
+            from sentence_transformers import SentenceTransformer
+        except ImportError:
+            raise ImportError("Please install sentence-transformers: pip install sentence-transformers")
+
+        self.device = self._resolve_device(device)
+        self.model = SentenceTransformer(model, device=self.device)
+        self.instruction = instruction
+        self._dimension = self.model.get_sentence_embedding_dimension()
+        logger.info(f"Initialized BGE backend: {model} (dim={self._dimension}, device={self.device})")
+
+    def _resolve_device(self, device: str) -> str:
+        if device == "auto":
+            import torch
+            if torch.cuda.is_available():
+                return "cuda"
+            elif hasattr(torch.backends, 'mps') and torch.backends.mps.is_available():
+                return "mps"
+            return "cpu"
+        return device
+
+    def encode(self, texts: list[str]) -> np.ndarray:
+        """Encode texts using local BGE model."""
+        # BGE models work best with instruction prefix
+        if self.instruction:
+            texts = [f"{self.instruction} {t}" for t in texts]
+
+        embeddings = self.model.encode(
+            texts,
+            show_progress_bar=True,
+            normalize_embeddings=True,
+        )
+        return np.array(embeddings, dtype=np.float32)
+
+    @property
+    def dimension(self) -> int:
+        return self._dimension
+
+
+def create_embedding_backend(config: dict) -> EmbeddingBackend:
+    """Factory function to create the appropriate embedding backend."""
+    embedding_config = config.get("embedding", {})
+    backend_type = embedding_config.get("backend", "openai")
+
+    if backend_type == "openai":
+        openai_config = embedding_config.get("openai", {})
+        return OpenAIBackend(
+            model=openai_config.get("model", "text-embedding-3-large"),
+            dimensions=openai_config.get("dimensions", 256),
+        )
+    elif backend_type == "bge":
+        bge_config = embedding_config.get("bge", {})
+        return BGEBackend(
+            model=bge_config.get("model", "BAAI/bge-large-en-v1.5"),
+            instruction=bge_config.get("instruction"),
+            device=bge_config.get("device", "auto"),
+        )
+    else:
+        raise ValueError(f"Unknown embedding backend: {backend_type}")
+
+
+# =============================================================================
+# CONFIGURATION
+# =============================================================================
 
 # Question field mappings for display labels
 QUESTION_LABELS = {
@@ -86,6 +227,10 @@ REQUIRED_COLUMNS = [
 ]
 
 
+# =============================================================================
+# EXCEPTIONS
+# =============================================================================
+
 class PipelineError(Exception):
     """Base exception for pipeline failures."""
     pass
@@ -100,6 +245,10 @@ class DataValidationError(PipelineError):
     """Data validation error."""
     pass
 
+
+# =============================================================================
+# HELPER FUNCTIONS
+# =============================================================================
 
 def validate_path(base: Path, user_path: str, must_exist: bool = True) -> Path:
     """Validate path to prevent directory traversal attacks."""
@@ -132,7 +281,8 @@ def load_config(config_path: Path) -> dict:
     if not isinstance(config, dict):
         raise ConfigError("Config must be a dictionary")
 
-    required_keys = ["embedding_model", "umap", "clustering", "text_processing", "paths"]
+    # Required keys for new config structure
+    required_keys = ["embedding", "umap", "clustering", "text_processing", "paths"]
     for key in required_keys:
         if key not in config:
             raise ConfigError(f"Missing required config key: {key}")
@@ -245,11 +395,15 @@ def compute_neighbor_links(embeddings: np.ndarray, clusters: np.ndarray, k: int 
     return links
 
 
+# =============================================================================
+# MAIN PROCESSING
+# =============================================================================
+
 def process_view(
     df: pd.DataFrame,
     view_id: str,
     view_config: dict,
-    model: SentenceTransformer,
+    embedding_backend: EmbeddingBackend,
     umap_config: dict,
     cluster_config: dict,
     max_chars: int,
@@ -260,16 +414,38 @@ def process_view(
     logger.info(f"Processing view '{view_id}' with fields: {fields}")
 
     # Generate text for this view
-    texts = df.apply(
+    all_texts = df.apply(
         lambda row: concatenate_responses(row, max_chars, fields), axis=1
     ).tolist()
 
-    # Generate embeddings
-    embeddings = model.encode(texts, show_progress_bar=False)
+    # Identify valid (non-empty) entries
+    valid_mask = [bool(t.strip()) for t in all_texts]
+    valid_indices = [i for i, valid in enumerate(valid_mask) if valid]
+    excluded_indices = [i for i, valid in enumerate(valid_mask) if not valid]
+
+    if excluded_indices:
+        logger.warning(f"  Excluding {len(excluded_indices)} participants with missing responses: indices {excluded_indices}")
+
+    # Filter to only valid texts for processing
+    texts = [all_texts[i] for i in valid_indices]
+
+    if len(texts) == 0:
+        raise DataValidationError(f"No valid responses for view '{view_id}'")
+
+    # Adjust UMAP n_neighbors if we have fewer valid samples
+    effective_n_neighbors = min(umap_config["n_neighbors"], len(texts) - 1)
+    if effective_n_neighbors < umap_config["n_neighbors"]:
+        logger.warning(f"  Reduced n_neighbors from {umap_config['n_neighbors']} to {effective_n_neighbors} due to sample size")
+
+    # Generate embeddings using the configured backend
+    logger.info(f"  Generating embeddings for {len(texts)} texts...")
+    embeddings = embedding_backend.encode(texts)
+    logger.info(f"  Embeddings shape: {embeddings.shape}")
 
     # Apply UMAP
+    logger.info(f"  Applying UMAP...")
     reducer = UMAP(
-        n_neighbors=umap_config["n_neighbors"],
+        n_neighbors=effective_n_neighbors,
         min_dist=umap_config["min_dist"],
         metric=umap_config["metric"],
         random_state=umap_config.get("random_state", 42),
@@ -279,6 +455,7 @@ def process_view(
     coords_2d = normalize_coordinates(coords_2d)
 
     # Clustering
+    logger.info(f"  Clustering...")
     kmeans = KMeans(
         n_clusters=cluster_config["n_clusters"],
         random_state=cluster_config.get("random_state", 42),
@@ -297,6 +474,8 @@ def process_view(
         "coords": coords_2d,
         "clusters": clusters,
         "links": formatted_links,
+        "embeddings": embeddings,  # Include for frontend KNN/estimatePosition
+        "valid_indices": valid_indices,  # Map from result index to original df index
     }
 
 
@@ -327,19 +506,16 @@ def process_data(config: dict, base_dir: Path) -> dict:
     umap_config = config["umap"]
     cluster_config = config["clustering"]
 
-    model_name = config["embedding_model"]
-    logger.info(f"Loading embedding model: {model_name}")
-    try:
-        model = SentenceTransformer(model_name)
-    except Exception as e:
-        raise PipelineError(f"Failed to load embedding model '{model_name}': {e}")
+    # Create embedding backend based on config
+    logger.info("Initializing embedding backend...")
+    embedding_backend = create_embedding_backend(config)
 
     # Process each view
     logger.info(f"Processing {len(VIEW_CONFIG)} views...")
     view_results = {}
     for view_id, view_cfg in VIEW_CONFIG.items():
         view_results[view_id] = process_view(
-            df, view_id, view_cfg, model, umap_config, cluster_config, max_chars, k_links
+            df, view_id, view_cfg, embedding_backend, umap_config, cluster_config, max_chars, k_links
         )
 
     # Build output structure
@@ -369,28 +545,52 @@ def process_data(config: dict, base_dir: Path) -> dict:
                 val = ""
             responses[field] = str(val).strip()
 
-        # Build per-view data
+        # Build per-view data (handle excluded points per view)
         views_data = {}
         for view_id, result in view_results.items():
-            views_data[view_id] = {
-                "x": float(result["coords"][i, 0]),
-                "y": float(result["coords"][i, 1]),
-                "cluster": int(result["clusters"][i]),
-                "text": result["texts"][i],
-            }
+            valid_indices = result["valid_indices"]
+            if i in valid_indices:
+                # Find position in the filtered results array
+                result_idx = valid_indices.index(i)
+                views_data[view_id] = {
+                    "x": float(result["coords"][result_idx, 0]),
+                    "y": float(result["coords"][result_idx, 1]),
+                    "cluster": int(result["clusters"][result_idx]),
+                    "text": result["texts"][result_idx],
+                }
+            else:
+                # Point excluded from this view due to missing response
+                views_data[view_id] = None
+
+        # Include embedding from combined view for frontend KNN
+        combined_valid = view_results["combined"]["valid_indices"]
+        if i in combined_valid:
+            result_idx = combined_valid.index(i)
+            combined_embedding = view_results["combined"]["embeddings"][result_idx].tolist()
+        else:
+            combined_embedding = None  # No embedding if excluded from combined view
 
         point = {
             "id": str(row.id),
             "nickname": str(nickname),
             "responses": responses,
             "views": views_data,
+            "embedding": combined_embedding,  # 256-dim vector for frontend similarity search
         }
         points.append(point)
 
-    # Collect links per view
+    # Collect links per view (convert filtered indices back to original df indices)
     links = {}
     for view_id, result in view_results.items():
-        links[view_id] = result["links"]
+        valid_indices = result["valid_indices"]
+        # Links are [source_idx, target_idx, weight] in filtered space
+        # Convert to original df indices
+        converted_links = []
+        for s, t, w in result["links"]:
+            orig_s = valid_indices[s]
+            orig_t = valid_indices[t]
+            converted_links.append([orig_s, orig_t, w])
+        links[view_id] = converted_links
 
     return {
         "views": views_meta,
@@ -408,29 +608,39 @@ def main():
         default=Path(__file__).parent / "config.yaml",
         help="Path to configuration file",
     )
+    parser.add_argument(
+        "--backend",
+        choices=["openai", "bge"],
+        help="Override embedding backend (default: from config)",
+    )
     args = parser.parse_args()
 
     try:
         config = load_config(args.config)
+
+        # Override backend if specified
+        if args.backend:
+            config["embedding"]["backend"] = args.backend
+            logger.info(f"Using backend override: {args.backend}")
+
         base_dir = Path(__file__).parent
         data = process_data(config, base_dir)
 
         output_path = validate_path(base_dir, config["paths"]["output"], must_exist=False)
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
-        logger.info(f"Writing {len(data['points'])} points and {len(data['links'])} links to {output_path}")
+        logger.info(f"Writing {len(data['points'])} points to {output_path}")
         with open(output_path, "w") as f:
             json.dump(data, f, indent=2)
 
-        # Create symlink in web directory
+        # Copy to web directory (not symlink for deployment compatibility)
         web_dir = base_dir.parent / "web"
         web_dir.mkdir(parents=True, exist_ok=True)
         web_output = web_dir / "points.json"
 
-        if web_output.exists() or web_output.is_symlink():
-            web_output.unlink()
-        web_output.symlink_to(output_path.resolve())
-        logger.info(f"Created symlink: {web_output} -> {output_path}")
+        with open(web_output, "w") as f:
+            json.dump(data, f, indent=2)
+        logger.info(f"Copied to web directory: {web_output}")
 
         logger.info("Done!")
 

@@ -3,6 +3,11 @@
  * A cinematic, animated visualization of semantic relationships
  */
 
+import { EmbeddingClient } from './embedding-client.js';
+
+// Initialize embedding client (server must be running for live additions)
+const embeddingClient = new EmbeddingClient('http://localhost:3001');
+
 // ============================================================================
 // CONFIGURATION
 // ============================================================================
@@ -514,8 +519,13 @@ function computeScreenPositions() {
         }
         const motion = galaxyMotion.get(point.id);
 
-        // Get view-specific data
-        const viewData = point.views[currentView] || point.views['combined'];
+        // Get view-specific data (null if point excluded from this view)
+        const viewData = point.views[currentView];
+
+        // Skip points excluded from this view (missing response)
+        if (!viewData) {
+            return null;
+        }
 
         // Use current animated positions if available, else calculate from view data
         let baseX, baseY;
@@ -588,6 +598,8 @@ function computeScreenPositions() {
             twinklePhase: phases.twinklePhase,
         };
     });
+    // Note: Don't filter out nulls - keep array indices aligned with data.points
+    // Null entries are points excluded from this view (missing response)
 }
 
 function buildLinkMap() {
@@ -611,6 +623,7 @@ function computeClusterCenters() {
     const clusterData = {};
 
     for (const point of pointsWithScreen) {
+        if (!point) continue;  // Skip null points (excluded from current view)
         if (!clusterData[point.cluster]) {
             clusterData[point.cluster] = { x: 0, y: 0, count: 0, points: [] };
         }
@@ -643,6 +656,7 @@ function computeClusterCenters() {
 
 function initializeBrightness() {
     for (const point of pointsWithScreen) {
+        if (!point) continue;  // Skip null points (excluded from current view)
         targetBrightness.set(point.index, 0.5);
         currentBrightness.set(point.index, 0.5);
     }
@@ -723,6 +737,7 @@ function updatePositions() {
 
 function updateBrightness() {
     for (const point of pointsWithScreen) {
+        if (!point) continue;  // Skip null points (excluded from current view)
         const current = currentBrightness.get(point.index);
         const target = targetBrightness.get(point.index);
         const newValue = current + (target - current) * CONFIG.transitionSpeed;
@@ -949,8 +964,11 @@ function drawStars() {
     const twinkleTime = time * CONFIG.star.twinkleSpeed;
     const g = CONFIG.galaxy;
 
+    // Filter out null points (excluded from current view) then sort
+    const validPoints = pointsWithScreen.filter(p => p !== null);
+
     // Sort by depth (back to front) then by brightness so highlighted stars draw on top
-    const sortedPoints = [...pointsWithScreen].sort((a, b) => {
+    const sortedPoints = validPoints.sort((a, b) => {
         // First sort by depth (stars further back drawn first)
         const depthDiff = (a.depth || 0.5) - (b.depth || 0.5);
         if (Math.abs(depthDiff) > 0.1) return depthDiff;
@@ -1046,6 +1064,7 @@ function handleMouseMove(event) {
     let nearestDist = CONFIG.hoverThreshold;
 
     for (const point of pointsWithScreen) {
+        if (!point) continue;  // Skip null points (excluded from current view)
         const dx = mouseX - point.screenX;
         const dy = mouseY - point.screenY;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -1081,6 +1100,7 @@ function handleClick(event) {
     let nearestDist = CONFIG.hoverThreshold;
 
     for (const point of pointsWithScreen) {
+        if (!point) continue;  // Skip null points (excluded from current view)
         const dx = mouseX - point.screenX;
         const dy = mouseY - point.screenY;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -1170,6 +1190,7 @@ function updateHoverState() {
 
     // Reset all brightness targets
     for (const point of pointsWithScreen) {
+        if (!point) continue;  // Skip null points (excluded from current view)
         targetBrightness.set(point.index, 0.5);
     }
 
@@ -1196,6 +1217,7 @@ function updateHoverState() {
 
         // Brighten ALL stars in the same cluster (cluster members - third brightest)
         for (const point of pointsWithScreen) {
+            if (!point) continue;  // Skip null points (excluded from current view)
             if (point.cluster === activeCluster && point.index !== activePoint.index) {
                 // Only set if not already a neighbor (neighbors stay brighter)
                 if (!hoveredNeighbors.has(point.index)) {
@@ -1206,6 +1228,7 @@ function updateHoverState() {
 
         // Dim stars in OTHER clusters
         for (const point of pointsWithScreen) {
+            if (!point) continue;  // Skip null points (excluded from current view)
             if (point.cluster !== activeCluster) {
                 targetBrightness.set(point.index, 0.25);
             }
@@ -1355,7 +1378,153 @@ function escapeHtml(text) {
 }
 
 // ============================================================================
+// ADD POINT FUNCTIONALITY
+// ============================================================================
+
+let addPointPanel, addPointTrigger, addPointBtn, addPointStatus;
+let newNicknameInput, newResponseInput, closeAddPanelBtn;
+
+function initAddPointUI() {
+    addPointPanel = document.getElementById('add-point-panel');
+    addPointTrigger = document.getElementById('add-point-trigger');
+    addPointBtn = document.getElementById('add-point-btn');
+    addPointStatus = document.getElementById('add-point-status');
+    newNicknameInput = document.getElementById('new-nickname');
+    newResponseInput = document.getElementById('new-response');
+    closeAddPanelBtn = document.getElementById('close-add-panel');
+
+    if (!addPointPanel || !addPointTrigger) return;
+
+    // Show/hide panel
+    addPointTrigger.addEventListener('click', () => {
+        addPointPanel.classList.toggle('visible');
+        if (addPointPanel.classList.contains('visible')) {
+            newResponseInput.focus();
+        }
+    });
+
+    closeAddPanelBtn.addEventListener('click', () => {
+        addPointPanel.classList.remove('visible');
+    });
+
+    // Handle add point
+    addPointBtn.addEventListener('click', handleAddPoint);
+
+    // Check API availability and update UI
+    checkEmbeddingAPI();
+}
+
+async function checkEmbeddingAPI() {
+    const isAvailable = await embeddingClient.checkHealth();
+
+    if (isAvailable) {
+        addPointTrigger.classList.add('available');
+        addPointTrigger.title = 'Add your reflection (API connected)';
+    } else {
+        addPointTrigger.classList.add('unavailable');
+        addPointTrigger.title = 'Add point unavailable (start server: cd server && npm start)';
+    }
+}
+
+async function handleAddPoint() {
+    const text = newResponseInput.value.trim();
+    const nickname = newNicknameInput.value.trim() || 'anonymous';
+
+    if (!text) {
+        showAddPointStatus('Please enter your reflection', 'error');
+        return;
+    }
+
+    if (!embeddingClient.isAvailable) {
+        showAddPointStatus('Embedding server not available. Start it with: cd server && npm start', 'error');
+        return;
+    }
+
+    showAddPointStatus('Generating embedding...', 'loading');
+    addPointBtn.disabled = true;
+
+    try {
+        // Get embedding from API
+        const embedding = await embeddingClient.getEmbedding(text);
+
+        // Estimate position using existing points
+        const position = embeddingClient.estimatePosition(embedding, data.points, 5);
+
+        // Create new point
+        const newId = `user_${Date.now()}`;
+        const newPoint = {
+            id: newId,
+            nickname: nickname,
+            responses: { combined: text },
+            views: {
+                combined: {
+                    x: position.x,
+                    y: position.y,
+                    cluster: position.cluster,
+                    text: text,
+                },
+            },
+            embedding: embedding,
+        };
+
+        // Copy combined view to all other views (simplified for user-added points)
+        for (const viewId of Object.keys(data.views)) {
+            if (viewId !== 'combined') {
+                newPoint.views[viewId] = { ...newPoint.views.combined };
+            }
+        }
+
+        // Add to data
+        data.points.push(newPoint);
+
+        // Reinitialize visualization with new point
+        computeScreenPositions();
+        initializePositions();
+        buildLinkMap();
+        computeClusterCenters();
+        initializeBrightness();
+
+        // Update point count
+        pointCount.textContent = `${data.points.length} souls`;
+
+        // Clear form and show success
+        newResponseInput.value = '';
+        newNicknameInput.value = '';
+        showAddPointStatus('Added to the galaxy!', 'success');
+
+        // Select the new point to show it
+        const newPointWithScreen = pointsWithScreen.find(p => p.id === newId);
+        if (newPointWithScreen) {
+            selectedPoint = newPointWithScreen;
+            updateHoverState();
+            updatePanel();
+        }
+
+        // Close panel after a delay
+        setTimeout(() => {
+            addPointPanel.classList.remove('visible');
+            showAddPointStatus('', '');
+        }, 2000);
+
+    } catch (err) {
+        console.error('Failed to add point:', err);
+        showAddPointStatus(`Error: ${err.message}`, 'error');
+    } finally {
+        addPointBtn.disabled = false;
+    }
+}
+
+function showAddPointStatus(message, type) {
+    if (!addPointStatus) return;
+    addPointStatus.textContent = message;
+    addPointStatus.className = 'status ' + type;
+}
+
+// ============================================================================
 // START
 // ============================================================================
 
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', () => {
+    init();
+    initAddPointUI();
+});
